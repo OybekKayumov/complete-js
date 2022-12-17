@@ -3,6 +3,7 @@
 // How Passing Arguments Works: Value vs. Reference (vn129)
 // First-Class and Higher-Order Functions (vn130)
 // Functions Accepting Callback Functions (vn131)
+// Functions Returning Functions (vn132)
 
 const bookings = [];
 
@@ -136,3 +137,47 @@ transformer('JavaScript is the best!', upperFirstWord);
 // Original string: JavaScript is the best!
 // Transformed string: JAVASCRIPT is the best!
 // Transformed by: upperFirstWord
+
+transformer('JavaScript is the best!', oneWord);
+// Original string: JavaScript is the best!
+// Transformed string: javascriptisthebest!
+// Transformed by: oneWord
+
+// calling callback fn (high5) another example
+// addEventListener is the higher-order fn
+const high5 = function () {
+  console.log('👋');
+}
+document.body.addEventListener('click', high5);
+
+// using concept of callback fn
+['jonas', 'martha', 'joe'].forEach(high5);
+// 3 👋
+
+//! callback fns allow us to create abstraction:
+// is that we hide the details of some code implementation because we don't really care about all that detail.
+
+//TODO: Functions Returning Functions
+const greet = function (greeting) {
+  return function (name) {
+    console.log(`${greeting} ${name}`);
+  }
+}
+// console.log( greet('Hey') )
+const greeterHey = greet('Hey');
+greeterHey('Jonas');
+greeterHey('Steve');
+// Hey Jonas
+// Hey Steve
+
+//todo: closures later
+
+// functional programming
+greet('Hello')('John');
+// Hello John
+
+// use arrow functions(one arrow fn returning another arrow fn)
+const greetArrow = greeting => name => console.log(`${greeting} ${name}`);
+greet('Hi')('Joe');
+// Hi Joe
+
