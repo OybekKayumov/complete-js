@@ -7,6 +7,8 @@
 // The call and apply Methods (vn133)
 // The bind Method (vn134)
 // Immediately Invoked Function Expressions (IIFE)(vn136)
+// Closures (vn137)
+
 const bookings = [];
 
 const createBooking = function (flightNum, numPassengers = 1, price= 199 * numPassengers) {
@@ -360,3 +362,105 @@ runOnce();
 // console.log(isPrivateLet); //!Uncaught ReferenceError: isPrivateLet is not defined
 // console.log(isPrivate); //!Uncaught ReferenceError: isPrivate is not defined
 console.log(notPrivate); //* 67
+
+//TODO: Closures
+// we don't create closures manually
+
+const secureBooking = function () {
+  let passengerCount = 0;
+
+  return function () {
+    passengerCount++;
+    console.log(`${passengerCount} passengers`); 
+  }
+}
+
+const booker = secureBooking();
+
+booker();
+booker();
+booker();
+// 1 passengers
+// 2 passengers
+// 3 passengers
+
+// "booker" is function that exists out in the Global Environment ot in Global Scope
+// and environment in which the function was created is no longer active
+// but still "booker" function somehow continues to have access to the variables that were present at the time that the function was created
+// in passengerCount variable
+// and that's exactly what the "closure" does
+
+// "closure" makes a function remember all the variables that existed at the function's birthplace
+
+//! ANY FUNCTION always has access to the variable environment of the execution context in which the function was created
+
+// console.dir()
+console.log("booker: ");
+console.dir(booker);
+
+
+//TODO: More Closure Examples
+let f;
+
+const g = function () {
+  const a = 23;
+  f = function () {
+    console.log('a*2: ', a * 2);
+  }
+}
+
+// g();
+// f();
+// a*2:  46
+
+// new function
+const h = function () {
+  const b = 777;
+  f = function () {
+    console.log('b*2: ', b * 2);
+  }
+}
+
+g();
+f();
+
+//todo: Re-assigning f function
+h();
+f();  //* f will be assign 2nd time
+// b*2:  1554
+
+console.dir(f);
+
+// Example 2 - timer
+const boardPassengers = function (n, wait) {
+  const perGroup = n / 3;
+
+  setTimeout(() => {
+    console.log(`We're now boarding all ${n} passengers`);
+    console.log(`There are 3 groups, each with ${perGroup} passengers`);
+  }, wait * 1000);
+
+  console.log(`Will start boarding in ${wait} seconds`);
+}
+/*
+perGroup in GlobalScope example
+const perGroup = 1000;
+We're now boarding all 180 passengers
+There are 3 groups, each with 1000 passengers
+*/
+
+boardPassengers(180, 3)
+//1 -- Will start boarding in 3 seconds
+// after 3 second
+// We're now boarding all 180 passengers
+// There are 3 groups, each with 60 passengers
+
+// settimeout
+setTimeout(() => {
+  console.log('TIMER');
+}, 1000);
+
+//! callback function, ant literally call later after 1 second
+// (() => {
+//   console.log('TIMER');
+// }

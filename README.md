@@ -10,3 +10,5 @@
   - the call and apply methods
   - the bind method
   - immediately invoked function expressions (IIFE)
+  - closure
+  
