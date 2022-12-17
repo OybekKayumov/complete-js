@@ -284,6 +284,25 @@ lufthansa.buyPlane = function () {
 }
 // we want add a new plane whenever we press this button
 
-document.querySelector('.buy').addEventListener('click', lufthansa.buyPlane)
+// document.querySelector('.buy').addEventListener('click', lufthansa.buyPlane)
 
-// this.planes:  NaN
+// this.planes:  NaN - not a number
+// reason is "this keyword" here is a 'button' element  
+// "this keyword" always points to the element on which that handler is attached to
+// lufthansa.buyPlane is a handler function, and attached to .buy element (button) and inside this function "this keyword" will point to button element
+
+// lufthansa.buyPlane()
+// if we call lufthansa.buyPlane "this keyword" be lufthansa object
+
+// manually define "this keyword" - we need to pass the function, not to call it
+//! lufthansa.buyPlane.bind(lufthansa) will return a new function
+
+document.querySelector('.buy').addEventListener('click', lufthansa.buyPlane.bind(lufthansa))
+
+// this:  {airline: 'Lufthansa', dataCode: 'LH', bookings: Array(3), planes: 300, book: ƒ, …}
+// this.planes:  301
+
+
+
+
+
