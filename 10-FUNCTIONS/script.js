@@ -4,6 +4,7 @@
 // First-Class and Higher-Order Functions (vn130)
 // Functions Accepting Callback Functions (vn131)
 // Functions Returning Functions (vn132)
+// The call and apply Methods (vn133)
 
 const bookings = [];
 
@@ -180,4 +181,40 @@ greet('Hello')('John');
 const greetArrow = greeting => name => console.log(`${greeting} ${name}`);
 greet('Hi')('Joe');
 // Hi Joe
+
+// TODO: The call and apply Methods
+const lufthansa = {
+  airline: 'Lufthansa',
+  dataCode: 'LH',
+  bookings: [],
+  // book: function() {} // old syntax
+  book(flightNum, name) {               // new syntax 
+    console.log(`${name} booked a seat on ${this.airline} flight ${this.dataCode}${flightNum}`);
+
+    this.bookings.push({flight: `${this.dataCode}${flightNum}`, name})
+  }
+}
+
+lufthansa.book(239, 'Jonas Doe');
+lufthansa.book(745, 'John Smith');
+console.log('lufthansa booking:', lufthansa);
+// Jonas Doe booked a seat on Lufthansa flight LH239
+// John Smith booked a seat on Lufthansa flight LH745
+
+//! "THIS" keyword here points to the "lufthansa" object itself
+
+// new object
+const eurowings = {
+  name: "Eurowings",
+  dataCode: 'EW',
+  bookings: [],
+}
+
+// take the method and store it an external function to reuse it
+const book = lufthansa.book;
+
+// try to use book
+book(34, 'Sarah Williams'); //! Uncaught TypeError: Cannot read properties of undefined (reading 'airline')
+// book now not method, it's function now
+// so THIS point to undefined
 
