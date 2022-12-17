@@ -6,7 +6,7 @@
 // Functions Returning Functions (vn132)
 // The call and apply Methods (vn133)
 // The bind Method (vn134)
-
+// Immediately Invoked Function Expressions (IIFE)(vn136)
 const bookings = [];
 
 const createBooking = function (flightNum, numPassengers = 1, price= 199 * numPassengers) {
@@ -318,7 +318,7 @@ const addVAT = addTax.bind(null, 0.23);
 console.log('addVAT: ', addVAT(100) );
 // addVAT:  123
 
-// rewrite
+// rewrite with function return a function
 const addTaxRate = function (rate) {
   return function (value) {
     return value + value * rate;
@@ -329,4 +329,34 @@ const addVAT2 = addTaxRate(0.23)
 console.log('addVAT2: ',addVAT2(100) );
 // addVAT2:  123
 
+// TODO: Immediately Invoked Function Expressions (IIFE)
 
+const runOnce = function () {
+  console.log('this will never run again');
+}
+
+runOnce();
+
+// IIFE
+(function () {
+  console.log('this will never run again');  
+  const isPrivate = 34;
+})();
+// console.log(isPrivate); //! Uncaught ReferenceError: isPrivate is not defined
+// data private, protected data
+// data encapsulated inside of function scope 
+
+
+(() => console.log('this will never run again'))
+();
+
+//! let, const, var
+{ // block
+  let isPrivateLet = 12;
+  const isPrivate = 45;
+  var notPrivate = 67;
+}
+
+// console.log(isPrivateLet); //!Uncaught ReferenceError: isPrivateLet is not defined
+// console.log(isPrivate); //!Uncaught ReferenceError: isPrivate is not defined
+console.log(notPrivate); //* 67

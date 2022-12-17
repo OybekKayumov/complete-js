@@ -9,3 +9,4 @@
   - functions returning functions
   - the call and apply methods
   - the bind method
+  - immediately invoked function expressions (IIFE)
