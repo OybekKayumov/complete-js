@@ -2,6 +2,8 @@
 // Default Parameters (vn128)
 // How Passing Arguments Works: Value vs. Reference (vn129)
 // First-Class and Higher-Order Functions (vn130)
+// Functions Accepting Callback Functions (vn131)
+
 const bookings = [];
 
 const createBooking = function (flightNum, numPassengers = 1, price= 199 * numPassengers) {
@@ -64,8 +66,8 @@ const newPassport = function (person) {
   person.passport = Math.trunc(Math.random() * 1000000000)  
 }
 
-newPassport(jonas);
-checkIn(flight, jonas)
+// newPassport(jonas);
+// checkIn(flight, jonas)
 // Wrong passport
 
 //? Passing Arguments Works: Value vs. Reference
@@ -95,8 +97,8 @@ checkIn(flight, jonas)
 
   //* 1 -a function that receives another function as an argument
   
-  const greet = () => clog('Hey, Jonas')
-  btnClose.addEventListener('click', greet)
+  //* const greet = () => clog('Hey, Jonas')
+  //* btnClose.addEventListener('click', greet)
   
   // "addEventListener" is a higher-order function
   // because it receives another function as an input
@@ -111,3 +113,26 @@ checkIn(flight, jonas)
     }
   }
 
+// function takes string and returns a new one without any spaces in it
+const oneWord = function (str) {
+  return str.replace(/ /g, '').toLowerCase();
+}
+
+// fn to capitalize the first word in the string
+const upperFirstWord = function (str) {
+  const [first, ...others] = str.split(' ');
+  return [first.toUpperCase(), ...others].join(' ');
+}
+
+// higher-order fn
+const transformer = function (str, fn) {
+  console.log(`Original string: ${str}` );
+  console.log(`Transformed string: ${fn(str)}`);
+
+  console.log(`Transformed by: ${fn.name}` );
+}
+
+transformer('JavaScript is the best!', upperFirstWord);
+// Original string: JavaScript is the best!
+// Transformed string: JAVASCRIPT is the best!
+// Transformed by: upperFirstWord

@@ -5,3 +5,4 @@
 
 10. Functions
   - default parameters
+  - first-class and higher-order functions
