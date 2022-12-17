@@ -302,7 +302,31 @@ document.querySelector('.buy').addEventListener('click', lufthansa.buyPlane.bind
 // this:  {airline: 'Lufthansa', dataCode: 'LH', bookings: Array(3), planes: 300, book: ƒ, …}
 // this.planes:  301
 
+// TODO: example bind - partial application with preset parameters
+const addTax = (rate, value) => value + value * rate;
 
+console.log('addTax: ', addTax(0.10, 200) ); 
+//addTax:  220
 
+// rate always 23
+const addVAT = addTax.bind(null, 0.23);
+// bind(1stArgumentIsThisKeyword, )
+// and in this example we don't care about "this keyword" at all, it's not even here in the function, and so, we just say "null". it's a kind of a standard to use "null"
+
+// addVAT = value => value + value * 0.23
+
+console.log('addVAT: ', addVAT(100) );
+// addVAT:  123
+
+// rewrite
+const addTaxRate = function (rate) {
+  return function (value) {
+    return value + value * rate;
+  }
+}
+
+const addVAT2 = addTaxRate(0.23)
+console.log('addVAT2: ',addVAT2(100) );
+// addVAT2:  123
 
 
