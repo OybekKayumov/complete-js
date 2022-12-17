@@ -6,3 +6,6 @@
 10. Functions
   - default parameters
   - first-class and higher-order functions
+  - functions returning functions
+  - the call and apply methods
+  - the bind method

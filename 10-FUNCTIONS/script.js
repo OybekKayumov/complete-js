@@ -5,6 +5,7 @@
 // Functions Accepting Callback Functions (vn131)
 // Functions Returning Functions (vn132)
 // The call and apply Methods (vn133)
+// The bind Method (vn134)
 
 const bookings = [];
 
@@ -205,7 +206,7 @@ console.log('lufthansa booking:', lufthansa);
 
 // new object
 const eurowings = {
-  name: "Eurowings",
+  airline: "Eurowings",
   dataCode: 'EW',
   bookings: [],
 }
@@ -213,8 +214,76 @@ const eurowings = {
 // take the method and store it an external function to reuse it
 const book = lufthansa.book;
 
-// try to use book
-book(34, 'Sarah Williams'); //! Uncaught TypeError: Cannot read properties of undefined (reading 'airline')
+// try to use book, DOES NOT WORK
+// book(34, 'Sarah Williams'); //! Uncaught TypeError: Cannot read properties of undefined (reading 'airline')
 // book now not method, it's function now
 // so THIS point to undefined
 
+// How do to tell JavaScript explicitly or manually what "this keyword" should look like?
+// there are three function methods to do that:
+//! call, apply and bind
+
+//TODO: "call" method
+book.call(eurowings, 34, 'Sarah Williams')
+console.log('eurowings: ',eurowings );
+// Sarah Williams booked a seat on Eurowings flight EW34
+
+// we did not call book function ourselves. instead, we called the "call" method. this "call" method will call the book function with the THIS keyword set to "eurowings" object
+
+book.call(lufthansa, 239, 'Mary Cooper');
+console.log('lufthansa: ', lufthansa);
+// Mary Cooper booked a seat on Lufthansa flight LH239
+
+//TODO: "apply" method (old)
+const uzb = {
+  airline: "Uzbekistan Havo yollari",
+  dataCode: 'UZ',
+  bookings: [],
+}
+
+const flightData = [583, 'George Cline'];
+book.apply(uzb, flightData);
+book.apply(eurowings, flightData);
+// George Cline booked a seat on Uzbekistan Havo yollari flight UZ583
+// George Cline booked a seat on Eurowings flight EW583
+
+// call with array and spread operator
+book.call(uzb, ...flightData);
+// George Cline booked a seat on Uzbekistan Havo yollari flight UZ583
+
+// TODO: The bind Method
+// "bind" also allow us to manually set "this keyword" for any function call
+// difference is "bind" does not immediately call the function
+// instead it returns a new function where "this keyword" is bound
+
+// book.bind(eurowings) will NOT call the book function, instead it will return a new function where "this keyword" will always be set to "eurowings" object
+const bookEW = book.bind(eurowings);
+bookEW(24, 'Steven Williams');
+console.log('eurowings: ', eurowings );
+// Steven Williams booked a seat on Eurowings flight EW24
+
+//
+const bookLH = book.bind(lufthansa);
+const bookUZ = book.bind(uzb);
+
+// pass multiply arguments
+// as if first argument already set
+const bookEW23 = book.bind(eurowings, 23);
+// now only need a name
+bookEW23('Solomon Hagan')
+// Solomon Hagan booked a seat on Eurowings flight EW23
+//Partial application
+
+//TODO: with Event Listeners
+lufthansa.planes = 300;
+lufthansa.buyPlane = function () {
+  console.log('this: ', this);
+
+  this.planes++;
+  console.log('this.planes: ', this.planes);
+}
+// we want add a new plane whenever we press this button
+
+document.querySelector('.buy').addEventListener('click', lufthansa.buyPlane)
+
+// this.planes:  NaN
