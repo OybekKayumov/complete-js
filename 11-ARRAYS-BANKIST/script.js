@@ -145,3 +145,21 @@ console.log([...arr1, ...arr2] );
 //todo: join
 console.log(letters.join('-') );
 // a-b-c-d-e-f-g-h-i-j
+
+//TODO: The new "at" method (143)
+const arr3 = [23, 11, 64];
+console.log(arr3[0]);      // 23
+
+console.log(arr3.at(0) );  // 23
+
+//! getting last array element
+console.log(arr3[arr3.length - 1] );  // 64
+console.log(arr3.slice(-1) );         // [64]
+console.log(arr3.slice(-1)[0] );      // 64 - to take the value
+console.log(arr3.at(-1) );            // 64
+
+console.log(arr3[arr3.length] );      // undefined
+
+//todo: "at" with string
+console.log('airlines'.at(0));        // a
+console.log('airlines'.at(-1));       // s
