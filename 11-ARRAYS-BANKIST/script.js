@@ -65,11 +65,11 @@ const inputClosePin = document.querySelector('.form__input--pin');
 /////////////////////////////////////////////////
 // LECTURES
 
-const currencies = new Map([
-  ['USD', 'United States dollar'],
-  ['EUR', 'Euro'],
-  ['GBP', 'Pound sterling'],
-]);
+// const currencies = new Map([
+//   ['USD', 'United States dollar'],
+//   ['EUR', 'Euro'],
+//   ['GBP', 'Pound sterling'],
+// ]);
 
 // const movements = [200, 450, -400, 3000, -650, -130, 70, 1300];
 
@@ -227,3 +227,43 @@ movements.forEach(function(mov, i, arr) {
 //for-of you can break  
 
 //TODO: forEach With Maps and Sets
+const currencies = new Map([
+  ['USD', 'United States dollar'],
+  ['EUR', 'Euro'],
+  ['GBP', 'Pound sterling'],
+]);
+
+// key:    value 
+// ['EUR', 'Euro'],
+
+// Map
+currencies.forEach(function(value, key, map) {
+  console.log(`${key}: ${value}` );
+})
+
+// USD: United States dollar
+// EUR: Euro
+// GBP: Pound sterling
+
+// Set
+const currenciesUnique = new Set(['USD', 'GBP', 'UZS', 'USD', 'EUR', 'USD'])
+
+console.log(currenciesUnique);
+// Set(4) {'USD', 'GBP', 'UZS', 'EUR'}
+
+// currenciesUnique.forEach((value, key, map) => {
+currenciesUnique.forEach((value, _, map) => {
+  // console.log(`${key}: ${value}`);
+  console.log(`${value}: ${value}`);
+})
+
+// USD: USD
+// GBP: GBP
+// UZS: UZS
+// EUR: EUR
+
+//! Set doesn't have keys, and it doesn't have indexes either
+// so there is no value that make sense for the key
+
+// "_" means in JS a throwaway variable, it is completely unnecessary
+
