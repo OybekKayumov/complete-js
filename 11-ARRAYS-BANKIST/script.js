@@ -104,3 +104,22 @@ console.log( arr.slice() );
 // spread operator
 console.log([...arr] );
 // (5) ['a', 'b', 'c', 'd', 'e']
+
+//! splice - it does change the original array - MUTATE
+// console.log(arr.splice(2) );
+// (3) ['c', 'd', 'e']
+
+// console.log(arr);
+// (2) ['a', 'b']
+
+// remove last element from original array
+console.log(arr.splice(-1) );
+// ['e']
+console.log(arr);
+// (4) ['a', 'b', 'c', 'd']
+
+// deleting
+arr.splice(1, 2) // from position 1 delete 2 elements
+console.log(arr);
+// (2) ['a', 'd']
+
