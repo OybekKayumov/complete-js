@@ -76,7 +76,7 @@ const movements = [200, 450, -400, 3000, -650, -130, 70, 1300];
 //-----------------------------
 let arr = ['a', 'b', 'c', 'd', 'e'];
 
-//* slice - extract any part of array without changing the original array
+//todo: slice - extract any part of array without changing the original array
 // 1- begin parameter
 console.log( arr.slice(2) );
 // (3) ['c', 'd', 'e']
@@ -123,3 +123,25 @@ arr.splice(1, 2) // from position 1 delete 2 elements
 console.log(arr);
 // (2) ['a', 'd']
 
+//todo: reverse - mutate the original array
+let arr1 = ['a', 'b', 'c', 'd', 'e'];
+let arr2 = ['j', 'i', 'h', 'g', 'f'];
+
+console.log(arr2.reverse() );
+// (5) ['f', 'g', 'h', 'i', 'j']
+
+console.log(arr2);
+// (5) ['f', 'g', 'h', 'i', 'j']
+
+//todo: concat
+const letters = arr1.concat(arr2);
+console.log(letters);
+// (10) ['a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i', 'j']
+
+//* same, both doesn't mutate original array 
+console.log([...arr1, ...arr2] );
+// (10) ['a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i', 'j']
+
+//todo: join
+console.log(letters.join('-') );
+// a-b-c-d-e-f-g-h-i-j
