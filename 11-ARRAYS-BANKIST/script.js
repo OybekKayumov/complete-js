@@ -71,7 +71,7 @@ const currencies = new Map([
   ['GBP', 'Pound sterling'],
 ]);
 
-const movements = [200, 450, -400, 3000, -650, -130, 70, 1300];
+// const movements = [200, 450, -400, 3000, -650, -130, 70, 1300];
 
 //-----------------------------
 let arr = ['a', 'b', 'c', 'd', 'e'];
@@ -163,3 +163,51 @@ console.log(arr3[arr3.length] );      // undefined
 //todo: "at" with string
 console.log('airlines'.at(0));        // a
 console.log('airlines'.at(-1));       // s
+
+//TODO: Looping Arrays: forEach
+const movements = [200, 450, -400, 3000, -650, -130, 70, 1300];
+
+// for-of
+for (const movement of movements) {
+  if (movement > 0) {
+    console.log(`You deposited ${movement}`);
+  } else {
+    console.log(`You withdrew ${Math.abs(movement)}`);
+  }
+}
+// You deposited 200
+// You deposited 450
+// You withdrew 400
+// You deposited 3000
+// You withdrew 650
+// You withdrew 130
+// You deposited 70
+// You deposited 1300
+
+for (const [i, movement] of movements.entries()) {
+  if (movement > 0) {
+    console.log(`Movement ${i+1}: You deposited ${movement}`);
+  } else {
+    console.log(`Movement ${i+1}: You withdrew ${Math.abs(movement)}`);
+  }
+}
+// Movement 1: You deposited 200
+// Movement 2: You deposited 450
+// Movement 3: You withdrew 400
+// Movement 4: You deposited 3000
+// Movement 5: You withdrew 650
+// Movement 6: You withdrew 130
+// Movement 7: You deposited 70
+// Movement 8: You deposited 1300
+
+// forEach
+console.log('---forEach------');
+movements.forEach(function (movement) {
+  if (movement > 0) {
+    console.log(`You deposited ${movement}`);
+  } else {
+    console.log(`You withdrew ${Math.abs(movement)}`);
+  }
+})
+
+// using high-order functions forEach(function)
