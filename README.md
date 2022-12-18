@@ -1,7 +1,13 @@
 # complete-js
 
-   -command to see projects
+### Output 
+   $npm install -g live-server
+This command will install live-server⁵, a simple static server that has live reload built-in. To start your server, run:
+
    $live-server
+
+in your terminal from the root /code folder — it will even open a new browser window for you!
+   
 
 10. Functions
   - default parameters
@@ -11,4 +17,7 @@
   - the bind method
   - immediately invoked function expressions (IIFE)
   - closure
-  
+
+11. ARRAYS-BANKIST
+   - simple array methods
+   
