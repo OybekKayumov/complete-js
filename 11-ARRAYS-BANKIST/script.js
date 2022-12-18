@@ -202,7 +202,7 @@ for (const [i, movement] of movements.entries()) {
 
 // forEach
 console.log('---forEach------');
-movements.forEach(function (movement) {
+movements.forEach(function (movement, index, array) {
   if (movement > 0) {
     console.log(`You deposited ${movement}`);
   } else {
@@ -211,3 +211,19 @@ movements.forEach(function (movement) {
 })
 
 // using high-order functions forEach(function)
+
+// function (currentElement, currentIndex, entireArray)
+// function (movement, index, array)
+
+movements.forEach(function(mov, i, arr) {
+  if (mov > 0) {
+    console.log(`Movement ${i+1}: You deposited ${mov}`);
+  } else {
+    console.log(`Movement ${i+1}: You withdrew ${Math.abs(mov)}`);
+  }
+})
+
+//! you cannot break forEach
+//for-of you can break  
+
+//TODO: forEach With Maps and Sets
