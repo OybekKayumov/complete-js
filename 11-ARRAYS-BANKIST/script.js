@@ -78,9 +78,35 @@ const displayMovements = function (movements) {
 }
 
 displayMovements(account1.movements);
-
 // console.log('containerMovements.innerHTML: ', containerMovements.innerHTML );
 
+//todo: computing Usernames
+const user = 'Steven Thomas Williams';  // stw
+
+// const username = user.toLowerCase().split(' ');
+// .split(' ') divide the string into words
+// console.log('username: ', username);
+// username:  (3) ['steven', 'thomas', 'williams']
+
+const username = user.toLowerCase().split(' ').map((name) => {
+  return name[0]
+}).join('');
+console.log('username: ', username); 
+//username:  (3) ['s', 't', 'w']
+// username:  stw                      // .join('');
+
+// using forEach and map, create new username property in object
+const createUsernames = function (accs) {  // accounts
+  accs.forEach((acc) => {
+    acc.username = acc.owner.toLowerCase().split(' ')
+                            .map((name) => name[0])  // ['s', 't', 'w']
+                            .join('');               // stw 
+  });
+};
+createUsernames(accounts); // array accounts
+console.log('accounts: ', accounts);
+// accounts:  (4) [{…}, {…}, {…}, {…}]
+// username: "js"
 
 
 /////////////////////////////////////////////////
@@ -363,3 +389,28 @@ console.log('moveDesc: ', moveDesc );
 // and we did not create side effect in each of the iteration.
 // we created a brand new array
 // side effect is important in functional programming
+
+//todo: the filter method
+const deposits = movements.filter((mov) => {
+  return mov > 0;
+}); 
+
+console.log('deposits: ', deposits);
+// deposits:  (5) [200, 450, 3000, 70, 1300]
+
+// for-of
+const depositFor = [];
+for (const mov of movements) {
+  if (mov > 0) {
+    depositFor.push(mov);
+  }  
+};
+
+console.log('depositFor: ', depositFor);
+// depositFor:  (5) [200, 450, 3000, 70, 1300]
+
+// 
+const withdrawals = movements.filter((mov) => mov < 0); 
+
+console.log('withdrawals: ', withdrawals);
+// withdrawals:  (3) [-400, -650, -130]
