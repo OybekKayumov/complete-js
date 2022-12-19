@@ -312,4 +312,29 @@ currenciesUnique.forEach((value, _, map) => {
 
 // reduce: reduce the original array to one single value
 
-// The map Method (vn150)
+//todo: the map method (vn150) - returns a new array
+const movementsMap = [200, 450, -400, 3000, -650, -130, 70, 1300];
+
+const euroToUsd = 1.1;
+
+const movementsUSD =  movementsMap.map(function(mov, i) {
+  return mov *  euroToUsd;
+})
+
+console.log(movementsMap, movementsUSD);
+// (8) [200, 450, -400, 3000, -650, -130, 70, 1300] 
+// (8) [220.00000000000003, 495.00000000000006, -440.00000000000006, 3300.0000000000005, -715.0000000000001, -143, 77, 1430.0000000000002]
+
+//* for-of
+const movementsUSDfor = [];
+
+for (const mov of movementsMap) {
+  movementsUSDfor.push(mov * euroToUsd);
+}
+
+console.log(movementsUSDfor);
+// (8) [220.00000000000003, 495.00000000000006, -440.00000000000006, 3300.0000000000005, -715.0000000000001, -143, 77, 1430.0000000000002]
+
+//! in MAP we use function to solve the problem, new array created automatically
+// for-of we simply loop over one array and manually created new array
+ 
