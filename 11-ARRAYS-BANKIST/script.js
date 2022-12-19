@@ -305,3 +305,11 @@ currenciesUnique.forEach((value, _, map) => {
 
 // "_" means in JS a throwaway variable, it is completely unnecessary
 
+// TODO: Data Transformations: map, filter, reduce
+//! map is a similar to forEach, DIFFERENCE IS MAP CREATES A BRAND NEW ARRAY
+
+// filter: elements for which the condition is true will be included in a NEW array 
+
+// reduce: reduce the original array to one single value
+
+// The map Method (vn150)
