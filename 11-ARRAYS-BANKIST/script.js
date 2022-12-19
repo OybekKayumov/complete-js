@@ -317,9 +317,12 @@ const movementsMap = [200, 450, -400, 3000, -650, -130, 70, 1300];
 
 const euroToUsd = 1.1;
 
-const movementsUSD =  movementsMap.map(function(mov, i) {
-  return mov *  euroToUsd;
-})
+// const movementsUSD =  movementsMap.map(function(mov, i) {
+//   return mov *  euroToUsd;
+// })
+
+//* use arrow fn
+const movementsUSD =  movementsMap.map((mov, i) => mov *  euroToUsd);
 
 console.log(movementsMap, movementsUSD);
 // (8) [200, 450, -400, 3000, -650, -130, 70, 1300] 
@@ -337,4 +340,26 @@ console.log(movementsUSDfor);
 
 //! in MAP we use function to solve the problem, new array created automatically
 // for-of we simply loop over one array and manually created new array
- 
+
+//* map parameters
+const moveDesc = movementsMap.map((mov, i, arr) => {
+  // if (mov > 0) {
+  //   return `Move ${i + 1}: deposit ${mov}`;
+  // } else {
+  //   return `Move ${i + 1}: withdrew ${Math.abs(mov)}`;
+  // }
+  return `Move ${i + 1}: ${mov > 0 ? 'deposit' : 'withdrew'} ${Math.abs(mov)}`;
+})
+
+console.log('moveDesc: ', moveDesc );
+// moveDesc:  (8) ['Move 1: deposit 200', 'Move 2: deposit 450', 'Move 3: withdrew 400', 'Move 4: deposit 3000', 'Move 5: withdrew 650', 'Move 6: withdrew 130', 'Move 7: deposit 70', 'Move 8: deposit 1300']
+
+//! return `Move ${i + 1}: ${mov > 0 ? 'deposit' : 'withdrew'} ${Math.abs(mov)}`;
+// moveDesc:  (8) ['Move 1: deposit 200', 'Move 2: deposit 450', 'Move 3: withdrew 400', 'Move 4: deposit 3000', 'Move 5: withdrew 650', 'Move 6: withdrew 130', 'Move 7: deposit 70', 'Move 8: deposit 1300']
+
+//! forEach creates SIDE-EFFECTS - we printed each line individually to the consol, as we were looping over the array. In each of iteration we performed some action that was visible in the consol - and we call this a side effect
+
+// map method return each of the string from callback, and logged that entire array to the consol AND NOT THE ELEMENTS ONE BY ONE.
+// and we did not create side effect in each of the iteration.
+// we created a brand new array
+// side effect is important in functional programming
