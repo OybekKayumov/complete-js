@@ -414,3 +414,20 @@ const withdrawals = movements.filter((mov) => mov < 0);
 
 console.log('withdrawals: ', withdrawals);
 // withdrawals:  (3) [-400, -650, -130]
+
+//todo: the reduce method
+// accumulator is like a SNOWBALL
+const balance = movements.reduce((acc, curr, i, arr) => {
+  console.log(`Iteration ${i}: ${acc} and ${curr}`);
+  return acc + curr
+}, 0)  // 0 is a initial value
+
+console.log('balance: ', balance );  // 3840
+
+// for-of
+let balanceFor = 0;
+for (const mov of movements) {
+  balanceFor += mov
+}
+console.log('balanceFor: ', balanceFor);
+// balanceFor:  3840
