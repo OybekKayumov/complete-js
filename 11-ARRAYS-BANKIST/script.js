@@ -83,10 +83,31 @@ displayMovements(account1.movements);
 //todo: reduce
 const calcDisplayBalance = ((movements) => {
   const balance = movements.reduce((acc, mov) => acc + mov, 0);
-  labelBalance.textContent = `${balance} EUR`;
+
+labelBalance.textContent = `${balance}€`;
 });
 
 calcDisplayBalance(account1.movements);
+
+// todo: get summary, chaining
+const calcDisplaySummary = (movements) => {
+  const incomes = movements.filter(mov => mov > 0).reduce((acc, curr) => acc + curr, 0)
+  labelSumIn.textContent = `${incomes}€`  
+
+  const outcomes = movements.filter(mov => mov < 0).reduce((acc, curr) => acc + curr, 0);
+  labelSumOut.textContent = `${Math.abs(outcomes)}€`;
+
+  const interest = movements.filter(mov => mov > 0)
+                  .map(deposit => deposit * 1.2/100)
+                  .filter((int, i, arr) => {
+                    console.log(arr); //! [2.4, 5.4, 36, 0.84, 15.6] -> (-0.84) 
+                    return int >= 1;
+                  })
+                  .reduce((acc, curr) => acc + curr, 0)
+  labelSumInterest.textContent = `${interest}€`;
+}
+
+calcDisplaySummary(account1.movements);
 
 //todo: computing Usernames
 const user = 'Steven Thomas Williams';  // stw
@@ -451,3 +472,20 @@ const max = movements.reduce((acc, mov) => {
 
 console.log('max : ', max);  // max :  3000
 
+// TODO: the magic of chaining methods
+const euroToUsd1 = 1.1;
+const totalDepositsUSD = movements.filter(mov => mov > 0).map(mov => mov * euroToUsd1).reduce((acc, curr) => acc + curr, 0);
+console.log('totalDepositsUSD: ', totalDepositsUSD); 
+// totalDepositsUSD:  5522.000000000001
+
+const totalDepositsUSD_2 = movements
+            .filter(mov => mov > 0)       //! < negative
+            .map((mov, i, arr) => {
+              console.log('arr: ', arr);  //* arr:  (3) [-400, -650, -130]
+              mov * euroToUsd1
+            })
+            .reduce((acc, curr) => acc + curr, 0);
+
+
+// not overuse chaining, problems with big array data
+// like splice or reverse methods are mutate original array - we should avoid mutating arrays
