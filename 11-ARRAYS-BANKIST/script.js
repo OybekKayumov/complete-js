@@ -489,3 +489,35 @@ const totalDepositsUSD_2 = movements
 
 // not overuse chaining, problems with big array data
 // like splice or reverse methods are mutate original array - we should avoid mutating arrays
+
+// todo: the find method - returns first element for which this operation becomes true
+const firstWithdrawal = movements.find(mov => mov < 0);
+console.log('movements: ', movements );
+console.log('firstWithdrawal: ', firstWithdrawal );
+// movements:  (8) [200, 450, -400, 3000, -650, -130, 70, 1300]
+// firstWithdrawal:  -400
+
+// filter returns all elements that match the condition
+// find returns first one
+// filter returns a NEW array, find only returns the element itself. and not an array
+
+console.log('accounts object: ', accounts );
+
+const account = accounts.find(acc => acc.owner === 'Jessica Davis');
+console.log('account: ', account);
+// account:  {
+//     "owner": "Jessica Davis",
+//     "movements": [
+//         5000,
+//         3400,
+//         -150,
+//         -790,
+//         -3210,
+//         -1000,
+//         8500,
+//         -30
+//     ],
+//     "interestRate": 1.5,
+//     "pin": 2222,
+//     "username": "jd"
+// }
