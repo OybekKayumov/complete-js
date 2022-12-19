@@ -80,6 +80,14 @@ const displayMovements = function (movements) {
 displayMovements(account1.movements);
 // console.log('containerMovements.innerHTML: ', containerMovements.innerHTML );
 
+//todo: reduce
+const calcDisplayBalance = ((movements) => {
+  const balance = movements.reduce((acc, mov) => acc + mov, 0);
+  labelBalance.textContent = `${balance} EUR`;
+});
+
+calcDisplayBalance(account1.movements);
+
 //todo: computing Usernames
 const user = 'Steven Thomas Williams';  // stw
 
@@ -431,3 +439,15 @@ for (const mov of movements) {
 }
 console.log('balanceFor: ', balanceFor);
 // balanceFor:  3840
+
+//todo: Get the maximum value of movements array
+const max = movements.reduce((acc, mov) => {
+  if(acc > mov) {
+    return acc;
+  } else {
+    return mov;
+  }
+}, movements[0])    // 1st element of array
+
+console.log('max : ', max);  // max :  3000
+
