@@ -679,3 +679,50 @@ console.log('moves-filter: ', movements.filter(deposit));
 // moves with callback:  true
 // moves-every:  false
 // moves-filter:  (5) [200, 450, 3000, 70, 1300]
+
+// todo: flat and flatMap
+const arrTest = [[1,2,3], [4,5,6], 7,8];
+
+//! no callback fn, only 1 levels deep
+console.log('array flat: ', arrTest.flat());  
+// array flat:  (8) [1, 2, 3, 4, 5, 6, 7, 8]
+
+//? more nested array
+const arrTest2 = [[[1,2],3], [4,[5,6]], 7,8];
+console.log('array more nested: ', arrTest2.flat());  
+// array more nested:  (6) [Array(2), 3, 4, Array(2), 7, 8]
+
+//
+console.log('array more nested: ', arrTest2.flat(2)); 
+// array more nested:  (8) [1, 2, 3, 4, 5, 6, 7, 8] 
+
+//TODO: all movements to 1 array
+// a)
+const accountMovements = accounts.map(acc => acc.movements);
+console.log('accountMovements: ', accountMovements);
+// accountMovements:  (4) [Array(8), Array(8), Array(8), Array(5)]
+
+// b)
+const allMovements = accountMovements.flat();
+console.log('allMovements: ', allMovements);
+// allMovements:  (29) [200, 450, -400, 3000, -650, -130, 70, 1300, 5000, 3400, -150, -790, -3210, -1000, 8500, -30, 200, -200, 340, -300, -20, 50, 400, -460, 430, 1000, 700, 50, 90]
+
+// c)
+const overallBalance = allMovements.reduce((acc, mov) => acc + mov, 0);
+console.log('overallBalance: ', overallBalance);
+// overallBalance:  17840
+
+//todo: chaining
+const overallBalanceChained = accounts
+              .map(acc => acc.movements)
+              .flat()
+              .reduce((acc, mov) => acc + mov, 0);
+console.log('overallBalanceChained: ', overallBalanceChained);
+// overallBalanceChained:  17840
+
+//todo: flatMap goes only 1 level deep and we cannot change it, use flat for more than 1 level
+const overallBalanceFlatMap = accounts
+              .flatMap(acc => acc.movements)              
+              .reduce((acc, mov) => acc + mov, 0);
+console.log('overallBalanceFlatMap: ', overallBalanceFlatMap);
+// overallBalanceFlatMap:  17840

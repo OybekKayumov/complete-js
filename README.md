@@ -9,7 +9,7 @@ This command will install live-server⁵, a simple static server that has live r
 in your terminal from the root /code folder — it will even open a new browser window for you!
    
 
-### 10. Functions
+### 10. FUNCTION
   - default parameters
   - first-class and higher-order functions
   - functions returning functions
@@ -25,4 +25,4 @@ in your terminal from the root /code folder — it will even open a new browser 
    - find
    - findIndex
    - some and every
-   
+   - flat and flatMap
