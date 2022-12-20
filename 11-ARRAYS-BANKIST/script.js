@@ -211,6 +211,26 @@ btnTransfer.addEventListener('click', (e) => {
   }
 })
 
+//todo: some
+btnLoan.addEventListener('click', (e) => {
+  e.preventDefault();
+
+  const amount = Number(inputLoanAmount.value);
+
+  // if amount bigger than 10% of loan
+  if(
+    amount > 0 && 
+    currentAccount.movements.some(mov => mov >= amount * 0.1)) {
+    // Add movement
+    currentAccount.movements.push(amount);
+
+    // Update UI
+    updateUI(currentAccount);
+  }
+  
+  inputLoanAmount.value = '';
+})
+
 //todo: findIndex - close account
 btnClose.addEventListener('click', (e) => {
   e.preventDefault();
@@ -630,3 +650,20 @@ console.log('account: ', account);
 
 //! with indexOf we can search for a value that is in the array - true or false
 // and also returns index of element but more simpler  
+
+// TODO: some and every
+console.log('movements: ', movements);
+// EQUALITY
+console.log('includes?',movements.includes(-130));  // true
+
+// CONDITION
+console.log(movements.some(mov => mov === -130) );  // same as includes
+
+const anyDeposits = movements.some((mov) => mov > 0);
+console.log('anyDeposits: ', anyDeposits);
+// movements:  (8) [200, 450, -400, 3000, -650, -130, 70, 1300]
+// includes? true
+// anyDeposits:  true
+
+
+
