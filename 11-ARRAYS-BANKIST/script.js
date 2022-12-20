@@ -912,3 +912,28 @@ console.log('deposits, withdrawals: ', deposits1, withdrawals1 );
 // deposits, withdrawals:  25180 -7340
 
 //todo: 4, this is a nice title - CONVERT to - This Is a Nice Title
+const convertTitleCase = (title) => {
+  const capitalize = str => str[0].toUpperCase() + str.slice(1)
+
+  const exceptions = ['a', 'an', 'and', 'the', 'but', 'or', 'on', 'in', 'with'];
+
+  const titleCase = title.toLowerCase().split(' ')
+    .map(word => 
+      // exceptions.includes(word) ? word : word[0].toUpperCase() + word.slice(1))
+      exceptions.includes(word) ? word : capitalize(word))
+    .join(' ');
+
+  // return titleCase;
+  return capitalize(titleCase);
+}
+
+console.log(convertTitleCase('this is a nice title'));
+// (5) ['this', 'is', 'a', 'nice', 'title']  // after split
+// (5) ['This', 'Is', 'A', 'Nice', 'Title']  // after map and slice
+
+// (5) ['This', 'Is', 'a', 'Nice', 'Title']  // includes
+// This Is a Nice Title                      // join
+
+console.log(convertTitleCase('and here is another title with an EXAMPLE'));
+// This Is a Nice Title
+// And Here Is Another Title with an Example
