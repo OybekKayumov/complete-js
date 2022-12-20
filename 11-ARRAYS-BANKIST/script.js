@@ -795,4 +795,58 @@ movements.sort((a, b) => b - a); //! return negative number
 console.log('movements sorted: ', movements);
 //* movements sorted:  (8) [3000, 1300, 450, 200, 70, -130, -400, -650]
 
+// TODO: more ways of creating and filling arrays
+const x = new Array(7);
+console.log('x: ', x);
+//! it creates a new array with 7 empty elements
+// x:  (7) [empty × 7]
 
+// console.log( x.map(() => 5) ); 
+// (7) [empty × 7] -- nothing happened
+
+//todo: fill - mutate
+// x.fill(1);
+// console.log('x: ', x);
+// x:  (7) [1, 1, 1, 1, 1, 1, 1]
+
+// x.fill(1, 3);
+// console.log('x: ', x);
+// x:  (7) [empty × 3, 1, 1, 1, 1]
+
+x.fill(1, 3, 5);
+console.log('x: ', x);
+// x:  (7) [empty × 3, 1, 1, empty × 2]
+
+const arrFill = [1,2,3,4,5,6,7];
+arrFill.fill(34, 4, 6);
+console.log('arrFill: ', arrFill);
+// arrFill:  (7) [1, 2, 3, 4, 34, 34, 7]
+
+//todo: Array.from
+const y = Array.from({length: 7}, () => 1);
+console.log('y: ', y );
+// y:  (7) [1, 1, 1, 1, 1, 1, 1]
+
+// 
+const z = Array.from({length: 7}, (cur, i) => i+1);
+const z_ = Array.from({length: 7}, (_, i) => i+1); // we don't use cur parameter
+console.log('z: ', z);
+// z:  (7) [1, 2, 3, 4, 5, 6, 7]
+
+//
+// querySelectorAll - NodeList
+// NodeList - convert to - Array
+
+labelBalance.addEventListener('click', () => {
+  const movementsUI = Array.from(
+    document.querySelectorAll('.movements__value'), 
+    elem => Number(elem.textContent.replace('€', ''))  // function
+  )
+  
+  console.log('movementsUI: ', movementsUI);
+
+  const movementsUI2 = [...document.querySelectorAll('.movements__value')];
+})
+// (8) ['1300', '70', '-130', '-650', '3000', '-400', '450', '200']
+// Number
+// (8) [1300, 70, -130, -650, 3000, -400, 450, 200]
