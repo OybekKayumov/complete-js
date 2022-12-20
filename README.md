@@ -23,3 +23,4 @@ in your terminal from the root /code folder — it will even open a new browser 
    - forEach method
    - map, filter, reduce
    - find
+   - findIndex

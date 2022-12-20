@@ -81,24 +81,27 @@ const displayMovements = function (movements) {
 // console.log('containerMovements.innerHTML: ', containerMovements.innerHTML );
 
 //todo: reduce
-const calcDisplayBalance = ((movements) => {
-  const balance = movements.reduce((acc, mov) => acc + mov, 0);
+const calcDisplayBalance = ((acc) => {
+  // const balance = acc.movements.reduce((acc, mov) => acc + mov, 0);
+  // acc.balance = balance;
+  // labelBalance.textContent = `${balance}€`;
 
-labelBalance.textContent = `${balance}€`;
+  acc.balance = acc.movements.reduce((acc, mov) => acc + mov, 0);
+  labelBalance.textContent = `${acc.balance}€`;
 });
 
 // calcDisplayBalance(account1.movements);
 
 // todo: get summary, chaining
-const calcDisplaySummary = (movements) => {
-  const incomes = movements.filter(mov => mov > 0).reduce((acc, curr) => acc + curr, 0)
+const calcDisplaySummary = (acc) => {
+  const incomes = acc.movements.filter(mov => mov > 0).reduce((acc, curr) => acc + curr, 0)
   labelSumIn.textContent = `${incomes}€`  
 
-  const outcomes = movements.filter(mov => mov < 0).reduce((acc, curr) => acc + curr, 0);
+  const outcomes = acc.movements.filter(mov => mov < 0).reduce((acc, curr) => acc + curr, 0);
   labelSumOut.textContent = `${Math.abs(outcomes)}€`;
 
-  const interest = movements.filter(mov => mov > 0)
-                  .map(deposit => deposit * 1.2/100)
+  const interest = acc.movements.filter(mov => mov > 0)
+                  .map(deposit => deposit * acc.interestRate/100)
                   .filter((int, i, arr) => {
                     console.log(arr); //! [2.4, 5.4, 36, 0.84, 15.6] -> (-0.84) 
                     return int >= 1;
@@ -137,6 +140,20 @@ console.log('accounts: ', accounts);
 // accounts:  (4) [{…}, {…}, {…}, {…}]
 // username: "js"
 
+//todo: updateUI helper fn
+const updateUI = (acc) => {
+  // display movements
+  // displayMovements(currentAccount.movements)
+  displayMovements(acc.movements)
+
+  // display balance
+  calcDisplayBalance(acc);
+
+  // display summary
+  calcDisplaySummary(acc);
+  
+}
+
 //todo: event handler
 let currentAccount;
 
@@ -146,7 +163,8 @@ btnLogin.addEventListener('click', (e) => {
   currentAccount = accounts.find(acc => acc.username === inputLoginUsername.value);
   console.log(': ', currentAccount);
   
-  if (currentAccount?.pin === Number(inputLoginPin.value)) {
+  //! optional chaining "?"
+  if (currentAccount?.pin === Number(inputLoginPin.value)) {  
     // display UI and message
     labelWelcome.textContent = `Welcome back, ${currentAccount.owner.split(' ')[0]}`;
     containerApp.style.opacity = 100;
@@ -157,17 +175,42 @@ btnLogin.addEventListener('click', (e) => {
     inputLoginPin.blur();
     
     // display movements
-    displayMovements(currentAccount.movements)
-
+    // displayMovements(currentAccount.movements)
     // display balance
-    calcDisplayBalance(currentAccount.movements);
-
+    // calcDisplayBalance(currentAccount);
     // display summary
-    calcDisplaySummary(currentAccount.movements);
+    // calcDisplaySummary(currentAccount);
+
+    // update UI
+    updateUI(currentAccount);
 
     console.log('LOGIN');
   }
 })
+
+//todo: implementing transfers
+btnTransfer.addEventListener('click', (e) => {
+  e.preventDefault();
+
+  const amount = Number(inputTransferAmount.value);
+
+  const receiverAcc = accounts.find(acc => acc.username === inputTransferTo.value);
+  // console.log(': ', amount, receiverAcc);
+  inputTransferAmount.value = inputTransferTo.value = '';
+
+  if (amount > 0 && 
+    receiverAcc && //! if receiver exist or '?'
+    currentAccount.balance >= amount &&
+    receiverAcc?.username !== currentAccount.username) {
+      console.log('Transfer valid: ', );
+      currentAccount.movements.push(-amount);
+      receiverAcc.movements.push(amount);
+
+      // update UI
+      updateUI(currentAccount);
+  }
+})
+
 
 /////////////////////////////////////////////////
 /////////////////////////////////////////////////
@@ -556,4 +599,8 @@ console.log('account: ', account);
 //* find method will return UNDEFINED, if no element matches the condition
 //! Uncaught TypeError: Cannot read properties of undefined (reading 'pin')
 
-// TODO: implementing login
+//TODO: implementing login
+//TODO: implementing transfers
+//TODO: the findIndex method
+// The findIndex Method returns the index of the found element and NOT the element itself
+// to delete an element from an array we can use "splice" and index at which we want to delete. 
