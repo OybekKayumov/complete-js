@@ -137,6 +137,28 @@ console.log('accounts: ', accounts);
 // accounts:  (4) [{…}, {…}, {…}, {…}]
 // username: "js"
 
+//todo: event handler
+let currentAccount;
+
+btnLogin.addEventListener('click', (e) => {
+  e.preventDefault();
+  
+  currentAccount = accounts.find(acc => acc.username === inputLoginUsername.value);
+  console.log(': ', currentAccount);
+  
+  if (currentAccount?.pin === Number(inputLoginPin.value)) {
+    // display UI and message
+    labelWelcome.textContent = `Welcome back, ${currentAccount.owner.split(' ')[0]}`;
+    containerApp.style.opacity = 100;
+    // display movements
+
+    // display balance
+
+    // display summary
+    
+    console.log('LOGIN');
+  }
+})
 
 /////////////////////////////////////////////////
 /////////////////////////////////////////////////
@@ -521,3 +543,8 @@ console.log('account: ', account);
 //     "pin": 2222,
 //     "username": "jd"
 // }
+
+//* find method will return UNDEFINED, if no element matches the condition
+//! Uncaught TypeError: Cannot read properties of undefined (reading 'pin')
+
+// TODO: implementing login
