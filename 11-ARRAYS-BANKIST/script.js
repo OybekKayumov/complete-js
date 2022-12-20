@@ -665,5 +665,17 @@ console.log('anyDeposits: ', anyDeposits);
 // includes? true
 // anyDeposits:  true
 
+//todo: every only returns true if all elements satisfy the condition
+console.log('moves: ', movements.every(mov => mov > 0));        // false
+console.log('acc4: ',account4.movements.every(mov => mov > 0)); // true
+// moves:  false
+// acc4:  true
 
-
+//TODO: separate callback
+const deposit = mov => mov > 0;
+console.log('moves with callback: ', movements.some(deposit));
+console.log('moves-every: ', movements.every(deposit));
+console.log('moves-filter: ', movements.filter(deposit));
+// moves with callback:  true
+// moves-every:  false
+// moves-filter:  (5) [200, 450, 3000, 70, 1300]
