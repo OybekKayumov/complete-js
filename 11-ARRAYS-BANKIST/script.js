@@ -77,7 +77,7 @@ const displayMovements = function (movements) {
   })
 }
 
-displayMovements(account1.movements);
+// displayMovements(account1.movements);
 // console.log('containerMovements.innerHTML: ', containerMovements.innerHTML );
 
 //todo: reduce
@@ -87,7 +87,7 @@ const calcDisplayBalance = ((movements) => {
 labelBalance.textContent = `${balance}€`;
 });
 
-calcDisplayBalance(account1.movements);
+// calcDisplayBalance(account1.movements);
 
 // todo: get summary, chaining
 const calcDisplaySummary = (movements) => {
@@ -107,7 +107,7 @@ const calcDisplaySummary = (movements) => {
   labelSumInterest.textContent = `${interest}€`;
 }
 
-calcDisplaySummary(account1.movements);
+// calcDisplaySummary(account1.movements);
 
 //todo: computing Usernames
 const user = 'Steven Thomas Williams';  // stw
@@ -150,12 +150,21 @@ btnLogin.addEventListener('click', (e) => {
     // display UI and message
     labelWelcome.textContent = `Welcome back, ${currentAccount.owner.split(' ')[0]}`;
     containerApp.style.opacity = 100;
+
+    // clear input fields,"=" assignment operator works from right to left
+    inputLoginUsername.value = inputLoginPin.value = '';
+    //* lose blinking cursor focus 
+    inputLoginPin.blur();
+    
     // display movements
+    displayMovements(currentAccount.movements)
 
     // display balance
+    calcDisplayBalance(currentAccount.movements);
 
     // display summary
-    
+    calcDisplaySummary(currentAccount.movements);
+
     console.log('LOGIN');
   }
 })
