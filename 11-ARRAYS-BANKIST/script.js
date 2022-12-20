@@ -850,3 +850,65 @@ labelBalance.addEventListener('click', () => {
 // (8) ['1300', '70', '-130', '-650', '3000', '-400', '450', '200']
 // Number
 // (8) [1300, 70, -130, -650, 3000, -400, 450, 200]
+
+
+// TODO: array methods practice
+
+//todo: 1
+// const bankDepositSum = accounts.map(acc => acc.movements).flat();
+const bankDepositSum = accounts.flatMap(acc => acc.movements).filter(mov => mov > 0).reduce((sum, curr) => sum + curr, 0);
+
+console.log('bankDepositSum: ',bankDepositSum );
+// bankDepositSum:  25180
+
+//todo: 2
+// const numDeposits1000 = accounts
+//     .flatMap(acc => acc.movements)
+//     .filter(mov => mov >= 1000).length   // 6
+
+const numDeposits1000 = accounts
+  .flatMap(acc => acc.movements)
+  // .reduce((count, curr) => ( curr >= 1000 ? count + 1 : count), 0)   // 6
+  .reduce((count, curr) => ( curr >= 1000 ? count++ : count), 0) //! count++ here 0
+
+console.log('numDeposits1000: ', numDeposits1000);
+// numDeposits1000:  6
+
+//! ++ example
+let a = 10;
+console.log('a++: ', a++ );  // returns old value --> 10
+console.log('a: ', a );      // 11
+// a++:  10
+// a:  11
+
+// ! solution is ++a, prefixed ++ operator
+let b = 10;
+console.log('++b: ', ++b );  // 11
+console.log('b: ', b );      // 11
+// ++b:  11
+// b:  11
+
+//todo: 3, reduce
+const sums = accounts
+          .flatMap(acc => acc.movements)
+          .reduce((sums, curr) => {
+            curr > 0 ? sums.deposits += curr : sums.withdrawals += curr;
+            return sums;
+          }, {deposits: 0, withdrawals: 0})
+
+console.log('sums: ', sums );
+// sums:  {deposits: 25180, withdrawals: -7340}
+
+//todo: destructuring
+const { deposits1, withdrawals1} = accounts
+          .flatMap(acc => acc.movements)
+          .reduce((sums, curr) => {
+            // curr > 0 ? sums.deposits1 += curr : sums.withdrawals1 += curr;
+            sums[curr > 0 ? 'deposits1' : 'withdrawals1'] += curr;
+            return sums;
+          }, {deposits1: 0, withdrawals1: 0})
+
+console.log('deposits, withdrawals: ', deposits1, withdrawals1 );
+// deposits, withdrawals:  25180 -7340
+
+//todo: 4, this is a nice title - CONVERT to - This Is a Nice Title
