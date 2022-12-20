@@ -211,6 +211,29 @@ btnTransfer.addEventListener('click', (e) => {
   }
 })
 
+//todo: findIndex - close account
+btnClose.addEventListener('click', (e) => {
+  e.preventDefault();
+  
+  if (
+    inputCloseUsername.value === currentAccount.username && 
+    Number(inputClosePin.value) === currentAccount.pin
+  ) {
+    const index = accounts.findIndex(
+        acc => acc.username === currentAccount.username
+        );
+    // console.log('index: ', index );
+    
+    // delete account
+    accounts.splice(index, 1);  // mutate the original array
+
+    // hide UI
+    containerApp.style.opacity = 0;
+  }
+
+  inputCloseUsername.value = inputClosePin.value = '';
+})
+
 
 /////////////////////////////////////////////////
 /////////////////////////////////////////////////
@@ -604,3 +627,6 @@ console.log('account: ', account);
 //TODO: the findIndex method
 // The findIndex Method returns the index of the found element and NOT the element itself
 // to delete an element from an array we can use "splice" and index at which we want to delete. 
+
+//! with indexOf we can search for a value that is in the array - true or false
+// and also returns index of element but more simpler  
