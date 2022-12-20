@@ -61,10 +61,14 @@ const inputLoanAmount = document.querySelector('.form__input--loan-amount');
 const inputCloseUsername = document.querySelector('.form__input--user');
 const inputClosePin = document.querySelector('.form__input--pin');
 
-const displayMovements = function (movements) {
+const displayMovements = function (movements, sort = false) {
   containerMovements.innerHTML = '';
 
-  movements.forEach(function (mov, i) {
+  //todo: sort copy of original array
+  const movs = sort ? movements.slice().sort((a, b) => a - b) : movements;
+
+  // movements.forEach(function (mov, i) {
+  movs.forEach(function (mov, i) {
     const type = mov > 0 ? 'deposit' : 'withdrawal'
     const html = `
       <div class="movements__row">
@@ -254,6 +258,17 @@ btnClose.addEventListener('click', (e) => {
   inputCloseUsername.value = inputClosePin.value = '';
 })
 
+//todo: sort event listener
+let sorted = false;  // not sorted;
+
+
+btnSort.addEventListener('click', (e) => {
+  e.preventDefault();
+
+  // displayMovements(currentAccount.movements, true);  // sort = true;
+  displayMovements(currentAccount.movements, !sorted);  // opposite;
+  sorted = !sorted;
+})
 
 /////////////////////////////////////////////////
 /////////////////////////////////////////////////
@@ -726,3 +741,58 @@ const overallBalanceFlatMap = accounts
               .reduce((acc, mov) => acc + mov, 0);
 console.log('overallBalanceFlatMap: ', overallBalanceFlatMap);
 // overallBalanceFlatMap:  17840
+
+// TODO: sorting arrays
+// STRING
+const owners = ['Jonas', 'Zach', 'Adam', 'Martha'];
+console.log('owners sorted: ', owners.sort()); // ! mutates original
+console.log('owners: ', owners); // ! mutated
+// owners sorted:  (4) ['Adam', 'Jonas', 'Martha', 'Zach']
+//        owners:  (4) ['Adam', 'Jonas', 'Martha', 'Zach']
+
+// NUMBERS
+console.log('movements: ', movements);
+// console.log('movements sorted: ', movements.sort());
+//        movements:  (8) [200, 450, -400, 3000, -650, -130, 70, 1300]
+// movements sorted:  (8) [-130, -400, -650, 1300, 200, 3000, 450, 70]
+
+//! sort() does sorting based on STRINGS by default
+// it converts to string and sorts
+
+// todo: sort with callback fn
+
+//if we return smth less than zero, than A will be before B
+//if we return smth greater than zero, than B will be before A
+//! return < 0, A, B (keep order)
+//! return > 0, B, A (switch order)
+// movements.sort((current_value, next_value) 
+
+//todo: sort from small to large - ascending - по возрастанию
+// movements.sort((a, b) => {
+//   if ( a > b ) return 1;
+//   if ( b > a ) return -1;
+// });
+
+movements.sort((a, b) => a - b);  //! return positive number
+
+console.log('movements sorted: ', movements);
+// as simply being two consecutive numbers in the array
+// как просто два последовательных числа в массиве
+
+// sort our movements array now in ascending order : from small to large.
+// теперь отсортируйте наш массив движений в порядке возрастания.
+
+//* movements sorted:  (8) [-650, -400, -130, 70, 200, 450, 1300, 3000]
+
+//todo: sort from large to small - descending - нисходящий
+// movements.sort((a, b) => {
+//   if ( a > b ) return -1;
+//   if ( b > a ) return 1;
+// });
+
+movements.sort((a, b) => b - a); //! return negative number
+
+console.log('movements sorted: ', movements);
+//* movements sorted:  (8) [3000, 1300, 450, 200, 70, -130, -400, -650]
+
+
