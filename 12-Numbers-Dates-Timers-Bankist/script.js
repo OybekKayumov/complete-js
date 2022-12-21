@@ -305,3 +305,56 @@ console.log(Number.isFinite(20 / 0) );  //! false
 console.log(Number.isInteger(34));      // true
 console.log(Number.isInteger(34.0));    // true
 console.log(Number.isInteger(34 / 0));  // false
+
+//TODO: Math and Rounding
+console.log(Math.sqrt(25));   // 5
+console.log(25 ** (1/2) );    // 5
+console.log(8 ** (1/3) );     // 2
+
+console.log(Math.max(5,18,34,11,2));   // 34
+console.log(Math.max(5,18,'34',11,2)); // 34
+console.log(Math.max(5,18,'34px',11,2)); // NAN
+
+console.log(Math.min(5,18,34,11,2));     // 2
+
+console.log(Math.PI); // 3.141592
+
+// area of circle with radius 10
+console.log(Math.PI * Number.parseFloat('10px') ** 2); // 314.1592
+
+// Math.trunk removes any decimal parts
+console.log(Math.trunc(Math.random() * 6 ) + 1);  // between 1 - 6
+
+// get number between min and max
+const randomInt = (min, max) => Math.floor(Math.random() * (max - min) + 1) + min;
+// 0 ...1 -> 0...(max - min) -> min..max
+console.log('randomInt: ', randomInt(10, 20));
+
+// Rounding integers
+console.log(Math.trunc(24.5));  // 24
+console.log(Math.round(24.5));  // 24
+
+// ceil - round up
+console.log('ceil:',  Math.ceil(24.3));  // 25
+
+// floor - round down
+console.log(Math.floor(24.5));  // 24
+console.log(Math.floor('36.1'));  //! 36
+
+//! Negative numbers
+console.log(Math.floor(-24.5));  //! -25
+console.log(Math.trunc(-24.5));  //! -24
+
+// Rounding decimals
+console.log((2.7).toFixed(0));  //! returns '3' string
+console.log((2.7).toFixed(3));  // 2.700 , string
+console.log((2.8935).toFixed(2));  // 2.89 , string
+console.log(+(2.8935).toFixed(2));  // 2.89 , number
+
+
+
+
+
+
+
+

@@ -32,4 +32,5 @@ in your terminal from the root /code folder — it will even open a new browser 
 
 ### 12. NUMBERS-DATES-TIMERS-BANKIST
    - converting and checking Numbers
+   - math and rounding
    
