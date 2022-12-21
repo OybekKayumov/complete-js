@@ -353,9 +353,33 @@ console.log((2.8935).toFixed(2));  // 2.89 , string
 console.log(+(2.8935).toFixed(2));  // 2.89 , number
 
 
+// TODO: The Remainder Operator
+// return the remainder of a division 
+// возвращает остаток от деления
 
+console.log(5 % 2 );  // 1 ==> 5 = 2 * 2 + 1
 
+// even and odd
+console.log(16 % 2 );  // 0
+console.log(17 % 2 );  // 1
 
+const isEven = n => n % 2 === 0;
+
+console.log(isEven(0));  // true
+console.log(isEven(8));  // true
+console.log(isEven(45)); // false
+
+// new array
+labelBalance.addEventListener('click', () => {
+  
+  [...document.querySelectorAll('.movements__row')].forEach((row, i) => {
+    // 0, 2, 4...
+    if (i % 2 === 0 ) row.style.backgroundColor = 'orangered';
+    
+    // 0, 3, 6...
+    if (i % 3 === 0 ) row.style.backgroundColor = 'blue';
+  });
+});
 
 
 
