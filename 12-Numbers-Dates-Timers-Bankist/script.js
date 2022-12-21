@@ -381,5 +381,24 @@ labelBalance.addEventListener('click', () => {
   });
 });
 
+//TODO: Numeric Separators
+// 287,460,000,000
+const diameter = 28746000000;
+console.log('diameter: ', diameter );
+
+const price = 345_99
+
+const transferFee = 15_00
+const transferFee2 = 1_500
+const PI = 3.14_15         // OK
+// const PI1 = 3._1415    // !Uncaught SyntaxError: Invalid or unexpected token
+// const PI2 = 3_.1415 // !Uncaught SyntaxError: Numeric separators are not allowed at the end of numeric literals
+// const PI2 = _3.1415_ // !Error
+// const PI2 = 3.14__15 // !Error
+
+console.log(Number('340_000') ); // !NaN
+console.log(parseInt('340_000') ); // !340
+
+console.log('diameter: ', diameter );
 
 

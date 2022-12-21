@@ -34,3 +34,4 @@ in your terminal from the root /code folder — it will even open a new browser 
    - converting and checking Numbers
    - math and rounding
    - remainder operator
+   - numeric separators
