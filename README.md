@@ -38,3 +38,4 @@ in your terminal from the root /code folder — it will even open a new browser 
    - working with BigInt
    - creating Dates
    - timers: setTimeout and setInterval
+   - implementing a countdown timer

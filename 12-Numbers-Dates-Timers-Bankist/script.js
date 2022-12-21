@@ -202,6 +202,18 @@ const updateUI = function (acc) {
   calcDisplaySummary(acc);
 };
 
+//todo: implementing a countdown timer
+const startLogOutTimer = () => {
+  // set time to 10 minutes
+
+  // call the timer every second
+
+  // in each call, print the remaining time to UI
+
+  // when 0 seconds, stop timer and log out user
+
+}
+
 ///////////////////////////////////////
 // Event handlers
 let currentAccount;
@@ -694,5 +706,10 @@ console.log(': ', );
 
 if (ingredients.includes('spinach')) clearTimeout(pizzaTimer)
 
+//todo: setInterval
+// setInterval(() => {
+//   const now = new Date();
+//   console.log(now);
+// }, 5000)
 
-
+// TODO: Implementing a Countdown Timer
