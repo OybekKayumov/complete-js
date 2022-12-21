@@ -205,12 +205,25 @@ const updateUI = function (acc) {
 //todo: implementing a countdown timer
 const startLogOutTimer = () => {
   // set time to 10 minutes
+  let time = 120;
 
   // call the timer every second
+  setInterval(() => {
+    const min = String(Math.trunc( time / 60 )).padStart(2, 0);
+    const sec = time % 60;
 
-  // in each call, print the remaining time to UI
+    // in each call, print the remaining time to UI
+    labelTimer.textContent = `${min}:${sec}`;
 
-  // when 0 seconds, stop timer and log out user
+    // decrease 1s
+    time = time - 1;  // time--
+
+    // when 0 seconds, stop timer and log out user
+    if (time === 0) {
+      clearInterval();
+    }
+  }, 1000)
+
 
 }
 
@@ -307,6 +320,9 @@ btnLogin.addEventListener('click', function (e) {
     // Clear input fields
     inputLoginUsername.value = inputLoginPin.value = '';
     inputLoginPin.blur();
+
+    //todo:implementing a countdown timer
+    startLogOutTimer();
 
     // Update UI
     updateUI(currentAccount);
