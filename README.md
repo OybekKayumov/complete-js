@@ -37,4 +37,4 @@ in your terminal from the root /code folder — it will even open a new browser 
    - numeric separators
    - working with BigInt
    - creating Dates
-   
+   - timers: setTimeout and setInterval
