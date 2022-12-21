@@ -665,15 +665,31 @@ console.log('Browser: ', navigator.language, new Intl.NumberFormat(navigator.lan
 // SY:  ٣٬٨٨٤٬٧٦٤٫٢٣ ميل/س
 // Browser:  ru-RU 3 884 764,23 ми/ч
 
+//TODO: Timers: setTimeout and setInterval
+// setTimeout - runs once, setInterval keeps running forever, until we stop it
+// const 
 
+setTimeout(() => console.log('Here is your pizza 🍕' ), 2000); 
+// Here is your pizza 🍕
 
+console.log('Waiting...');
 
+setTimeout((ingred1, ingred2) => console.log(`Here is your pizza with ${ingred1} and ${ingred2} 🍕` ), 2000, 'olives', 'spinach'); 
 
+// Here is your pizza with olives and spinach 🍕
 
+//todo: how to cancel timeout
+const ingredients = ['olives', 'spinach']
 
+const pizzaTimer = setTimeout(
+  (ingred1, ingred2) => 
+    console.log(`Here is your pizza with ${ingred1} and ${ingred2} 🍕` ),
+    2000, 
+    ...ingredients); 
 
+console.log(': ', );
 
-
+if (ingredients.includes('spinach')) clearTimeout(pizzaTimer)
 
 
 
