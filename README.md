@@ -28,4 +28,8 @@ in your terminal from the root /code folder — it will even open a new browser 
    - flat and flatMap
    - fill
    - Array.from
+   - practice array methods
+
+### 12. NUMBERS-DATES-TIMERS-BANKIST
+   - converting and checking Numbers
    
