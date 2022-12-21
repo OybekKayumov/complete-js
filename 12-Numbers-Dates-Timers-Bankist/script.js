@@ -401,4 +401,53 @@ console.log(parseInt('340_000') ); // !340
 
 console.log('diameter: ', diameter );
 
+//TODO:Working with BigInt
+console.log('biggest number : ', 2 ** 53 - 1);
+// biggest number :  9007199254740991
+console.log('biggest number : ', 2 ** 53 + 10);
+console.log('biggest number : ', 2 ** 53 + 11);
+// biggest number :  9007199254741002   //! presentation is not correct after biggest
+// biggest number :  9007199254741004   //!
 
+console.log('Number.MAX_SAFE_INTEGER: ', Number.MAX_SAFE_INTEGER);
+// Number.MAX_SAFE_INTEGER:  9007199254740991
+
+//* BigInt
+console.log(483845678954564562131456647879);
+// 4.838456789545646e+29
+console.log(483845678954564562131456647879n);  //! n
+// 483845678954564562131456647879n
+console.log(BigInt(483845678954564562131456647879));  //! not same
+// 483845678954564582936303108096n
+
+// Operations
+console.log(10000n + 20000n);
+console.log(45654646546489794556456n * 1000000n );
+// 30000n
+//45654646546489794556456000000n
+
+// NOT mix BigInt and other types
+const huge = 20645646789794564612313n;
+const num = 34;
+// console.log(huge * num ); //! Uncaught TypeError: Cannot mix BigInt and other types, use explicit conversions
+
+console.log(huge * BigInt(num) ); 
+
+//! Uncaught TypeError: Cannot convert a BigInt value to a number at Math.sqrt (<anonymous>)
+// console.log(Math.sqrt(16n) ); 
+
+// Exceptions
+console.log(20n > 15 ); // true
+
+console.log(20n === 20 ); // false, we try bigInt === regularNumber
+console.log(typeof 20n ); // bigint
+console.log(20n == 20 );  //! true, type coercion, 20n as a regularNumber
+console.log(20n == '20' ); //! true
+
+console.log(huge + ' is REALLY big!!!' ); 
+//! 20645646789794564612313 is REALLY big!!!
+// number converted to the String
+
+// Divisions
+console.log(10n / 3n ); // 3n  returns nearest bigint, cut off the decimal part
+console.log(10 / 3 );   // 3.3333333333333335
