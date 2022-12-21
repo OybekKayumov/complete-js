@@ -224,7 +224,7 @@ const startLogOutTimer = () => {
   } 
 
   // set time to 5 minutes
-  let time = 10;
+  let time = 120;
 
   // call the timer every second
   // const timer = setInterval(
@@ -250,11 +250,13 @@ const startLogOutTimer = () => {
   tick(); // implement start from 10, not from 1, 10, 9 ... 
   const timer = setInterval(tick, 1000)
 
+  return timer;
+
 }
 
 ///////////////////////////////////////
 // Event handlers
-let currentAccount;
+let currentAccount, timer; // global variables
 
 // always logged in - fake
 /*
@@ -350,10 +352,11 @@ btnLogin.addEventListener('click', function (e) {
     inputLoginPin.blur();
 
     //todo:implementing a countdown timer
-    startLogOutTimer();
+    if(timer) clearInterval(timer);  // clear timeout before login
+    timer = startLogOutTimer();
 
     // Update UI
-    updateUI(currentAccount);
+    updateUI(currentAccount);    
   }
 });
 
@@ -401,7 +404,11 @@ btnLoan.addEventListener('click', function (e) {
 
       // Update UI
       updateUI(currentAccount);
-    }, 3000)
+
+      // Reset timer if user activity
+      clearInterval(timer);
+      timer = startLogOutTimer();
+    }, 2500)
   }
   inputLoanAmount.value = '';
 });
