@@ -204,11 +204,32 @@ const updateUI = function (acc) {
 
 //todo: implementing a countdown timer
 const startLogOutTimer = () => {
-  // set time to 10 minutes
-  let time = 120;
+
+  const tick = () => {
+    const min = String(Math.trunc( time / 60 )).padStart(2, 0);
+    const sec = String(time % 60).padStart(2, 0);
+
+    // in each call, print the remaining time to UI
+    labelTimer.textContent = `${min}:${sec}`;
+
+    // when 0 seconds, stop timer and log out user
+    if (time === 0) {
+      clearInterval(timer);
+      labelWelcome.textContent = 'Log in to get started';
+      containerApp.style.opacity = 0;
+    }
+
+    // decrease 1s
+    time = time - 1;  // time--
+  } 
+
+  // set time to 5 minutes
+  let time = 10;
 
   // call the timer every second
-  setInterval(() => {
+  // const timer = setInterval(
+    /*
+    () => {
     const min = String(Math.trunc( time / 60 )).padStart(2, 0);
     const sec = time % 60;
 
@@ -220,10 +241,14 @@ const startLogOutTimer = () => {
 
     // when 0 seconds, stop timer and log out user
     if (time === 0) {
-      clearInterval();
+      clearInterval(timer);
+      labelWelcome.textContent = 'Log in to get started';
+      containerApp.style.opacity = 0;
     }
-  }, 1000)
-
+  }*/
+  // , 1000)
+  tick(); // implement start from 10, not from 1, 10, 9 ... 
+  const timer = setInterval(tick, 1000)
 
 }
 
@@ -232,9 +257,12 @@ const startLogOutTimer = () => {
 let currentAccount;
 
 // always logged in - fake
+/*
 currentAccount = account1;
 updateUI(currentAccount);
 containerApp.style.opacity = 100;
+*/
+
 /*
 // API experiments
 const now = new Date();
