@@ -52,4 +52,5 @@ in your terminal from the root /code folder — it will even open a new browser 
    - types of Events and Event Handlers
    - event propagation: bubbling and capturing
    - event propagation in practice
-   - 
+   - event delegation: implementing page navigation
+   

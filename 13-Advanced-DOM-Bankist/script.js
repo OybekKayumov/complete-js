@@ -1,12 +1,15 @@
 'use strict';
 
-///////////////////////////////////////
-// Modal window
-
 const modal = document.querySelector('.modal');
 const overlay = document.querySelector('.overlay');
 const btnCloseModal = document.querySelector('.btn--close-modal');
 const btnsOpenModal = document.querySelectorAll('.btn--show-modal');
+//
+const btnScrollTo = document.querySelector('.btn--scroll-to');
+const section1 = document.querySelector('#section--1');
+
+///////////////////////////////////////
+// Modal window
 
 const openModal = function (e) {
   e.preventDefault();
@@ -33,6 +36,65 @@ document.addEventListener('keydown', function (e) {
   }
 });
 
+///////////////////////////////////////
+//todo: button scrolling
+btnScrollTo.addEventListener('click', (e) => {
+  const s1coords = section1.getBoundingClientRect();
+
+  console.log(e.target.getBoundingClientRect());
+  console.log(window.pageXOffset, window.pageYOffset);
+
+  console.log(document.documentElement.clientHeight,
+    document.documentElement.clientWidth );
+
+  //todo: scrolling
+  // window.scrollTo(
+  //   s1coords.left + window.pageXOffset,
+  //   s1coords.top + window.pageYOffset
+  // );
+
+  // window.scrollTo({
+  // left:   s1coords.left + window.pageXOffset,
+  // top:  s1coords.top + window.pageYOffset,
+  // behavior: "smooth",
+  // });
+
+  //todo: modern smooth
+  section1.scrollIntoView({behavior: 'smooth'})
+})
+
+///////////////////////////////////////
+//todo: page navigation
+// without using event delegation
+
+document.querySelectorAll('.nav__link').forEach((el) => {
+  // el.addEventListener('click', (e) => {  //! this and arrow fn
+  el.addEventListener('click', function (e) {
+    //! no longer scroll to the page when click to nav elements
+    e.preventDefault(); 
+    console.log('LINK 123');
+
+    const id = this.getAttribute('href');
+    console.log('id: ', id); // id:  #section--1-2-3
+
+    document.querySelector(id).scrollIntoView({ behavior: 'smooth'});
+  })
+});
+
+/*
+//todo: event delegation
+// 1. Add event listener to common parent element
+// 2. Determine what element originated the event
+
+document.querySelector('.nav__links')
+  .addEventListener('click', function (e) {
+  console.log('e.target: ', e.target);
+
+  //todo: matching strategy
+
+})
+*/
+///////////////////////////////////////
 
 // TODO: how the DOM really works
 // - every single node in the DOM tree is type of node, represented by object
@@ -156,6 +218,7 @@ logo.classList.contains('c')      // ! not 'includes'
 logo.className = 'jonas' //! only ONE class and will override all other classes
 
 //TODO: Implementing Smooth Scrolling
+/*
 const btnScrollTo = document.querySelector('.btn--scroll-to');
 const section1 = document.querySelector('#section--1');
 
@@ -183,7 +246,7 @@ btnScrollTo.addEventListener('click', (e) => {
   //todo: modern smooth
   section1.scrollIntoView({behavior: 'smooth'})
 })
-
+*/
 // TODO: Types of Events and Event Handlers
 // const h1 = document.querySelector('h1');
 // h1.addEventListener('mouseenter', () => {
@@ -280,7 +343,10 @@ document.querySelector('.nav__links').addEventListener('click', function (e) {
 document.querySelector('.nav').addEventListener('click', function (e) {
   console.log('NAV :', e.target, e.currentTarget);
   this.style.backgroundColor = randomColor();
-}, true) //! capture parameter is set to true,
+}, 
+// true //! capture parameter is set to true,
+false //default
+) 
 // event handler will no longer listen to bubbling events, but instead, to capturing events
 
 // now the first element through which the element passes, is NAV
@@ -298,4 +364,7 @@ document.querySelector('.nav').addEventListener('click', function (e) {
 
 // they are still working with same event but doing in different phases of event propagation
 
-// ! why three boxes here get three different background colors, even click happened on <a> element
+// ! understanding, why three boxes here get three different background colors, even click happened on <a> element
+
+
+// TODO: Event Delegation: Implementing Page Navigation
