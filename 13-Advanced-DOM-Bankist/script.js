@@ -53,3 +53,20 @@ document.addEventListener('keydown', function (e) {
 
 // EventTarget is a parent of both the Node type and Window node type
 // we do never manually create an EventTarget object, it is an abstract type. 
+
+// TODO: Selecting, Creating, and Deleting Elements
+// Selecting
+console.log(document.documentElement);
+console.log(document.head);
+console.log(document.body);
+
+document.querySelector('.header');
+const allSections = document.querySelectorAll('.section');
+console.log('allSections: ', allSections);
+
+document.getElementById('section--1');
+const allButtons = document.getElementsByTagName('button');
+console.log('allButtons: ', allButtons);
+
+console.log( document.getElementsByClassName('btn') );
+
