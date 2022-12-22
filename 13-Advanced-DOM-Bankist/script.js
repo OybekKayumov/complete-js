@@ -168,7 +168,18 @@ btnScrollTo.addEventListener('click', (e) => {
   // console.log(document.documentElement.clientHeight,
     // document.documentElement.clientWidth );
 
-  // scrolling
-  window.scrollTo(s1coords.left + window.pageXOffset, s1coords.top + window.pageYOffset)  
+  //todo: scrolling
+  // window.scrollTo(
+  //   s1coords.left + window.pageXOffset,
+  //   s1coords.top + window.pageYOffset
+  // );
 
+  // window.scrollTo({
+  // left:   s1coords.left + window.pageXOffset,
+  // top:  s1coords.top + window.pageYOffset,
+  // behavior: "smooth",
+  // });
+
+  //todo: modern smooth
+  section1.scrollIntoView({behavior: 'smooth'})
 })
