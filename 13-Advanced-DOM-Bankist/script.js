@@ -137,7 +137,8 @@ tabsContainer.addEventListener('click', function (e) {
 ///////////////////////////////////////
 //todo: menu fade animation
 // refactoring
-const handleHover = function (e, opacity) {
+const handleHover = function (e) {
+// const handleHover = function (e, opacity) {
   // this : 0.5 or 1, e.currentTarget -- <nav>
   // console.log('this and e.currentTarget: ', this, e.currentTarget);  
 
