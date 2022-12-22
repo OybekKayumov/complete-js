@@ -60,7 +60,7 @@ console.log(document.documentElement);
 console.log(document.head);
 console.log(document.body);
 
-document.querySelector('.header');
+const header = document.querySelector('.header');
 const allSections = document.querySelectorAll('.section');
 console.log('allSections: ', allSections);
 
@@ -70,3 +70,30 @@ console.log('allButtons: ', allButtons);
 
 console.log( document.getElementsByClassName('btn') );
 
+//TODO: Creating and inserting elements
+// .insertAdjacentHTML
+
+const msg = document.createElement('div');  
+// create DOM element, and its not yet in DOM
+
+msg.classList.add('cookie-message');
+msg.textContent = 'We use cookies for improve functionality and analytics';
+
+msg.innerHTML = 'We use cookies for improve functionality and analytics <button class="btn btn--close-cookie">Got it!</button>';
+
+// header.prepend(msg);  // first child - at the top of HTML
+header.append(msg);  // last child - at the end of HTML
+// can be only in one place, move element
+
+// header.append(msg.cloneNode(true)); // to get same msg in both places
+
+// header.before(msg);  // insert msg before to header element as a sibling
+// header.after(msg);  
+
+
+//todo: Delete elements
+document.querySelector('.btn--close-cookie')
+    .addEventListener('click', () => {
+      // msg.remove();
+      msg.parentElement.removeChild(msg)  // also delete element
+    })
