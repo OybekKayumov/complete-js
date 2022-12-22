@@ -211,4 +211,27 @@ setTimeout(() => {
   h1.removeEventListener('mouseenter', alertH1)
 }, 2000)
 
-//
+//TODO: Event Propagation: Bubbling and Capturing
+// event is generated at the root of the document, at the top of DOM tree
+//* 1 capturing phase
+// event travels down the tree through every single parent element of the target element
+
+// click event:
+// document 
+      // element <html>
+      // element <body>
+      // element <section>
+      // element <p>
+      // element <a> 
+
+//* 2 target phase
+  // runs attached callback function
+  // events travels up to the document route again
+
+//* 3 bubbling phase
+
+
+//! by default, events can only be handled in the target and bubbling phase
+// events propagate from 1 place to another: capturing and bubbling
+
+//TODO: Event Propagation in Practice
