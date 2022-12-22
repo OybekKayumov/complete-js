@@ -35,3 +35,21 @@ document.addEventListener('keydown', function (e) {
 
 
 // TODO: how the DOM really works
+// - every single node in the DOM tree is type of node, represented by object
+// and gets access to special node methods and properties
+// Element, Text, Comment, Document types of Node
+
+// Element <p>  .innerHTML, .classlist, .append(), ...
+    // - HTMLElement
+    //   - HTMLButtonElement
+    //   -
+    //   -HTMLDivElement
+// Text -- <p>Text</p>, 
+// Comment <!-- comment -->
+
+//! inheritance means all the child types will also get access to the methods and properties of all their parent node types
+
+// Document - another type of Node, it contains important methods, and available on both the document and element types
+
+// EventTarget is a parent of both the Node type and Window node type
+// we do never manually create an EventTarget object, it is an abstract type. 
