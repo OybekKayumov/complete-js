@@ -44,6 +44,7 @@ in your terminal from the root /code folder — it will even open a new browser 
    - implementing a countdown timer
 
 ### 13-ADVANCED-DOM-BANKIST
+
    - how the DOM really works
    - selecting, creating, and deleting elements
-   
+   - styles, attributes and classes
