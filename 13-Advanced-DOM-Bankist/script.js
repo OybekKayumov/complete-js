@@ -136,7 +136,29 @@ tabsContainer.addEventListener('click', function (e) {
 
 ///////////////////////////////////////
 //todo: menu fade animation
-nav.addEventListener('mouseover', (e) => {
+// refactoring
+const handleHover = function (e, opacity) {
+  // this : 0.5 or 1, e.currentTarget -- <nav>
+  // console.log('this and e.currentTarget: ', this, e.currentTarget);  
+
+  if (e.target.classList.contains('nav__link')) {
+    const link = e.target;
+    const siblings = link.closest('.nav').querySelectorAll('.nav__link');
+    const logo = link.closest('.nav').querySelector('img');
+
+    siblings.forEach(elem => {
+      if (elem !== link) {
+        // elem.style.opacity = opacity;
+        elem.style.opacity = this;
+      }
+    })
+    // logo.style.opacity = opacity;
+    logo.style.opacity = this;
+  }
+}
+
+/*
+nav.addEventListener('mouseover', (e, opacity) => {
   if (e.target.classList.contains('nav__link')) {
     const link = e.target;
     const siblings = link.closest('.nav').querySelectorAll('.nav__link');
@@ -148,12 +170,32 @@ nav.addEventListener('mouseover', (e) => {
       }
     })
     logo.style.opacity = 0.5;
-  }
+  } 
+})
+*/
+//* won't work
+// nav.addEventListener('mouseover',handleHover(e, 0.5))
+// nav.addEventListener('mouseout',handleHover(e, 1))
+
+//! we need to pass a function
+/*
+nav.addEventListener('mouseover',(e) => {
+  handleHover(e, 0.5)
 })
 
 nav.addEventListener('mouseout', (e) => {
-  
+  handleHover(e, 1)
 })
+*/
+
+//todo: Passing "argument" into handler
+//! use bind method - creates a copy of the function that it's called on
+// and it will set the "this keyword" in this function call to whatever value that we pass into "bind"
+// if you want to pass more than one value, you can use array or object
+// nav.addEventListener('mouseover', handleHover.bind([0.5, 1, 2] or {}))
+
+nav.addEventListener('mouseover', handleHover.bind(0.5))
+nav.addEventListener('mouseout', handleHover.bind(1))
 
 
 ///////////////////////////////////////
