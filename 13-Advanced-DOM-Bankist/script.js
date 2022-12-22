@@ -253,7 +253,10 @@ const randomColor = () =>
 document.querySelector('.nav__link').addEventListener('click', function (e) {
   console.log('LINK :', e.target, e.currentTarget);
   this.style.backgroundColor = randomColor();
-  console.log(e.currentTarget === this ); // true
+  console.log(e.currentTarget === this ); //! true
+
+  //todo: stop propagation
+  e.stopPropagation();  // !
 })
 
 // document.querySelector('.nav__links').addEventListener('click', (e) => {
