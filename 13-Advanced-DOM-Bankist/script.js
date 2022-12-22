@@ -251,20 +251,24 @@ const randomColor = () =>
 //! this not works in arrow fn
 // document.querySelector('.nav__link').addEventListener('click', (e) => { 
 document.querySelector('.nav__link').addEventListener('click', function (e) {
-  console.log('LINK');
+  console.log('LINK :', e.target, e.currentTarget);
   this.style.backgroundColor = randomColor();
+  console.log(e.currentTarget === this ); // true
 })
 
 // document.querySelector('.nav__links').addEventListener('click', (e) => {
   document.querySelector('.nav__links').addEventListener('click', function (e) {
-    console.log('LINKs');
+    console.log('CONTAINER-LINKs :', e.target, e.currentTarget);
     this.style.backgroundColor = randomColor();
+  })
+  
+  // document.querySelector('.nav').addEventListener('click', (e) => {
+    document.querySelector('.nav').addEventListener('click', function (e) {
+      console.log('NAV :', e.target, e.currentTarget);
+      this.style.backgroundColor = randomColor();
 })
 
-// document.querySelector('.nav').addEventListener('click', (e) => {
-document.querySelector('.nav').addEventListener('click', function (e) {
-  // console.log('nav');
-})
-
-
- 
+// event happened at document root and travels down to the target element
+// and bubbles up - means event happens in all the parent elements
+// if you click on parent element, color in child element doesn't change
+//* e.currentTarget is the element on which the element handler is attached 
