@@ -198,6 +198,7 @@ btnScrollTo.addEventListener('click', (e) => {
 // }
 
 //
+/*
 const alertH1 = () => {
   alert('addEventListener: Great! You are reading the heading!')
 
@@ -210,7 +211,7 @@ h1.addEventListener('mouseenter', alertH1)
 setTimeout(() => {
   h1.removeEventListener('mouseenter', alertH1)
 }, 2000)
-
+*/
 //TODO: Event Propagation: Bubbling and Capturing
 // event is generated at the root of the document, at the top of DOM tree
 //* 1 capturing phase
@@ -235,3 +236,35 @@ setTimeout(() => {
 // events propagate from 1 place to another: capturing and bubbling
 
 //TODO: Event Propagation in Practice
+// rgb(255,255,255);
+
+const randomInt = (min, max) => 
+
+  Math.floor(Math.random() * (max - min + 1) + min);
+  
+
+const randomColor = () => 
+  `rgb(${randomInt(0, 255)},${randomInt(0, 255)},${randomInt(0, 255)})`;
+  
+// console.log('randomColor: ', randomColor());
+
+//! this not works in arrow fn
+// document.querySelector('.nav__link').addEventListener('click', (e) => { 
+document.querySelector('.nav__link').addEventListener('click', function (e) {
+  console.log('LINK');
+  this.style.backgroundColor = randomColor();
+})
+
+// document.querySelector('.nav__links').addEventListener('click', (e) => {
+  document.querySelector('.nav__links').addEventListener('click', function (e) {
+    console.log('LINKs');
+    this.style.backgroundColor = randomColor();
+})
+
+// document.querySelector('.nav').addEventListener('click', (e) => {
+document.querySelector('.nav').addEventListener('click', function (e) {
+  // console.log('nav');
+})
+
+
+ 
