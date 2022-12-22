@@ -256,22 +256,46 @@ document.querySelector('.nav__link').addEventListener('click', function (e) {
   console.log(e.currentTarget === this ); //! true
 
   //todo: stop propagation
-  e.stopPropagation();  // !
+  // e.stopPropagation();  // !
 })
 
 // document.querySelector('.nav__links').addEventListener('click', (e) => {
-  document.querySelector('.nav__links').addEventListener('click', function (e) {
-    console.log('CONTAINER-LINKs :', e.target, e.currentTarget);
-    this.style.backgroundColor = randomColor();
-  })
-  
-  // document.querySelector('.nav').addEventListener('click', (e) => {
-    document.querySelector('.nav').addEventListener('click', function (e) {
-      console.log('NAV :', e.target, e.currentTarget);
-      this.style.backgroundColor = randomColor();
+document.querySelector('.nav__links').addEventListener('click', function (e) {
+  console.log('CONTAINER-LINKs :', e.target, e.currentTarget);
+  this.style.backgroundColor = randomColor();
 })
+  
+// document.querySelector('.nav').addEventListener('click', (e) => {
+// document.querySelector('.nav').addEventListener('click', function (e) {
+//   console.log('NAV :', e.target, e.currentTarget);
+//   this.style.backgroundColor = randomColor();
+// })
 
 // event happened at document root and travels down to the target element
 // and bubbles up - means event happens in all the parent elements
 // if you click on parent element, color in child element doesn't change
 //* e.currentTarget is the element on which the element handler is attached 
+
+//todo: capture phase
+document.querySelector('.nav').addEventListener('click', function (e) {
+  console.log('NAV :', e.target, e.currentTarget);
+  this.style.backgroundColor = randomColor();
+}, true) //! capture parameter is set to true,
+// event handler will no longer listen to bubbling events, but instead, to capturing events
+
+// now the first element through which the element passes, is NAV
+// NAV element now listening for the event as it travels DOWN from the DOM  
+// NAV is the first one to happen
+// nav
+// nav__links
+// nav__link
+
+// before was listening for event travels back UP
+// nav__link
+// nav__links
+// nav
+
+
+// they are still working with same event but doing in different phases of event propagation
+
+// ! why three boxes here get three different background colors, even click happened on <a> element
