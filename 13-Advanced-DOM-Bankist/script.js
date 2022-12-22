@@ -97,6 +97,31 @@ document.querySelector('.nav__links')        // parent element
     }
 })
 
+// todo: building a tabbed component
+const tabs = document.querySelectorAll('.operations__tab');
+const tabsContainer = document.querySelector('.operations__tab-container');
+const tabsContent = document.querySelectorAll('.operations__content');
+
+// tabs.forEach((t) => t.addEventListener('click', () => {
+//   console.log('TAB: ', );
+// }))
+
+//* use event delegation, attach eventHandler to common parent element
+tabsContainer.addEventListener('click', function (e) {
+  // const clicked = e.target;
+  // const clicked = e.target.parentElement;
+  const clicked = e.target.closest('.operations__tab');
+  console.log('clicked: ', clicked );
+
+  //* ignore clicks if not button, no Error
+  if (!clicked) return;
+
+  tabs.forEach(tab => tab.classList.remove('operations__tab--active'));
+  clicked.classList.add('operations__tab--active');
+})
+
+
+
 ///////////////////////////////////////
 
 // TODO: how the DOM really works
@@ -376,6 +401,7 @@ false //default
 const h1 = document.querySelector('h1');
 
 //todo: going downwards: child
+/*
 console.log(h1.querySelectorAll('.highlight'));
 console.log('h1.childNodes: ', h1.childNodes);
 console.log('h1.children: ', h1.children);
@@ -404,3 +430,5 @@ console.log(': ', h1.parentElement.children);
     el.style.transform = 'scale(0.5)';  // 50% smaller
   }
 })
+*/
+// TODO: Building a Tabbed Component
