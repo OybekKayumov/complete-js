@@ -66,7 +66,7 @@ btnScrollTo.addEventListener('click', (e) => {
 ///////////////////////////////////////
 //todo: page navigation
 // without using event delegation
-
+/*
 document.querySelectorAll('.nav__link').forEach((el) => {
   // el.addEventListener('click', (e) => {  //! this and arrow fn
   el.addEventListener('click', function (e) {
@@ -80,20 +80,23 @@ document.querySelectorAll('.nav__link').forEach((el) => {
     document.querySelector(id).scrollIntoView({ behavior: 'smooth'});
   })
 });
+*/
 
-/*
 //todo: event delegation
 // 1. Add event listener to common parent element
 // 2. Determine what element originated the event
 
 document.querySelector('.nav__links')
   .addEventListener('click', function (e) {
-  console.log('e.target: ', e.target);
+    e.preventDefault();   
 
   //todo: matching strategy
-
+    if (e.target.classList.contains('nav__link')) {
+      const id = e.target.getAttribute('href');
+      document.querySelector(id).scrollIntoView({ behavior: 'smooth'});
+    }
 })
-*/
+
 ///////////////////////////////////////
 
 // TODO: how the DOM really works
