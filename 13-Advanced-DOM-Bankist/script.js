@@ -154,3 +154,21 @@ logo.classList.contains('c')      // ! not 'includes'
 
 //todo: Don't use
 logo.className = 'jonas' //! only ONE class and will override all other classes
+
+//TODO: Implementing Smooth Scrolling
+const btnScrollTo = document.querySelector('.btn--scroll-to');
+const section1 = document.querySelector('#section--1');
+
+btnScrollTo.addEventListener('click', (e) => {
+  const s1coords = section1.getBoundingClientRect();
+
+  // console.log(e.target.getBoundingClientRect());
+  // console.log(window.pageXOffset, window.pageYOffset);
+
+  // console.log(document.documentElement.clientHeight,
+    // document.documentElement.clientWidth );
+
+  // scrolling
+  window.scrollTo(s1coords.left + window.pageXOffset, s1coords.top + window.pageYOffset)  
+
+})
