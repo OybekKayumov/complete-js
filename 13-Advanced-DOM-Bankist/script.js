@@ -113,11 +113,23 @@ tabsContainer.addEventListener('click', function (e) {
   const clicked = e.target.closest('.operations__tab');
   console.log('clicked: ', clicked );
 
+  //todo: Active Tab
   //* ignore clicks if not button, no Error
   if (!clicked) return;
 
+  //* remove active classes
   tabs.forEach(tab => tab.classList.remove('operations__tab--active'));
+  
+  tabsContent.forEach(content => 
+    content.classList.remove('operations__content--active'))
+  
+  //* activate tab  
   clicked.classList.add('operations__tab--active');
+  
+  //todo: Activate content area
+  document
+    .querySelector(`.operations__content--${clicked.dataset.tab}`)
+    .classList.add('operations__content--active');
 })
 
 
