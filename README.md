@@ -56,4 +56,5 @@ in your terminal from the root /code folder — it will even open a new browser 
    - DOM traversing
    - building a tabbed component
    - passing arguments to Event Handlers
-   -
+   - implementing a sticky navigation: the Scroll Event
+   - 
