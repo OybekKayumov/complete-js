@@ -200,6 +200,7 @@ nav.addEventListener('mouseout', handleHover.bind(1))
 
 ///////////////////////////////////////
 //todo: sticky navigation
+/*
 const initialCoords = section1.getBoundingClientRect();
 console.log(': ', initialCoords);
 
@@ -212,8 +213,23 @@ window.addEventListener('scroll', function (e) {
   } else {
     nav.classList.remove('sticky')
   } 
-
 })
+*/
+
+const obsCallback = function (entries, observer) {
+  entries.forEach(entry => {
+    console.log(': ', entry);
+  })
+}
+
+const obsOptions = {
+  root: null,
+  threshold: [0, 0.2],
+};
+
+const observer = new IntersectionObserver(obsCallback, obsOptions);
+
+observer.observe(section1);
 
 
 
@@ -529,3 +545,5 @@ console.log(': ', h1.parentElement.children);
 //TODO: Building a Tabbed Component
 //TODO: Passing Arguments to Event Handlers
 //TODO: Implementing a Sticky Navigation: The Scroll Event
+//TODO: A Better Way: The Intersection Observer API
+
