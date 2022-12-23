@@ -60,3 +60,4 @@ in your terminal from the root /code folder — it will even open a new browser 
    - a better way: the intersection observer API
    - revealing Elements on scroll
    - lazy loading images
+   - building a slider component

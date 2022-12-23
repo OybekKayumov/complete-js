@@ -275,7 +275,7 @@ const sectionObserver = new IntersectionObserver(
 allSections.forEach(function (section) {
   sectionObserver.observe(section);
 
-  section.classList.add('section--hidden');
+  // section.classList.add('section--hidden');
 })
 
 ///////////////////////////////////////
@@ -300,11 +300,26 @@ const loading = function (entries, observer) {
 const imgObserver = new IntersectionObserver(loading, 
   {
     root: null,
-    threshold: 0, 
+    threshold: 0,
+    rootMargin: '-200px', 
 });
 
 imgTarget.forEach(img => imgObserver.observe(img));
 
+
+///////////////////////////////////////
+//todo: slider
+const slides = document.querySelectorAll('.slide');
+
+const slider = document.querySelector('.slider');
+slider.style.transform = 'scale(0.3) translateX(-800px)'
+slider.style.overflow = 'visible'
+
+slides.forEach((s, i) => {
+  s.style.transform = `translateX(${100 * i}%)`
+})
+
+// 0%, 100, 200, 300%
 
 ///////////////////////////////////////
 
@@ -614,3 +629,4 @@ console.log(': ', h1.parentElement.children);
 //TODO: A Better Way: The Intersection Observer API
 //TODO: Revealing Elements on Scroll
 //TODO: Lazy Loading Images
+//TODO: Building a Slider Component
