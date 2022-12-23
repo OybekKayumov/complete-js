@@ -736,3 +736,19 @@ console.log(': ', h1.parentElement.children);
 //TODO: Revealing Elements on Scroll
 //TODO: Lazy Loading Images
 //TODO: Building a Slider Component
+
+//TODO: Lifecycle DOM Events
+document.addEventListener('DOMContentLoaded', function (e) {
+  console.log('HTML parsed and DOM tree built: ', e );
+})
+
+window.addEventListener('load', function (e) {
+  console.log('Page fully loaded: ', e);
+})
+
+window.addEventListener('beforeunload', function (e) {
+  e.preventDefault();
+
+  console.log(': ', e);
+  e.returnValue = '';
+})

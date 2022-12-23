@@ -61,3 +61,4 @@ in your terminal from the root /code folder — it will even open a new browser 
    - revealing Elements on scroll
    - lazy loading images
    - building a slider component
+   - lifecycle DOM Events
