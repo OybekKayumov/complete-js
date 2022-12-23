@@ -216,6 +216,7 @@ window.addEventListener('scroll', function (e) {
 })
 */
 
+/*
 const obsCallback = function (entries, observer) {
   entries.forEach(entry => {
     console.log(': ', entry);
@@ -230,8 +231,27 @@ const obsOptions = {
 const observer = new IntersectionObserver(obsCallback, obsOptions);
 
 observer.observe(section1);
+*/
 
+const header = document.querySelector('.header');
+const navHeight = nav.getBoundingClientRect().height;
 
+const stickyNav = function (entries) {
+  const [entry] = entries // entries[0] getting 1st element
+  console.log(': ', entry);
+  
+  if (!entry.isIntersecting) nav.classList.add('sticky');
+  else nav.classList.remove('sticky');
+}
+
+const headerObserver = new IntersectionObserver(
+  stickyNav, {
+    root: null,
+    threshold: 0,
+    rootMargin: `-${navHeight}px`,
+});
+
+headerObserver.observe(header);
 
 ///////////////////////////////////////
 
@@ -257,19 +277,13 @@ observer.observe(section1);
 
 // TODO: Selecting, Creating, and Deleting Elements
 // Selecting
-// console.log(document.documentElement);
-// console.log(document.head);
-// console.log(document.body);
 
-const header = document.querySelector('.header');
+// const header = document.querySelector('.header');
 const allSections = document.querySelectorAll('.section');
 // console.log('allSections: ', allSections);
 
 document.getElementById('section--1');
 const allButtons = document.getElementsByTagName('button');
-// console.log('allButtons: ', allButtons);
-
-// console.log( document.getElementsByClassName('btn') );
 
 //TODO: Creating and inserting elements
 // .insertAdjacentHTML
