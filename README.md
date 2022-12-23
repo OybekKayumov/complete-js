@@ -58,4 +58,5 @@ in your terminal from the root /code folder — it will even open a new browser 
    - passing arguments to Event Handlers
    - implementing a sticky navigation: the Scroll Event
    - a better way: the intersection observer API
-   - 
+   - revealing Elements on scroll
+   - lazy loading images

@@ -260,7 +260,10 @@ const allSections = document.querySelectorAll('.section');
 const revealSection = function (entries, observer) {
   const [entry] = entries;
 
-  entry.target.classList.remove('section--hidden')
+  if (!entry.isIntersecting) return;
+
+  entry.target.classList.remove('section--hidden');
+  observer.unobserve(entry.target);
 }
 
 const sectionObserver = new IntersectionObserver(
@@ -275,6 +278,26 @@ allSections.forEach(function (section) {
   section.classList.add('section--hidden');
 })
 
+///////////////////////////////////////
+//todo: lazy loading images
+const imgTarget = document.querySelectorAll('img[data-src]');
+
+const loading = function (entries, observer) {
+  const [entry] = entries;
+
+  if (!entry.isIntersecting) return;
+
+  // replace src with data-src
+  entry.target.src = entry.target.dataset.src;
+}
+
+const imgObserver = new IntersectionObserver(loading, 
+  {
+    root: null,
+    threshold: 0, 
+})
+
+imgTarget.forEach(img => imgObserver.observe(img));
 
 
 ///////////////////////////////////////
@@ -584,3 +607,4 @@ console.log(': ', h1.parentElement.children);
 //TODO: Implementing a Sticky Navigation: The Scroll Event
 //TODO: A Better Way: The Intersection Observer API
 //TODO: Revealing Elements on Scroll
+//TODO: Lazy Loading Images
