@@ -310,6 +310,11 @@ imgTarget.forEach(img => imgObserver.observe(img));
 ///////////////////////////////////////
 //todo: slider
 const slides = document.querySelectorAll('.slide');
+const btnLeft = document.querySelector('.slider__btn--left');
+const btnRight = document.querySelector('.slider__btn--right');
+
+let currSlide = 0;
+const maxSlide = slides.length;
 
 const slider = document.querySelector('.slider');
 slider.style.transform = 'scale(0.3) translateX(-800px)'
@@ -320,6 +325,18 @@ slides.forEach((s, i) => {
 })
 
 // 0%, 100, 200, 300%
+// next slide
+btnRight.addEventListener('click', function () {
+  if (currSlide === maxSlide - 1) {
+    currSlide = 0;
+  } else {
+    currSlide++;
+  }
+
+  slides.forEach((s, i) => {
+    s.style.transform = `translateX(${100 *(i - currSlide)}%)`
+  })
+})
 
 ///////////////////////////////////////
 
