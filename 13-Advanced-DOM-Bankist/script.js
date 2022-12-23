@@ -320,12 +320,40 @@ const slider = document.querySelector('.slider');
 slider.style.transform = 'scale(0.3) translateX(-800px)'
 slider.style.overflow = 'visible'
 
-slides.forEach((s, i) => {
-  s.style.transform = `translateX(${100 * i}%)`
-})
+// slides.forEach((s, i) => {
+//   s.style.transform = `translateX(${100 * i}%)`
+// })
 
 // 0%, 100, 200, 300%
+const goToSlide = function (slide) {
+  slides.forEach((s, i) => {
+      s.style.transform = `translateX(${100 *(i - slide)}%)`
+    })
+}
+
+goToSlide(0);
+
 // next slide
+const nextSlide = function () {
+  if (currSlide === maxSlide - 1) {
+    currSlide = 0;
+  } else {
+    currSlide++;
+  }  
+  goToSlide(currSlide);
+}
+
+const prevSlide = function () {
+  if (currSlide === 0) {
+    currSlide = maxSlide - 1;
+  } else {
+    currSlide--;
+  }
+
+  goToSlide(currSlide);
+}
+
+/*
 btnRight.addEventListener('click', function () {
   if (currSlide === maxSlide - 1) {
     currSlide = 0;
@@ -333,10 +361,14 @@ btnRight.addEventListener('click', function () {
     currSlide++;
   }
 
-  slides.forEach((s, i) => {
-    s.style.transform = `translateX(${100 *(i - currSlide)}%)`
-  })
+  // slides.forEach((s, i) => {
+  //   s.style.transform = `translateX(${100 *(i - currSlide)}%)`
+  // })
+  goToSlide(currSlide);
 })
+*/
+btnRight.addEventListener('click', nextSlide)
+btnLeft.addEventListener('click', prevSlide)
 
 ///////////////////////////////////////
 
