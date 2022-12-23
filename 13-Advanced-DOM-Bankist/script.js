@@ -254,6 +254,30 @@ const headerObserver = new IntersectionObserver(
 headerObserver.observe(header);
 
 ///////////////////////////////////////
+//todo: reveal sections
+const allSections = document.querySelectorAll('.section');
+
+const revealSection = function (entries, observer) {
+  const [entry] = entries;
+
+  entry.target.classList.remove('section--hidden')
+}
+
+const sectionObserver = new IntersectionObserver(
+  revealSection, {
+    root: null,
+    threshold: 0.15,
+  });
+
+allSections.forEach(function (section) {
+  sectionObserver.observe(section);
+
+  section.classList.add('section--hidden');
+})
+
+
+
+///////////////////////////////////////
 
 // TODO: how the DOM really works
 // - every single node in the DOM tree is type of node, represented by object
@@ -279,8 +303,7 @@ headerObserver.observe(header);
 // Selecting
 
 // const header = document.querySelector('.header');
-const allSections = document.querySelectorAll('.section');
-// console.log('allSections: ', allSections);
+// const allSections = document.querySelectorAll('.section');
 
 document.getElementById('section--1');
 const allButtons = document.getElementsByTagName('button');
@@ -560,4 +583,4 @@ console.log(': ', h1.parentElement.children);
 //TODO: Passing Arguments to Event Handlers
 //TODO: Implementing a Sticky Navigation: The Scroll Event
 //TODO: A Better Way: The Intersection Observer API
-
+//TODO: Revealing Elements on Scroll
