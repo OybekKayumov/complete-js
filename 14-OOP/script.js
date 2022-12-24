@@ -77,3 +77,40 @@ console.log(': ', jonas.species, matilda.species);
 console.log(': ', jonas.hasOwnProperty('firstName'));  // true
 console.log(': ', jonas.hasOwnProperty('species'));  //! false, not inside of jonas object, only has access to species method because of its prototype
 // because it is in the prototype property of person
+
+// TODO: Prototypal Inheritance and The Prototype Chain
+// TODO: Prototypal Inheritance on Built-In Objects
+
+console.log(': ', jonas.__proto__); 
+// {species: 'Homo sapiens', calcAge: ƒ, constructor: ƒ}
+
+//! object.prototype - top of prototype chain
+console.log(': ', jonas.__proto__.__proto__);  // hasOwnProperty
+
+console.log(': ', jonas.__proto__.__proto__.__proto__);  // null
+
+//
+console.dir(Person.prototype.constructor); // ! dir
+
+//
+const arr = [3,6,4,5,6,9,2,3,5];  // new Array === []
+console.log(': ', arr.__proto__ ); 
+// inherits all methods from Array.prototype
+// [constructor: ƒ, at: ƒ, concat: ƒ, copyWithin: ƒ, fill: ƒ, …]
+
+console.log(': ', arr.__proto__.__proto__);  // Object
+
+//todo; example adding a new method to prototype
+Array.prototype.unique = function () {
+  return [...new Set(this)]
+}
+
+console.log(': ', arr.unique());  // (6) [3, 6, 4, 5, 9, 2]
+
+//
+const h1 = document.querySelector('h1');
+console.dir(h1);  // ! dir --> show all h1 object
+
+
+// 
+console.dir(x => x + 1);

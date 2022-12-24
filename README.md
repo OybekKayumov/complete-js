@@ -71,4 +71,6 @@ in your terminal from the root /code folder — it will even open a new browser 
 
    - constructor functions and the 'new' operator
    - prototypes
+   - prototypal inheritance and the prototype chain
+   - prototypal inheritance on built-in objects
    - 
