@@ -163,3 +163,27 @@ jessica.greet();
       // body of the class always executed in 'strict mode'
 
 // TODO: Setters and Getters
+// every object can have Setters and Getters properties - special assessor properties
+// while more normal properties are call data properties
+// Setters and Getters are fns that set and get a value, on the outside they still look like regular properties
+
+// simple object literal
+const account = {
+  owner: 'jonas',
+  movements: [200, 530, 120, 300],
+
+  get latest() {
+    return this.movements.slice(-1).pop();
+  },
+
+  set latest(mov) {
+    this.movements.push(mov);
+  }
+}
+// add getter to this object, we can add method
+console.log(': ', account.latest); // :  300,  get
+
+account.latest = 50;  // set
+console.log(': ', account.movements );
+// (5) [200, 530, 120, 300, 50]
+
