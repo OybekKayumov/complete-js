@@ -50,3 +50,8 @@ Person.prototype.calcAge = function () {
 // we have only 1 copy of calcAge method, and all objects, created using this constructor fn have access to this method 
 jonas.calcAge();  // 46
 
+console.log(': ', jonas.__proto__); //  {calcAge: ƒ, constructor: ƒ}
+
+console.log(': ', jonas.__proto__ === Person.prototype);  // true
+
+console.log(': ', Person.prototype.isPrototypeOf(jonas));  // true
