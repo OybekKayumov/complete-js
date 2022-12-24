@@ -122,8 +122,10 @@ const PersonCl_Exp = class {}
 
 //* class declaration
 class PersonCl {
-  constructor(firstName, birthYear) {
-    this.firstName = firstName;
+  // constructor(firstName, birthYear) {
+  constructor(fullName, birthYear) {
+    // this.firstName = firstName;
+    this.fullName = fullName;
     this.birthYear = birthYear
   }
 
@@ -135,9 +137,29 @@ class PersonCl {
   greet() {
     console.log(`Hello, ${this.firstName}`);
   }
+
+  //getter
+  get age() {
+    return 2037 - this.birthYear;
+  }
+
+  //set property that already exist
+  set fullName(name){
+    console.log(': ', name);
+    if (name.includes(' ')) {
+      this._fullName = name
+    } else {
+      alert(`${name} is not a full name`)
+    }
+  }
+
+  get fullName () {
+    return this._fullName;
+  }
 }
 
-const jessica = new PersonCl('Jessica', 1996);
+// const jessica = new PersonCl('Jessica', 1996);
+const jessica = new PersonCl('Jessica Davis', 1996);
 console.log('jessica: ', jessica);
 // jessica:  PersonCl {firstName: 'Jessica', birthYear: 1996}
 
@@ -187,3 +209,10 @@ account.latest = 50;  // set
 console.log(': ', account.movements );
 // (5) [200, 530, 120, 300, 50]
 
+console.log(': ', jessica.age); // :  41
+
+// const walter = new PersonCl('Walter', 1965);
+const walter = new PersonCl('Walter White', 1965);
+// Walter is not a full name
+
+walter.fullName  // :  Walter White
