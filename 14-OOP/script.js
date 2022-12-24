@@ -114,3 +114,52 @@ console.dir(h1);  // ! dir --> show all h1 object
 
 // 
 console.dir(x => x + 1);
+
+// TODO: ES6 Classes
+//! Classes are a special type of functions
+//* class expressions
+const PersonCl_Exp = class {}
+
+//* class declaration
+class PersonCl {
+  constructor(firstName, birthYear) {
+    this.firstName = firstName;
+    this.birthYear = birthYear
+  }
+
+  // method, will be added to .prototype property
+  calcAge() {
+    console.log(': ', 2037 - this.birthYear);
+  }
+
+  greet() {
+    console.log(`Hello, ${this.firstName}`);
+  }
+}
+
+const jessica = new PersonCl('Jessica', 1996);
+console.log('jessica: ', jessica);
+// jessica:  PersonCl {firstName: 'Jessica', birthYear: 1996}
+
+jessica.calcAge(); // 41
+
+console.log(jessica.__proto__ === PersonCl.prototype );  // true
+
+//
+// PersonCl.prototype.greet = function () {
+//   console.log(`Hello, ${this.firstName}`);
+// }
+
+jessica.greet();
+//! Hello, Jessica
+
+//!
+// 1. Classes are NOT hoisted
+      //! function declarations are hoisted, which means we can use them before they are declared in the code
+      //! but with classes, that doesn't work
+// 2. Class are first-class citizens - 
+      // we can pass them into fns, also return them from fns
+// 3. Classes are executed in strict mode
+      // body of the class always executed in 'strict mode'
+
+// TODO: Setters and Getters
