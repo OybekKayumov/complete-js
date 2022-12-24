@@ -240,3 +240,30 @@ Person.hey()  // Hey there
 // add static method to class
 PersonCl.hey();  // Hey there class
 // static methods are not available on instances, they useful to implement helper fns
+
+// TODO: Object.create
+const PersonProto = {
+  calcAge() {
+    console.log(2037 - this.birthYear);
+  }
+}
+
+const steven = Object.create(PersonProto);
+console.log('steven: ', steven);
+
+// steven:  {}            //! empty object with method calcAge
+// [[Prototype]]: Object
+// calcAge: ƒ calcAge()   //!
+// [[Prototype]]: Object
+
+steven.name = 'Steven';
+steven.birthYear = 2002;
+
+steven.calcAge();  // 35
+
+console.log(': ', steven.__proto__ );  // :  {calcAge: ƒ}
+console.log(': ', steven.__proto__ === PersonProto);  // true
+
+
+const sarah = Object.create(PersonProto);
+
