@@ -275,3 +275,34 @@ sarah.init('Sarah', 1979)
 sarah.calcAge(); // 
 // Object.create creates a new object
 // and prototype of this object will be the object that we passes in
+
+// TODO: Inheritance Between "Classes": Constructor Functions
+const Person1 = function (firstName, birthYear) {
+  this.firstName = firstName;
+  this.birthYear = birthYear;  
+};
+
+Person1.prototype.calcAge = function () {
+  console.log(2037 - this.birthYear);
+}
+
+const Student = function (firstName, birthYear, course) {
+  // this.firstName = firstName;   //
+  // this.birthYear = birthYear;   //
+  // Person1(firstName, birthYear)   //! error
+  Person1.call(this, firstName, birthYear)   //! this
+  this.course = course; 
+};
+
+Student.prototype.introduce = function () {
+  console.log(`my name is ${this.firstName} and I study ${this.course}`);
+}
+
+const mike = new Student('Mike', 2020, 'Computer Science');
+console.log('mike: ', mike);
+// mike:  
+// Student {firstName: 'Mike', birthYear: 2020, course: 'Computer Science'}
+
+mike.introduce()
+// my name is Mike and I study Computer Science
+

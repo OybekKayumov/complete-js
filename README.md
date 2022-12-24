@@ -76,4 +76,5 @@ in your terminal from the root /code folder — it will even open a new browser 
    - ES6 Classes
    - ctatic methods
    - Object.create
+   - inheritance between "Classes": constructor functions
    - 
