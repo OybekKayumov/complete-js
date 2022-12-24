@@ -50,8 +50,30 @@ Person.prototype.calcAge = function () {
 // we have only 1 copy of calcAge method, and all objects, created using this constructor fn have access to this method 
 jonas.calcAge();  // 46
 
+
+//todo: step 3
 console.log(': ', jonas.__proto__); //  {calcAge: ƒ, constructor: ƒ}
 
 console.log(': ', jonas.__proto__ === Person.prototype);  // true
 
 console.log(': ', Person.prototype.isPrototypeOf(jonas));  // true
+
+console.log(': ', Person.prototype.isPrototypeOf(Person));  //! false
+
+// 
+Person.prototype.species = 'Homo sapiens';
+console.log(': ', jonas);
+// {
+//   "firstName": "Jonas",
+//   "birthYear": 1991
+// }
+// [[Prototype]]: Object
+// calcAge: ƒ ()
+// species: "Homo sapiens"
+
+console.log(': ', jonas.species, matilda.species);
+// :  Homo sapiens Homo sapiens
+
+console.log(': ', jonas.hasOwnProperty('firstName'));  // true
+console.log(': ', jonas.hasOwnProperty('species'));  //! false, not inside of jonas object, only has access to species method because of its prototype
+// because it is in the prototype property of person
