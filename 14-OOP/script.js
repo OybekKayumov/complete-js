@@ -294,6 +294,11 @@ const Student = function (firstName, birthYear, course) {
   this.course = course; 
 };
 
+//todo: linking prototypes
+Student.prototype = Object.create(Person1.prototype);
+
+// Student.prototype = Person1.prototype; //! won't work
+
 Student.prototype.introduce = function () {
   console.log(`my name is ${this.firstName} and I study ${this.course}`);
 }
@@ -305,4 +310,19 @@ console.log('mike: ', mike);
 
 mike.introduce()
 // my name is Mike and I study Computer Science
+
+mike.calcAge();  // 17 
+// Student.prototype = Object.create(Person1.prototype);
+// !Uncaught TypeError: mike.calcAge is not a function
+
+console.log(mike.__proto__);  
+// Person1 {introduce: ƒ}
+console.log(mike.__proto__.__proto__);  
+
+console.log(mike instanceof Student); // true
+console.log(mike instanceof Person1); // true
+console.log(mike instanceof Object); // true
+
+Student.prototype.constructor = Student;
+console.dir(Student.prototype.constructor);  // Person1...
 
