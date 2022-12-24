@@ -1,12 +1,16 @@
 # complete-js
 
 ### Output
-
-   $npm install -g live-server
+       
+   _This command will install live-server, a simple static server that has live reload built-in._
+    
+   `$npm install -g live-server`
+   
+   _To start your server, run:_
 
 This command will install live-server⁵, a simple static server that has live reload built-in. To start your server, run:
 
-   $live-server
+   `$live-server`
 
 in your terminal from the root /code folder — it will even open a new browser window for you!
 
@@ -63,7 +67,6 @@ in your terminal from the root /code folder — it will even open a new browser 
    - lazy loading images
    - building a slider component
    - lifecycle DOM Events
-
 ### 14-OOP
 
    - constructor functions and the 'new' operator
