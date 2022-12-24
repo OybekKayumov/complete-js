@@ -35,6 +35,9 @@ mercedes.accelerate();
 bmw.brake();
 mercedes.brake()
 
+// Car {make: 'BMW', speed: 125}
+// Car {make: 'Mercedes', speed: 100}
+
 // BMW is going at 130 km/h
 // Mercedes is going at 105 km/h
 // BMW is going at 125 km/h
