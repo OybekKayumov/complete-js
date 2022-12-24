@@ -129,6 +129,7 @@ class PersonCl {
     this.birthYear = birthYear
   }
 
+  // instance methods
   // method, will be added to .prototype property
   calcAge() {
     console.log(': ', 2037 - this.birthYear);
@@ -155,6 +156,12 @@ class PersonCl {
 
   get fullName () {
     return this._fullName;
+  }
+
+  // static method
+  static hey() {
+    console.log('Hey there class');
+     console.log(this);
   }
 }
 
@@ -216,3 +223,20 @@ const walter = new PersonCl('Walter White', 1965);
 // Walter is not a full name
 
 walter.fullName  // :  Walter White
+
+// TODO: Static Methods
+Array.from(document.querySelectorAll('h1'))
+
+// [1,2,3].from() //! Uncaught TypeError: Cannot read properties of undefined (reading 'from')
+
+// add static method to constructor fn
+Person.hey = function () {
+  console.log('Hey there');
+  console.log(this);
+}
+Person.hey()  // Hey there
+// jonas.hey()   //! Uncaught TypeError: jonas.hey is not a function
+
+// add static method to class
+PersonCl.hey();  // Hey there class
+// static methods are not available on instances, they useful to implement helper fns
