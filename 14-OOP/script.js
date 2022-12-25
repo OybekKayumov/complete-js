@@ -502,6 +502,11 @@ class Account {
     }
   }
 
+  //* Static - not will be available on all the instances, but only on the class itself
+  static helper() {
+    console.log('Class Static Helper ');
+  }
+
   //* 4) Private methods
    // protected, not a part of public API
   //  #approveLoan(val) {
@@ -530,3 +535,8 @@ console.log('acc1: ', acc1);
 
 //! browser see Method as a Field
 // console.log('#approveLoan: ', acc1.#approveLoan );  
+
+
+//static how?
+Account.helper();
+// Class Static Helper 
