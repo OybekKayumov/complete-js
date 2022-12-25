@@ -383,12 +383,13 @@ jay.introduce();  // I study Computer Science
 jay.calcAge();    //  27
 
 // TODO: Another Class Example
+
 class Account {
   constructor(owner, currency, pin) {
     this.owner = owner;
     this.currency = currency;
-    this.pin = pin;
-    // protected, not supposed to be touched outside of the class
+    // protect property, not supposed to be touched outside of the class
+    this._pin = pin;
     this._movements = [];
     this.locale = navigator.language;
 
@@ -408,12 +409,13 @@ class Account {
     this.deposit(-val);
   }
 
-  approveLoan(val) {
+  // protected, not a part of public API
+  _approveLoan(val) {
     return true;
   }
 
   requestLoan(val) {
-    if (this.approveLoan(val)) {
+    if (this._approveLoan(val)) {
       this.deposit(val)
       console.log('Loan approved');
     }
@@ -443,4 +445,10 @@ console.log('acc1: ', acc1);
 console.log('pin: ', acc1.pin );  //! should be private
 
 // TODO: Encapsulation: Protected Properties and Methods
+// TODO: Encapsulation: Private Class Fields and Methods
 
+// 4 
+// Public fields
+// Private fields
+// Public methods
+// Private methods
