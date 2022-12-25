@@ -388,15 +388,20 @@ class Account {
     this.owner = owner;
     this.currency = currency;
     this.pin = pin;
-    this.movements = [];
+    // protected, not supposed to be touched outside of the class
+    this._movements = [];
     this.locale = navigator.language;
 
     console.log(`Thanks for opening an account, ${owner}` );
   }
 
   //* public interface
+  getMovements() {
+    return this._movements;
+  }
+
   deposit(val) {
-    this.movements.push(val);
+    this._movements.push(val);
   }
 
   withdraw(val) {
@@ -421,14 +426,21 @@ console.log('acc1: ', acc1);
 // acc1.movements.push(250);
 // acc1.movements.push(-150);
 
+// acc1._movements.push(250); 
+// acc1._movements.push(-150)
+
 acc1.deposit(250);
 acc1.withdraw(140);
 
 acc1.requestLoan(1000)
 acc1.approveLoan(1000)          //! should be private 
 
+// correct way to get movements
+console.log('get: ', acc1.getMovements() );
+// get:  (3) [250, -140, 1000]
+
 console.log('acc1: ', acc1);
 console.log('pin: ', acc1.pin );  //! should be private
 
-
+// TODO: Encapsulation: Protected Properties and Methods
 
