@@ -81,4 +81,10 @@ in your terminal from the root /code folder — it will even open a new browser 
    - encapsulation: protected properties and methods
    - encapsulation: private Class fields and methods
    - chaining methods
+
+### 15-Mapty
+
+   - how to plan a web project
+   - using the geolocation API
+   - displaying a map using Leaflet library
    - 
