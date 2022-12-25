@@ -326,3 +326,29 @@ console.log(mike instanceof Object); // true
 Student.prototype.constructor = Student;
 console.dir(Student.prototype.constructor);  // Person1...
 
+// TODO: Inheritance Between "Classes": ES6 Classes
+
+class StudentCl extends PersonCl {
+  constructor(fullName, birthYear, course) {
+    //not need in PersonCl.call()
+    //! always needs to happen first
+    super(fullName, birthYear) 
+    this.course = course;
+  }
+
+  introduce () {
+    console.log(`my name is ${this.fullName} and I study ${this.course}`);
+  }
+
+  calcAge() {
+    console.log(`I'm ${2037 - this.birthYear} student` );
+  }
+}
+
+// super() is the constructor fn of the parent class, and always needs to happen first. because this call o super fn is responsible for creating "this keyword" in this subclass
+
+const martha = new StudentCl('Martha Jones', 2012, 'Computer Science')
+martha.introduce();
+
+martha.calcAge();  // 25
+// I'm 25 student
