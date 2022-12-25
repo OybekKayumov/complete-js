@@ -454,27 +454,31 @@ console.log('pin: ', acc1.pin );  //! should be private
 // 2) Private fields
 // 3) Public methods
 // 4) Private methods
+// there is also the STATIC version
 
 class Account {
-  // 1) Public fields (will be in instances)
+  //* 1) Public fields (will be in instances, not in prototype)
   locale = navigator.language;
   // _movements = [];
   
-  // 2) Private fields (not accessible from outside of the class)
+  //* 2) Private fields (not accessible from outside of the class)
+  //    (will be in instances, not in prototype)
   #movements = [];
+  #pin;  // undefined
 
 
   constructor(owner, currency, pin) {
     this.owner = owner;
     this.currency = currency;
     // protect property, not supposed to be touched outside of the class
-    this._pin = pin;
+    this.#pin = pin;
     // this._movements = [];
     // this.locale = navigator.language;
 
     console.log(`Thanks for opening an account, ${owner}` );
   }
 
+  //* 3) Public methods
   //* public interface
   getMovements() {
     // return this._movements;
@@ -490,16 +494,19 @@ class Account {
     this.deposit(-val);
   }
 
-  // protected, not a part of public API
-  _approveLoan(val) {
-    return true;
-  }
-
   requestLoan(val) {
+    // if (this.#approveLoan(val)) {
     if (this._approveLoan(val)) {
       this.deposit(val)
       console.log('Loan approved');
     }
+  }
+
+  //* 4) Private methods
+   // protected, not a part of public API
+  //  #approveLoan(val) {
+   _approveLoan(val) {
+    return true;
   }
 }
 
@@ -518,3 +525,8 @@ console.log('acc1: ', acc1);
 // console.log('#movements: ', acc1.#movements);
 //! Uncaught SyntaxError: Private field '#movements' must be declared in an enclosing class
 //! NO ACCESS
+//* same
+// console.log('#pin: ', acc1.#pin );
+
+//! browser see Method as a Field
+// console.log('#approveLoan: ', acc1.#approveLoan );  
