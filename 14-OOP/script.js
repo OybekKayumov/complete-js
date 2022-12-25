@@ -393,11 +393,42 @@ class Account {
 
     console.log(`Thanks for opening an account, ${owner}` );
   }
+
+  //* public interface
+  deposit(val) {
+    this.movements.push(val);
+  }
+
+  withdraw(val) {
+    this.deposit(-val);
+  }
+
+  approveLoan(val) {
+    return true;
+  }
+
+  requestLoan(val) {
+    if (this.approveLoan(val)) {
+      this.deposit(val)
+      console.log('Loan approved');
+    }
+  }
 }
 
 const acc1 = new Account('Jonas', 'EUR', 1111);
 console.log('acc1: ', acc1);
 
-acc1.movements.push(250);
-acc1.movements.push(-150);
+// acc1.movements.push(250);
+// acc1.movements.push(-150);
+
+acc1.deposit(250);
+acc1.withdraw(140);
+
+acc1.requestLoan(1000)
+acc1.approveLoan(1000)          //! should be private 
+
 console.log('acc1: ', acc1);
+console.log('pin: ', acc1.pin );  //! should be private
+
+
+
