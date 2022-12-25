@@ -352,3 +352,32 @@ martha.introduce();
 
 martha.calcAge();  // 25
 // I'm 25 student
+
+// TODO: Inheritance Between "Classes": Object.create
+const PersonProto1 = {
+  calcAge() {
+    console.log(2037 - this.birthYear);
+  },
+
+  init(firstName, birthYear) {
+    this.firstName = firstName;
+    this.birthYear = birthYear;
+  }
+}
+
+const steve = Object.create(PersonProto1);
+
+const StudentProto = Object.create(PersonProto1);
+StudentProto.init = function (firstName, birthYear, course) {
+  PersonProto1.init.call(this, firstName, birthYear);
+  this.course = course;
+}
+
+StudentProto.introduce = function () {
+  console.log(`I study ${this.course}`);
+}
+
+const jay = Object.create(StudentProto);
+jay.init('Jay', 2010, 'Computer Science')  // in console: jay
+jay.introduce();  // I study Computer Science
+jay.calcAge();    //  27
