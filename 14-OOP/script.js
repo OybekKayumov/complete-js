@@ -383,7 +383,7 @@ jay.introduce();  // I study Computer Science
 jay.calcAge();    //  27
 
 // TODO: Another Class Example
-
+/*
 class Account {
   constructor(owner, currency, pin) {
     this.owner = owner;
@@ -421,7 +421,8 @@ class Account {
     }
   }
 }
-
+*/
+/*
 const acc1 = new Account('Jonas', 'EUR', 1111);
 console.log('acc1: ', acc1);
 
@@ -444,11 +445,61 @@ console.log('get: ', acc1.getMovements() );
 console.log('acc1: ', acc1);
 console.log('pin: ', acc1.pin );  //! should be private
 
+*/
 // TODO: Encapsulation: Protected Properties and Methods
 // TODO: Encapsulation: Private Class Fields and Methods
 
 // 4 
-// Public fields
-// Private fields
-// Public methods
-// Private methods
+// 1) Public fields
+// 2) Private fields
+// 3) Public methods
+// 4) Private methods
+
+class Account {
+  // 1) Public fields (will be in instances)
+  locale = navigator.language;
+  _movements = [];
+
+  // 2) Private fields (not accessible from outside of the class)
+  
+
+  constructor(owner, currency, pin) {
+    this.owner = owner;
+    this.currency = currency;
+    // protect property, not supposed to be touched outside of the class
+    this._pin = pin;
+    // this._movements = [];
+    // this.locale = navigator.language;
+
+    console.log(`Thanks for opening an account, ${owner}` );
+  }
+
+  //* public interface
+  getMovements() {
+    return this._movements;
+  }
+
+  deposit(val) {
+    this._movements.push(val);
+  }
+
+  withdraw(val) {
+    this.deposit(-val);
+  }
+
+  // protected, not a part of public API
+  _approveLoan(val) {
+    return true;
+  }
+
+  requestLoan(val) {
+    if (this._approveLoan(val)) {
+      this.deposit(val)
+      console.log('Loan approved');
+    }
+  }
+}
+
+//! Public fields will be present on all the instances
+//! and they are not on the Prototype
+
