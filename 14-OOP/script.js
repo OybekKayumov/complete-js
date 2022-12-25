@@ -458,10 +458,11 @@ console.log('pin: ', acc1.pin );  //! should be private
 class Account {
   // 1) Public fields (will be in instances)
   locale = navigator.language;
-  _movements = [];
-
-  // 2) Private fields (not accessible from outside of the class)
+  // _movements = [];
   
+  // 2) Private fields (not accessible from outside of the class)
+  #movements = [];
+
 
   constructor(owner, currency, pin) {
     this.owner = owner;
@@ -476,11 +477,13 @@ class Account {
 
   //* public interface
   getMovements() {
-    return this._movements;
+    // return this._movements;
+    return this.#movements;
   }
 
   deposit(val) {
-    this._movements.push(val);
+    // this._movements.push(val);
+    this.#movements.push(val);
   }
 
   withdraw(val) {
@@ -503,3 +506,15 @@ class Account {
 //! Public fields will be present on all the instances
 //! and they are not on the Prototype
 
+const acc1 = new Account('Jonas', 'EUR', 1111);
+
+acc1.deposit(250);
+acc1.withdraw(140);
+acc1.requestLoan(1000);
+
+console.log('acc1.getMovements: ', acc1.getMovements());
+console.log('acc1: ', acc1);
+
+// console.log('#movements: ', acc1.#movements);
+//! Uncaught SyntaxError: Private field '#movements' must be declared in an enclosing class
+//! NO ACCESS
