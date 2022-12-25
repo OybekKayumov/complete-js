@@ -488,10 +488,12 @@ class Account {
   deposit(val) {
     // this._movements.push(val);
     this.#movements.push(val);
+    return this;  // this is current object
   }
 
   withdraw(val) {
     this.deposit(-val);
+    return this;
   }
 
   requestLoan(val) {
@@ -499,6 +501,7 @@ class Account {
     if (this._approveLoan(val)) {
       this.deposit(val)
       console.log('Loan approved');
+      return this;
     }
   }
 
@@ -540,3 +543,46 @@ console.log('acc1: ', acc1);
 //static how?
 Account.helper();
 // Class Static Helper 
+
+// TODO: Chaining Methods
+//! error, but returning "this" make the method chainable
+// acc1.deposit(300).deposit(500).withdraw(35).requestLoan(2500).withdraw(4000);
+//* return this;
+acc1.deposit(300).deposit(500).withdraw(35).requestLoan(2500).withdraw(4000);
+// Loan approved
+console.log('acc1.getMovements: ', acc1.getMovements());
+// acc1.getMovements:  (8) [250, -140, 1000, 300, 500, -35, 2500, -4000]
+
+// TODO: ES6 Classes Summary
+// Parent class
+// extends  --> inheritance between classes, auto sets prototype
+// Child class
+
+// Public fields
+// Private fields - not accessible out of the class (data privacy and encapsulation)
+
+// Static public fields --> available only on class
+//* static numSubjects = 10;
+
+// constructor method
+// super class
+
+// instance property --> this.fullName = 'Student Name';
+
+// Redefining private field
+
+// Public method
+// Private method: # and _method-name
+
+// getter method: return this._testScore  
+// setter method: this,_testScore = score 
+
+// static method: helper for class, available only on class
+
+// creating new object with "new" operator
+
+// Remember:
+// classes are syntactic sugar over constructor functions
+// classes are not hoisted
+// classes are first class citizens
+// class body always executed in "strict mode"

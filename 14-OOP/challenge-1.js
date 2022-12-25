@@ -1,4 +1,4 @@
-// Coding Challenge #1
+//TODO: Coding Challenge #1
 
 /* 
 1. Use a constructor function to implement a Car. A car has a make and a speed property. The speed property is the current speed of the car in km/h;
@@ -96,7 +96,7 @@ console.log(ford);
 // CarCl {make: 'Ford', speed: 80}
 
 
-// Coding Challenge #3
+//TODO: Coding Challenge #3
 
 /* 
 1. Use a constructor function to implement an Electric Car (called EV) as a CHILD "class" of Car. Besides a make and current speed, the EV also has the current battery charge in % ('charge' property);
@@ -153,3 +153,88 @@ tesla.accelerate();
 // EV {make: 'Tesla', speed: 120, charge: 90}
 // Tesla is going at 115 km/h
 // Tesla is going at 135 km/h, with a charge of 89
+
+//TODO: Coding Challenge #4
+
+/* 
+1. Re-create challenge #3, but this time using ES6 classes: create an 'EVCl' child class of the 'CarCl' class
+2. Make the 'charge' property private;
+3. Implement the ability to chain the 'accelerate' and 'chargeBattery' methods of this class, and also update the 'brake' method in the 'CarCl' class. They experiment with chining!
+
+DATA CAR 1: 'Rivian' going at 120 km/h, with a charge of 23%
+
+GOOD LUCK 😀
+*/
+
+class CarCl2 {
+  constructor(make, speed) {
+    this.make = make;
+    this.speed = speed;
+  }
+
+  accelerate() {
+    this.speed += 10;
+    console.log(`${this.make} is going at ${this.speed} km/h`);
+  }
+
+  brake() {
+    this.speed -= 5;
+    console.log(`${this.make} is going at ${this.speed} km/h`);
+    return this;
+  }
+
+  get speedUS() {
+    return this.speed / 1.6;
+  }
+
+  set speedUS(speed) {
+    this.speed = speed * 1.6;
+  }
+}
+
+class EVCl extends CarCl2 {
+  #charge;
+
+  constructor(make, speed, charge) {
+    super(make, speed);
+    this.#charge = charge;
+  }
+
+  chargeBattery(chargeTo) {
+    this.#charge = chargeTo;
+    return this;
+  }
+
+  accelerate() {
+    this.speed += 20;
+    this.#charge--;
+    console.log(
+      `${this.make} is going at ${this.speed} km/h, with a charge of ${
+        this.#charge
+      }`
+    );
+    return this;
+  }
+}
+
+const rivian = new EVCl('Rivian', 120, 23);
+console.log(rivian);
+// console.log(rivian.#charge);  
+rivian
+  .accelerate()
+  .accelerate()
+  .accelerate()
+  .brake()
+  .chargeBattery(50)
+  .accelerate()
+  .accelerate();
+
+console.log(rivian.speedUS); // 134.375
+
+// EVCl {make: 'Rivian', speed: 120, #charge: 23}
+// Rivian is going at 140 km/h, with a charge of 22
+// Rivian is going at 160 km/h, with a charge of 21
+// Rivian is going at 180 km/h, with a charge of 20
+// Rivian is going at 175 km/h
+// Rivian is going at 195 km/h, with a charge of 49
+// Rivian is going at 215 km/h, with a charge of 48

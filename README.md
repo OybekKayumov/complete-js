@@ -80,4 +80,5 @@ in your terminal from the root /code folder — it will even open a new browser 
    - inheritance between "Classes": ES6 Classes
    - encapsulation: protected properties and methods
    - encapsulation: private Class fields and methods
+   - chaining methods
    - 
