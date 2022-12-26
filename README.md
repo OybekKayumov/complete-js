@@ -87,4 +87,8 @@ in your terminal from the root /code folder — it will even open a new browser 
    - how to plan a web project
    - using the geolocation API
    - displaying a map using Leaflet library
+   - rendering input form
+   - project Architecture
+   - refactoring for project Architecture
+   - managing data: creating classes
    - 

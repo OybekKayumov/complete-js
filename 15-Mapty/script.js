@@ -23,6 +23,18 @@ const inputElevation = document.querySelector('.form__input--elevation');
 
 // 1. User story
   // who? what? why?
+
+class Workout {
+  date = new Date();
+  id = (new Date() + '').slice(-10);  // last 10 numbers
+
+  constructor(coords, distance, duration){
+    this.coords = coords;
+    this.distance = distance;  // in km
+    this.duration = duration;  // in minutes
+  }
+}
+
 class App {
   #map;
   #mapEvent;
@@ -99,9 +111,10 @@ class App {
 }
 
 const app = new App();
-// app._getPosition();
 
 
 // TODO: Rendering Workout Input Form
 // TODO: Project Architecture
 // TODO: Refactoring for Project Architecture
+// TODO: Managing Workout Data: Creating Classes
+
