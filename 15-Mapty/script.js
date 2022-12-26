@@ -11,11 +11,24 @@ const inputDuration = document.querySelector('.form__input--duration');
 const inputCadence = document.querySelector('.form__input--cadence');
 const inputElevation = document.querySelector('.form__input--elevation');
 
+//---------------------------------------------
+// TODO: How to Plan a Web Project
+// I. PLANNING STEP
+// 1. User story
+// 2. Features
+// 3. Flowchart - what we will build
+// 4. Architecture - how we will build 
+
+// II. DEVELOPMENT STEP
+
+// 1. User story
+  // who? what? why?
+
 let map, mapEvent;
 
 class App {
   constructor() {
-
+    this._getPosition();
   }
 
   _getPosition() {
@@ -38,7 +51,6 @@ class App {
 
     const coords = [latitude, longitude]
 
-    // const map = L.map('map').setView([51.505, -0.09], 13);
     map = L.map('map').setView(coords, 13);
 
     // L.tileLayer('https://tile.openstreetmap.fr/hot/{z}/{x}/{y}.png', {
@@ -68,20 +80,8 @@ class App {
   }
 }
 
-//---------------------------------------------
-// TODO: How to Plan a Web Project
-// I. PLANNING STEP
-// 1. User story
-// 2. Features
-// 3. Flowchart - what we will build
-// 4. Architecture - how we will build 
-
-// II. DEVELOPMENT STEP
-
-// 1. User story
-  // who? what? why?
-
-
+const app = new App();
+// app._getPosition();
 
 // TODO: Rendering Workout Input Form
 form.addEventListener('submit', function (e) {
