@@ -128,10 +128,41 @@ class App {
   _newWorkout(e) {
     e.preventDefault();
 
-    // clear input fields
-    inputDistance.value = inputDuration.value = inputCadence.value = inputElevation.value = ''
+    const validInputs = (...inputs) => 
+      inputs.every(inp => Number.isFinite(inp));
 
-    // display marker
+    // get data from form
+    const type = inputType.value;
+    const distance = +inputDistance.value;
+    const duration = +inputDuration.value;
+
+    
+    // if workout running, create running object
+    if (type === 'running') {
+      const cadence = +inputCadence.value;
+      
+      // check if data is valid
+      if (
+        // !Number.isFinite(distance) ||
+        // !Number.isFinite(duration) ||
+        // !Number.isFinite(cadence) 
+        !validInputs(distance, duration, cadence)
+        ) return alert('Input has to be positive numbers!')
+    }
+
+    // if workout cycling, create cycling object
+    if (type === 'cycling') {
+      const elevation = +inputElevation.value;
+
+      // check if data is valid
+      if (
+        !validInputs(distance, duration, elevation)
+        ) return alert('Input has to be positive numbers!')
+    }
+
+    // add new object to workout array
+
+    // render workout on map as marker
     const {lat, lng} = this.#mapEvent.latlng;
         L.marker([lat,lng]).addTo(this.#map)
           .bindPopup(L.popup({
@@ -143,6 +174,13 @@ class App {
           }))
           .setPopupContent('Workout!')
           .openPopup();
+
+    // render workout on list
+
+    // hide form + clear input fields
+
+    // clear input fields
+    inputDistance.value = inputDuration.value = inputCadence.value = inputElevation.value = ''
   }
 }
 
@@ -153,4 +191,4 @@ const app = new App();
 // TODO: Project Architecture
 // TODO: Refactoring for Project Architecture
 // TODO: Managing Workout Data: Creating Classes
-
+// TODO: Creating a New Workout
