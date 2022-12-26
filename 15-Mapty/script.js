@@ -27,6 +27,9 @@ const inputElevation = document.querySelector('.form__input--elevation');
 let map, mapEvent;
 
 class App {
+  #map;
+  #mapEvent;
+
   constructor() {
     this._getPosition();
   }
@@ -34,7 +37,7 @@ class App {
   _getPosition() {
     // TODO: Using the Geolocation API
     if (navigator.geolocation) {
-      navigator.geolocation.getCurrentPosition(this._loadMap, function () {
+      navigator.geolocation.getCurrentPosition(this._loadMap.bind(this), function () {
         // error 
         alert('Could not get your position')
       });
@@ -51,16 +54,16 @@ class App {
 
     const coords = [latitude, longitude]
 
-    map = L.map('map').setView(coords, 13);
+    this.#map = L.map('map').setView(coords, 13);
 
     // L.tileLayer('https://tile.openstreetmap.fr/hot/{z}/{x}/{y}.png', {
     L.tileLayer('https://tile.openstreetmap.org/{z}/{x}/{y}.png', {
         attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
-    }).addTo(map);    
+    }).addTo(this.#map);    
 
     // handling click on map
-    map.on('click', function (mapE) {
-      mapEvent = mapE;
+    this.#map.on('click', function (mapE) {
+      this.#mapEvent = mapE;
       form.classList.remove('hidden');
       inputDistance.focus();
   
