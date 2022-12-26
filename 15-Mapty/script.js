@@ -10,7 +10,34 @@ const inputDistance = document.querySelector('.form__input--distance');
 const inputDuration = document.querySelector('.form__input--duration');
 const inputCadence = document.querySelector('.form__input--cadence');
 const inputElevation = document.querySelector('.form__input--elevation');
+
 let map, mapEvent;
+
+class App {
+  constructor() {
+
+  }
+
+  _getPosition() {
+
+  }
+
+  _loadMap() {
+
+  }
+
+  _showForm() {
+
+  }
+
+  _toggleElevationField() {
+
+  }
+
+  _newWorkout() {
+    
+  }
+}
 
 //---------------------------------------------
 // TODO: How to Plan a Web Project
@@ -82,4 +109,7 @@ form.addEventListener('submit', function (e) {
 inputType.addEventListener('change', function () {
   inputElevation.closest('.form__row').classList.toggle('form__row--hidden');
   inputCadence.closest('.form__row').classList.toggle('form__row--hidden');
-})
+});
+
+// TODO: Project Architecture
+// TODO: Refactoring for Project Architecture
