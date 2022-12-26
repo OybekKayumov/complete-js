@@ -19,42 +19,16 @@ class App {
   }
 
   _getPosition() {
-
+    // TODO: Using the Geolocation API
+    if (navigator.geolocation) {
+      navigator.geolocation.getCurrentPosition(this._loadMap, function () {
+        // error 
+        alert('Could not get your position')
+      });
+    }
   }
 
-  _loadMap() {
-
-  }
-
-  _showForm() {
-
-  }
-
-  _toggleElevationField() {
-
-  }
-
-  _newWorkout() {
-    
-  }
-}
-
-//---------------------------------------------
-// TODO: How to Plan a Web Project
-// I. PLANNING STEP
-// 1. User story
-// 2. Features
-// 3. Flowchart - what we will build
-// 4. Architecture - how we will build 
-
-// II. DEVELOPMENT STEP
-
-// 1. User story
-  // who? what? why?
-
-// TODO: Using the Geolocation API
-if (navigator.geolocation) {
-  navigator.geolocation.getCurrentPosition(function (position) {
+  _loadMap(position) {    
     // success getting geolocation
     // console.log('position: ', position);
 
@@ -78,12 +52,36 @@ if (navigator.geolocation) {
       form.classList.remove('hidden');
       inputDistance.focus();
   
-    })
-  }, function () {
-    // error 
-    alert('Could not get your position')
-  });
+    })    
+  }
+
+  _showForm() {
+
+  }
+
+  _toggleElevationField() {
+
+  }
+
+  _newWorkout() {
+
+  }
 }
+
+//---------------------------------------------
+// TODO: How to Plan a Web Project
+// I. PLANNING STEP
+// 1. User story
+// 2. Features
+// 3. Flowchart - what we will build
+// 4. Architecture - how we will build 
+
+// II. DEVELOPMENT STEP
+
+// 1. User story
+  // who? what? why?
+
+
 
 // TODO: Rendering Workout Input Form
 form.addEventListener('submit', function (e) {
