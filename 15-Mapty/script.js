@@ -47,13 +47,18 @@ if (navigator.geolocation) {
     }).addTo(map);
 
     // L.marker([51.5, -0.09]).addTo(map)
-    L.marker(coords).addTo(map)
-        .bindPopup('A pretty CSS3 popup.<br> Easily customizable.')
+    // L.marker(coords).addTo(map)
+    //     .bindPopup('A pretty CSS3 popup.<br> Easily customizable.')
+    //     .openPopup();
+
+    map.on('click', function (mapEvent) {
+      const {lat, lng} = mapEvent.latlng;
+
+      L.marker([lat,lng]).addTo(map)
+        .bindPopup('Workout')
         .openPopup();
-
+    })
     //-----------------------
-
-
   }, function () {
     // error 
     alert('Could not get your position')
