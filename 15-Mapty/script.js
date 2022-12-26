@@ -183,7 +183,7 @@ class App {
     this.#workouts.push(workout);
 
     // render workout on map as marker    
-    this.renderWorkoutMarker(workout);
+    this._renderWorkoutMarker(workout);
 
     // render workout on list
 
@@ -193,7 +193,7 @@ class App {
     inputDistance.value = inputDuration.value = inputCadence.value = inputElevation.value = '';
   }
   
-  renderWorkoutMarker(workout) {
+  _renderWorkoutMarker(workout) {
     L.marker(workout.coords).addTo(this.#map)
     .bindPopup(L.popup({
       maxWidth: 250,
@@ -204,7 +204,24 @@ class App {
     }))
     .setPopupContent('workout.distance')
     .openPopup();
-  } 
+  }
+
+  _renderWorkout(workout) {
+    const html = `
+          <li class="workout workout--running" data-id="1234567890">
+          <h2 class="workout__title">Running on April 14</h2>
+          <div class="workout__details">
+            <span class="workout__icon">🏃‍♂️</span>
+            <span class="workout__value">5.2</span>
+            <span class="workout__unit">km</span>
+          </div>
+          <div class="workout__details">
+            <span class="workout__icon">⏱</span>
+            <span class="workout__value">24</span>
+            <span class="workout__unit">min</span>
+          </div>
+    `
+  }
 }
 
 const app = new App();
