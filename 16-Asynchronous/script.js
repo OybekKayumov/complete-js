@@ -74,6 +74,7 @@ const renderCountry = function (data, className = '') {
     countriesContainer.style.opacity = 1;
 }
 
+/*
 const getCountryAndNeighbor = function (country) {  
   // AJAX call country 1
   const req = new XMLHttpRequest();
@@ -124,6 +125,25 @@ setTimeout(() => {
     }, 1000)
   }, 1000)
 }, 1000)
-
+*/
 // TODO: Promises and the Fetch API
+// TODO: Consuming Promises
 
+// const req = fetch('https://restcountries.com/v2/name/portugal')
+// console.log('req: ', req );
+// req:  Promise {<pending>}
+
+const getCountryData = function (country) {
+  fetch(`https://restcountries.com/v2/name/${country}`)
+    .then(function (response) {
+      console.log('response: ', response);
+      return response.json();
+    })
+    .then(function (data) {
+      console.log('data: ', data);
+      
+      renderCountry(data[0]);
+    })
+}
+
+getCountryData('portugal')
