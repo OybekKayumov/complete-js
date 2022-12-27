@@ -100,3 +100,5 @@ in your terminal from the root /code folder — it will even open a new browser 
    - promises and the fetch API
    - chaining promises
    - handling rejected promises
+   - throwing errors manually
+   - 

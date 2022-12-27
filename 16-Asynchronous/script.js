@@ -3,6 +3,30 @@
 const btn = document.querySelector('.btn-country');
 const countriesContainer = document.querySelector('.countries');
 
+const renderCountry = function (data, className = '') {
+  const html = `
+            <article class="country ${className}">
+              <img class="country__img" src="${data.flag}" />
+              <div class="country__data">
+                <h3 class="country__name">${data.name}</h3>
+                <h4 class="country__region">${data.region}</h4>
+                <p class="country__row"><span>👫</span>${(+data.population / 1000000).toFixed(2)}</p>
+                <p class="country__row"><span>🗣️</span>${data.languages[0].name}</p>
+                <p class="country__row"><span>💰</span>${data.currencies[0].name}</p>
+              </div>
+            </article> 
+    `;
+
+    countriesContainer.insertAdjacentHTML('beforeend', html);
+    // countriesContainer.style.opacity = 1;  // ! goes to .finally
+}
+
+const renderError = function (msg) {
+  countriesContainer.insertAdjacentText('beforeend', msg);
+  countriesContainer.style.opacity = 1;
+}
+
+
 ///////////////////////////////////////
 // TODO:Our First AJAX Call: XMLHttpRequest
 /*
@@ -55,7 +79,7 @@ const getCountryData = function (country) {
 
 //TODO: [OPTIONAL] How the Web Works: Requests and Responses
 //TODO: Welcome to Callback Hell
-
+/*
 const renderCountry = function (data, className = '') {
   const html = `
             <article class="country ${className}">
@@ -73,7 +97,7 @@ const renderCountry = function (data, className = '') {
     countriesContainer.insertAdjacentHTML('beforeend', html);
     countriesContainer.style.opacity = 1;
 }
-
+*/
 /*
 const getCountryAndNeighbor = function (country) {  
   // AJAX call country 1
@@ -130,6 +154,7 @@ setTimeout(() => {
 // TODO: Consuming Promises
 // TODO: Chaining Promises
 // TODO: Handling Rejected Promises
+// TODO: Throwing Errors Manually
 
 // const req = fetch('https://restcountries.com/v2/name/portugal')
 // console.log('req: ', req );
@@ -148,6 +173,8 @@ setTimeout(() => {
 //     })
 // }
 
+/*
+todo: rejected 1
 const getCountryData = function (country) {
   fetch(`https://restcountries.com/v2/name/${country}`)
     .then((response) => response.json(), err => alert(err))
@@ -160,11 +187,38 @@ const getCountryData = function (country) {
       return fetch(`https://restcountries.com/v2/alpha/${neigbour}`)
       // return 34;
     })
+    .then(response => response.json(), err => alert(err))
+    .then(data => renderCountry(data, 'neighbour'))
+}
+*/
+
+//todo: rejected 2
+const getCountryData = function (country) {
+  fetch(`https://restcountries.com/v2/name/${country}`)
+    .then((response) => response.json())
+    .then((data) => {
+      renderCountry(data[0]);
+      const neigbour = data[0].borders[0]
+
+      if(!neigbour) return;
+
+      return fetch(`https://restcountries.com/v2/alpha/${neigbour}`)
+      // return 34;
+    })
     .then(response => response.json())
     .then(data => renderCountry(data, 'neighbour'))
+    .catch(err => { 
+      console.log(`${err} 💥💥💥`);
+      renderError(`Something went wrong 💥 ${err.message}. Try again!`)
+    })
+    .finally(() => {
+      countriesContainer.style.opacity = 1;
+    })
 }
 
 btn.addEventListener('click', function () {
   getCountryData('portugal');  
 })
+
+getCountryData('dsadsafdsafgal');  
 
