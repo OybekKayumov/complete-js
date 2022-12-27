@@ -56,9 +56,9 @@ const getCountryData = function (country) {
 //TODO: [OPTIONAL] How the Web Works: Requests and Responses
 //TODO: Welcome to Callback Hell
 
-const renderCountry = function (data) {
+const renderCountry = function (data, className = '') {
   const html = `
-            <article class="country">
+            <article class="country ${className}">
               <img class="country__img" src="${data.flag}" />
               <div class="country__data">
                 <h3 class="country__name">${data.name}</h3>
@@ -75,6 +75,7 @@ const renderCountry = function (data) {
 }
 
 const getCountryAndNeighbor = function (country) {  
+  // AJAX call country 1
   const req = new XMLHttpRequest();
   req.open('GET', `https://restcountries.com/v2/name/${country}`);
   req.send();
@@ -84,7 +85,25 @@ const getCountryAndNeighbor = function (country) {
     const [data] = JSON.parse(this.responseText);
     console.log('data: ', data);
 
+    // render country 1
     renderCountry(data);
+
+    // get neighbor country 2
+    const [neighbor] = data.borders;
+
+    if (!neighbor) return;
+
+    // AJAX call country 2
+    const req2 = new XMLHttpRequest();
+    req2.open('GET', `https://restcountries.com/v2/alpha/${neighbor}`);
+    req2.send();
+
+    req2.addEventListener('load', function () {
+      const data2 = JSON.parse(this.responseText);
+      console.log('data2: ', data2);
+
+      renderCountry(data2, 'neighbour');
+    })
   })
 }
 
