@@ -16,5 +16,12 @@ req.send();
 
 // 
 req.addEventListener('load', function () {
-  console.log('this.responseText: ', this.responseText);
+  
+  const [data] = JSON.parse(this.responseText);
+  console.log('data: ', data);
 })
+
+// console.log('this.responseText: ', this.responseText);
+// const data = JSON.parse(this.responseText)[0];           //! destructuring
+// convert to JS object, because what we have now is JSON
+// JSON is a big string of text 
