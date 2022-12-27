@@ -129,6 +129,7 @@ setTimeout(() => {
 // TODO: Promises and the Fetch API
 // TODO: Consuming Promises
 // TODO: Chaining Promises
+// TODO: Handling Rejected Promises
 
 // const req = fetch('https://restcountries.com/v2/name/portugal')
 // console.log('req: ', req );
@@ -149,7 +150,7 @@ setTimeout(() => {
 
 const getCountryData = function (country) {
   fetch(`https://restcountries.com/v2/name/${country}`)
-    .then((response) => response.json())
+    .then((response) => response.json(), err => alert(err))
     .then((data) => {
       renderCountry(data[0]);
       const neigbour = data[0].borders[0]
@@ -163,5 +164,7 @@ const getCountryData = function (country) {
     .then(data => renderCountry(data, 'neighbour'))
 }
 
-getCountryData('portugal');
-getCountryData('burundi');
+btn.addEventListener('click', function () {
+  getCountryData('portugal');  
+})
+

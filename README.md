@@ -99,4 +99,4 @@ in your terminal from the root /code folder — it will even open a new browser 
    - how the web works: requests and responses
    - promises and the fetch API
    - chaining promises
-   - 
+   - handling rejected promises
