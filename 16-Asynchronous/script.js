@@ -195,7 +195,13 @@ const getCountryData = function (country) {
 //todo: rejected 2
 const getCountryData = function (country) {
   fetch(`https://restcountries.com/v2/name/${country}`)
-    .then((response) => response.json())
+    .then((response) => {
+      console.log('response: ', response);
+
+      if (!response.ok) 
+        throw new Error(`Country not found, status: ${response.status}`)
+      return response.json();
+    })
     .then((data) => {
       renderCountry(data[0]);
       const neigbour = data[0].borders[0]
