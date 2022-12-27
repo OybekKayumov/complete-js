@@ -34,6 +34,11 @@ const getCountryData = function (country) {
   })
 }
 
+getCountryData('portugal');
+getCountryData('uzbekistan');
+getCountryData('russia');
+getCountryData('usa');
+
 // https://restcountries.com/v2/
 
 // console.log('this.responseText: ', this.responseText);
