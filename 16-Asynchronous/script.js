@@ -299,3 +299,19 @@ console.log('Test end: ', );
 // res:  Resolved promise 2
 
 // 0 sec timer:
+
+// TODO: Building a Simple Promise
+const lotteryPromise = new Promise(function (resolve, reject) {
+  if (Math.random() >= 0.5) { //! fulfilled promise
+    resolve('You Win !')
+  } else {
+    reject('You lost your money')
+  }
+})
+
+lotteryPromise
+  .then(res => console.log('res: ', res))
+  .catch(err => console.error('error: ', err ));
+
+// res:  You Win !
+// error:  You lost your money
