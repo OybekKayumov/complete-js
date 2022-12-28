@@ -235,7 +235,7 @@ const getCountryData = function (country) {
 }
 */
 
-
+/*
 const getJSON = function (url, errorMsg = 'Something went wrong') {
   return fetch(url).then(response => {
     if (!response.ok) 
@@ -357,3 +357,23 @@ Promise.resolve('abc').then(x => console.log('x: ', x))
 Promise.reject(new Error('Problem!')).catch(x => console.error('x: ', x))
 // x:  abc
 // x:  Error: Problem!
+
+*/
+
+// TODO:Promisifying the Geolocation API
+navigator.geolocation.getCurrentPosition(
+  position => console.log(position ),
+  err => console.error(err)
+);
+
+console.log('Getting position');  // 1 
+
+//
+const getPosition = function () {
+  return new Promise(function (resolve, reject ) {
+    navigator.geolocation.getCurrentPosition(
+      position => resolve(position),
+      err => reject(err)
+    );    
+  })
+}

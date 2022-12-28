@@ -103,4 +103,5 @@ in your terminal from the root /code folder — it will even open a new browser 
    - throwing errors manually
    - asynchronous behind the scenes: the Event Loop
    - the Event Loop in practice
+   - promisifying the geolocation API
    - 
