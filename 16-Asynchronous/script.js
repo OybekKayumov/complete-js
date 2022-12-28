@@ -422,19 +422,51 @@ btn.addEventListener('click', whereAmI_2);
 */
 //TODO: Consuming Promises with Async/Await
 //  const resp = await fetch(`https://restcountries.com/v3/name/${country}`)
-
-const whereAmI_3 = async function (country) {
-  //! same
+ //! same
   // fetch(`https://restcountries.com/v2/name/${country}`)
   //    .then( resp => console.log('resp: ', resp))
-
-  const resp = await fetch(`https://restcountries.com/v2/name/${country}`)
-  // console.log('resp: ', resp);
-  const data = await resp.json();
-  console.log('data: ', data);
-
-  renderCountry(data[0])
+  
+const getPosition = function () {
+  return new Promise(function (resolve, reject ) {
+ 
+    navigator.geolocation.getCurrentPosition(resolve, reject);
+  })
 }
 
-whereAmI_3('portugal');
+// const whereAmI_3 = async function (country) {
+const whereAmI_3 = async function () {
+  try {// geolocaition
+    const pos = await getPosition();
+    const {latitude: lat, longitude: lng } = pos.coords;
+
+    // reverse geocoding
+    const resGeo = await fetch(`https://geocode.xyz/${lat},${lng}?geoit=json`);
+    const dataGeo = await resGeo.json();
+    console.log('dataGeo: ', dataGeo);
+
+    // country data
+    const resp = await fetch(`https://restcountries.com/v2/name/${dataGeo.country}`)
+    // console.log('resp: ', resp);
+    const data = await resp.json();
+    console.log('data: ', data);
+
+    renderCountry(data[0])
+  } catch(err) {
+    console.error(err);
+    renderError(`Something went wrong ${err.message}`)
+  }
+}
+
+// whereAmI_3('portugal');
+whereAmI_3();
 console.log('FIRST: ');
+
+//TODO: Error Handling With try...catch
+// try {
+//   let y = 1;
+//   const x = 2;
+//   x = 3;
+// } catch (err) {
+//   alert(err.message)
+// }
+

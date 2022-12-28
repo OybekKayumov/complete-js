@@ -105,4 +105,5 @@ in your terminal from the root /code folder — it will even open a new browser 
    - the Event Loop in practice
    - promisifying the geolocation API
    - consuming promises with async/await
+   - error handling with try...catch
    - 
