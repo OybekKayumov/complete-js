@@ -107,4 +107,5 @@ in your terminal from the root /code folder — it will even open a new browser 
    - consuming promises with async/await
    - error handling with try...catch
    - returning values from async functions
+   - running promises in parallel
    - 

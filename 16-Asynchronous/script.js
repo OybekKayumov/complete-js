@@ -29,6 +29,14 @@ const renderError = function (msg) {
   countriesContainer.style.opacity = 1;
 }
 
+const getJSON = function (url, errorMsg = 'Something went wrong') {
+  return fetch(url).then(response => {
+    if (!response.ok) 
+    throw new Error(`${errorMsg}, status: ${response.status}`)
+
+    return response.json();
+  })
+}
 
 ///////////////////////////////////////
 // TODO:Our First AJAX Call: XMLHttpRequest
@@ -421,6 +429,7 @@ btn.addEventListener('click', whereAmI_2);
 
 */
 //TODO: Consuming Promises with Async/Await
+/*
 //  const resp = await fetch(`https://restcountries.com/v3/name/${country}`)
  //! same
   // fetch(`https://restcountries.com/v2/name/${country}`)
@@ -487,11 +496,11 @@ console.log('1: Will get location: ');
 // const city = whereAmI_3();
 // console.log('city: ', city);
 
-// 3
-whereAmI_3()
-  .then(city => console.log(`2: ${city}`))
-  .catch(err => console.log(`2: ${err.message}`))
-  .finally(() => console.log('3: Finished getting location: '))  //! 5
+// 3, 6
+// whereAmI_3()
+//   .then(city => console.log(`2: ${city}`))
+//   .catch(err => console.log(`2: ${err.message}`))
+//   .finally(() => console.log('3: Finished getting location: '))  //! 5
 
 // console.log('3: Finished getting location: ');
 
@@ -523,7 +532,7 @@ whereAmI_3()
 //   .finally(() => console.log('3: Finished getting location: '))  //! 5
 
 
-//todo: IIFE 
+//todo: IIFE , 6
 (async function () {
   try {
     const city = await whereAmI_3();
@@ -533,3 +542,19 @@ whereAmI_3()
   }
   console.log('3: Finished getting location: ')
 })()
+*/
+// TODO:Running Promises in Parallel
+const get3Countries = async function (c1, c2, c3) {
+  try {
+    const [data1] = await getJSON(`https://restcountries.com/v2/name/${c1}`)
+    const [data2] = await getJSON(`https://restcountries.com/v2/name/${c2}`)
+    const [data3] = await getJSON(`https://restcountries.com/v2/name/${c3}`)
+
+    console.log([data1.capital, data2.capital, data3.capital]);
+  } catch (err) {
+    console.error(err);
+  }
+}
+
+get3Countries('portugal', 'canada', 'tanzania')
+// (3) ['Lisbon', 'Ottawa', 'Dodoma']
