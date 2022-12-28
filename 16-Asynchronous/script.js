@@ -444,19 +444,24 @@ const whereAmI_3 = async function () {
     if(!resGeo.ok) throw new Error('Problem getting location data (resGeo)')
 
     const dataGeo = await resGeo.json();
-    console.log('dataGeo: ', dataGeo);
+    // console.log('dataGeo: ', dataGeo);
 
     // country data
     const resp = await fetch(`https://restcountries.com/v2/name/${dataGeo.country}`)
     if(!resp.ok) throw new Error('Problem getting country (resp)')
     
     const data = await resp.json();
-    console.log('data: ', data);
+    // console.log('data: ', data);
 
     renderCountry(data[0])
+
+    return `You are in ${dataGeo.city}, ${dataGeo.country}`
   } catch(err) {
     console.error(err);
     renderError(`💥 ${err.message}`)
+
+    //! 4 reject promise returned from async function
+    throw err;
   }
 }
 
@@ -476,8 +481,55 @@ const whereAmI_3 = async function () {
 // TODO: Returning Values from Async Functions
 
 console.log('1: Will get location: ');
-whereAmI_3();
-console.log('3: Finished getting location: ');
+// whereAmI_3();
+
+// 2
+// const city = whereAmI_3();
+// console.log('city: ', city);
+
+// 3
+whereAmI_3()
+  .then(city => console.log(`2: ${city}`))
+  .catch(err => console.log(`2: ${err.message}`))
+  .finally(() => console.log('3: Finished getting location: '))  //! 5
+
+// console.log('3: Finished getting location: ');
+
 // 1: Will get location: 
 // 3: Finished getting location: 
 // Error: Problem getting location data (resGeo)
+
+// 2
+// 1: Will get location: 
+// city:  Promise {<pending>}
+// 3: Finished getting location: 
+
+// 3
+// 1: Will get location: 
+// 3: Finished getting location: 
+// 2: You are in Tashkent, Uzbekistan   // ! or 2: undefined
+
+// 4
+// 2: Problem getting location data (resGeo)
+
+//! 5 - how we expected
+// 1: Will get location: 
+// 2: Problem getting location data (resGeo)
+// 3: Finished getting location: 
+
+// whereAmI_3()
+//   .then(city => console.log(`2: ${city}`))
+//   .catch(err => console.log(`2: ${err.message}`))
+//   .finally(() => console.log('3: Finished getting location: '))  //! 5
+
+
+//todo: IIFE 
+(async function () {
+  try {
+    const city = await whereAmI_3();
+    console.log(`2: ${city}`)
+  } catch (err) {
+    console.error(`2: ${err.message}`)
+  }
+  console.log('3: Finished getting location: ')
+})()

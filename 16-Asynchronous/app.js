@@ -10,13 +10,18 @@
 //     console.log('There was an error: ', err );
 //   })
 
-  // data:  (10) [{…}, {…}, {…}, {…}, {…}, {…}, {…}, {…}, {…}, {…}]
+// data:  (10) [{…}, {…}, {…}, {…}, {…}, {…}, {…}, {…}, {…}, {…}]
 
+// 2
+/*
 fetch('https://jsonplaceholder.typicode.com/users')
   .then(response => response.json())
   .then(data => console.log('data: ', data))
   .catch(err => console.log('There was an error: ', err ))
+*/
 
+// 3
+/*
 // post
 fetch('https://jsonplaceholder.typicode.com/users', {
   method: 'POST',
@@ -30,4 +35,4 @@ fetch('https://jsonplaceholder.typicode.com/users', {
   .then(response => response.json())
   .then(data => console.log('data: ', data))
   .catch(err => console.log('There was an error: ', err ))
-
+*/
