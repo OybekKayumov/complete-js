@@ -429,7 +429,11 @@ const whereAmI_3 = async function (country) {
   //    .then( resp => console.log('resp: ', resp))
 
   const resp = await fetch(`https://restcountries.com/v2/name/${country}`)
-  console.log('resp: ', resp);
+  // console.log('resp: ', resp);
+  const data = await resp.json();
+  console.log('data: ', data);
+
+  renderCountry(data[0])
 }
 
 whereAmI_3('portugal');
