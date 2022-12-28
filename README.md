@@ -108,4 +108,5 @@ in your terminal from the root /code folder — it will even open a new browser 
    - error handling with try...catch
    - returning values from async functions
    - running promises in parallel
+   - other promise combinators: race, allSettled and any
    - 
