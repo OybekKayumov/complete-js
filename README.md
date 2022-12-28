@@ -106,4 +106,5 @@ in your terminal from the root /code folder — it will even open a new browser 
    - promisifying the geolocation API
    - consuming promises with async/await
    - error handling with try...catch
+   - returning values from async functions
    - 

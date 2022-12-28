@@ -461,8 +461,8 @@ const whereAmI_3 = async function () {
 }
 
 // whereAmI_3('portugal');
-whereAmI_3();
-console.log('FIRST: ');
+// whereAmI_3();
+// console.log('FIRST: ');
 
 //TODO: Error Handling With try...catch
 // try {
@@ -473,3 +473,11 @@ console.log('FIRST: ');
 //   alert(err.message)
 // }
 
+// TODO: Returning Values from Async Functions
+
+console.log('1: Will get location: ');
+whereAmI_3();
+console.log('3: Finished getting location: ');
+// 1: Will get location: 
+// 3: Finished getting location: 
+// Error: Problem getting location data (resGeo)
