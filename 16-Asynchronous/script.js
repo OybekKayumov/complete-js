@@ -360,6 +360,7 @@ Promise.reject(new Error('Problem!')).catch(x => console.error('x: ', x))
 
 */
 
+/*
 // TODO:Promisifying the Geolocation API
 navigator.geolocation.getCurrentPosition(
   position => console.log(position ),
@@ -400,7 +401,7 @@ const whereAmI_2 = function () {
   .then(data => {
     console.log('data: ', data);
     console.log(`You are in ${data.city}, ${data.countryName}`);
-    return fetch(`https://restcountries.eu/rest/v2/name/${data.country}`);
+    return fetch(`https://restcountries.com/v2/name/${data.country}`);
   })
   .then(res => {
     if (!res.ok) throw new Error(`Country not found (${res.status})`);
@@ -417,3 +418,19 @@ const whereAmI_2 = function () {
 // whereAmI(-33.933, 18.474);
 
 btn.addEventListener('click', whereAmI_2);
+
+*/
+//TODO: Consuming Promises with Async/Await
+//  const resp = await fetch(`https://restcountries.com/v3/name/${country}`)
+
+const whereAmI_3 = async function (country) {
+  //! same
+  // fetch(`https://restcountries.com/v2/name/${country}`)
+  //    .then( resp => console.log('resp: ', resp))
+
+  const resp = await fetch(`https://restcountries.com/v2/name/${country}`)
+  console.log('resp: ', resp);
+}
+
+whereAmI_3('portugal');
+console.log('FIRST: ');
