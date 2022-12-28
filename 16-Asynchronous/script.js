@@ -158,6 +158,8 @@ setTimeout(() => {
 // TODO: Chaining Promises
 // TODO: Handling Rejected Promises
 // TODO: Throwing Errors Manually
+// TODO: Asynchronous Behind the Scenes: The Event Loop
+// TODO: The Event Loop in Practice
 
 // const req = fetch('https://restcountries.com/v2/name/portugal')
 // console.log('req: ', req );
@@ -268,5 +270,20 @@ btn.addEventListener('click', function () {
   getCountryData('portugal');  
 })
 
-getCountryData('australia');  
+getCountryData('australia');  //! err
 
+//todo: The Event Loop in Practice
+console.log('Test start: ', );
+setTimeout(() => {
+  console.log('0 sec timer: ', );
+}, 0)
+
+Promise.resolve('Resolved promise 1')
+  .then(res => console.log('res: ', res))
+
+console.log('Test end: ', );
+//! 1 2 3 4
+// Test start:  
+// Test end: 
+// res:  Resolved promise 1     //! FROM MICROTASKS QUEUE, has priority over Call back queue
+// 0 sec timer:
