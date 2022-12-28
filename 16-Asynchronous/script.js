@@ -441,19 +441,22 @@ const whereAmI_3 = async function () {
 
     // reverse geocoding
     const resGeo = await fetch(`https://geocode.xyz/${lat},${lng}?geoit=json`);
+    if(!resGeo.ok) throw new Error('Problem getting location data (resGeo)')
+
     const dataGeo = await resGeo.json();
     console.log('dataGeo: ', dataGeo);
 
     // country data
     const resp = await fetch(`https://restcountries.com/v2/name/${dataGeo.country}`)
-    // console.log('resp: ', resp);
+    if(!resp.ok) throw new Error('Problem getting country (resp)')
+    
     const data = await resp.json();
     console.log('data: ', data);
 
     renderCountry(data[0])
   } catch(err) {
     console.error(err);
-    renderError(`Something went wrong ${err.message}`)
+    renderError(`💥 ${err.message}`)
   }
 }
 
