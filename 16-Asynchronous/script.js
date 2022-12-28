@@ -319,3 +319,41 @@ lotteryPromise
 
 // res:  You Win !
 // error:  You lost your money
+
+// promisifying setTimeout
+const wait = function (seconds) {
+  return new Promise(function (resolve) {
+    setTimeout(resolve, seconds * 1000)
+  })
+}
+
+wait(2).then(() => {
+  console.log('I waited for 2 seconds');
+  return wait(1);
+}).then(() => console.log('I waited for 1 second'));
+
+// I waited for 2 seconds
+// I waited for 1 second
+
+//todo: callback hel - how handled in promise
+wait(1).then(() => {
+  console.log('1 second passed');
+  return wait(1);
+})
+  .then(() => {
+    console.log('2 second passed')
+    return wait(1)
+  })
+  .then(() => {
+    console.log('3 second passed')
+    return wait(1)
+  })
+  .then(() => {
+    console.log('4 second passed')
+  })
+
+//todo: promise
+Promise.resolve('abc').then(x => console.log('x: ', x))
+Promise.reject(new Error('Problem!')).catch(x => console.error('x: ', x))
+// x:  abc
+// x:  Error: Problem!
