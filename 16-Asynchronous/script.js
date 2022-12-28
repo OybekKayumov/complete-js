@@ -302,11 +302,15 @@ console.log('Test end: ', );
 
 // TODO: Building a Simple Promise
 const lotteryPromise = new Promise(function (resolve, reject) {
-  if (Math.random() >= 0.5) { //! fulfilled promise
-    resolve('You Win !')
-  } else {
-    reject('You lost your money')
-  }
+  console.log('Lottery draw is happening: ', );
+
+  setTimeout(() => {
+    if (Math.random() >= 0.5) { //! fulfilled promise
+      resolve('You Win !')
+    } else {
+      reject(new Error('You lost your money'))
+    }
+  }, 2000)
 })
 
 lotteryPromise
