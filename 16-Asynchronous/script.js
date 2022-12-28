@@ -384,7 +384,7 @@ getPosition().then(pos => console.log(pos));
 //
 // fetch(`https://geocode.xyz/${lat},${lng}?geoit=json`)
 
-const whereAmI = function () {
+const whereAmI_2 = function () {
   getPosition().then(pos => {
     console.log(': ', pos .coords);
     const {latitude: lat, longitude: lng} = pos.coords;
@@ -416,4 +416,4 @@ const whereAmI = function () {
 // whereAmI(19.037, 72.873);
 // whereAmI(-33.933, 18.474);
 
-btn.addEventListener('click', whereAmI);
+btn.addEventListener('click', whereAmI_2);
