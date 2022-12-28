@@ -10,7 +10,9 @@ const renderCountry = function (data, className = '') {
               <div class="country__data">
                 <h3 class="country__name">${data.name}</h3>
                 <h4 class="country__region">${data.region}</h4>
-                <p class="country__row"><span>👫</span>${(+data.population / 1000000).toFixed(2)}</p>
+                <p class="country__row"><span>👫</span>${(
+                  +data.population / 1000000
+                  ).toFixed(2)} people</p>
                 <p class="country__row"><span>🗣️</span>${data.languages[0].name}</p>
                 <p class="country__row"><span>💰</span>${data.currencies[0].name}</p>
               </div>
@@ -18,8 +20,9 @@ const renderCountry = function (data, className = '') {
     `;
 
     countriesContainer.insertAdjacentHTML('beforeend', html);
-    // countriesContainer.style.opacity = 1;  // ! goes to .finally
-}
+    // ! goes to .finally
+    countriesContainer.style.opacity = 1;
+};
 
 const renderError = function (msg) {
   countriesContainer.insertAdjacentText('beforeend', msg);
@@ -244,12 +247,12 @@ const getCountryData = function (country) {
   getJSON(`https://restcountries.com/v2/name/${country}`, 'Country not found')
     .then((data) => {
       renderCountry(data[0]);
-      const neigbour = data[0].borders[0]
+      const neighbour = data[0].borders[0]
 
-      if(!neigbour) return;
+      if (!neighbour) throw new Error('No neighbour found!') ;
 
       // country 2
-      return getJSON(`https://restcountries.com/v2/alpha/${neigbour}`, 'Country not found')
+      return getJSON(`https://restcountries.com/v2/alpha/${neighbour}`, 'Country not found')
     })
     .then(data => renderCountry(data, 'neighbour'))
     .catch(err => { 
@@ -265,5 +268,5 @@ btn.addEventListener('click', function () {
   getCountryData('portugal');  
 })
 
-getCountryData('dsadsafdsafgal');  
+getCountryData('australia');  
 
