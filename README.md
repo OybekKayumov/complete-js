@@ -101,4 +101,5 @@ in your terminal from the root /code folder — it will even open a new browser 
    - chaining promises
    - handling rejected promises
    - throwing errors manually
+   - asynchronous behind the scenes: the Event Loop
    - 
