@@ -281,9 +281,21 @@ setTimeout(() => {
 Promise.resolve('Resolved promise 1')
   .then(res => console.log('res: ', res))
 
+// 2
+Promise.resolve('Resolved promise 2')
+  .then(res => {
+    for (let i = 0; i < 1000000000; i++) {
+      
+    }
+    console.log('res: ', res)
+  })
+
 console.log('Test end: ', );
 //! 1 2 3 4
 // Test start:  
 // Test end: 
 // res:  Resolved promise 1     //! FROM MICROTASKS QUEUE, has priority over Call back queue
+//!2
+// res:  Resolved promise 2
+
 // 0 sec timer:
