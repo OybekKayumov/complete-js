@@ -2,7 +2,7 @@
 console.log('exporting module');
 
 const shippingCost = 10;
-const cart = [];
+// const cart = [];
 
 // named and default exports
 export const addToCart = function (product, quantity) {
@@ -15,3 +15,6 @@ const totalPrice = 347;
 const totalQuantity = 34;
 
 export {totalPrice, totalQuantity as tq}
+
+// TODO: imports are a life connection to exports
+export const cart = [];
