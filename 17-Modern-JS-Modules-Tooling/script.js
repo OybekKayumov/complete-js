@@ -1,6 +1,9 @@
 // parsing means to read code without executing it
 // this is the moment in which imports are hoisted
 
+import './app.js'
+
+
 //todo: importing module
 // import './shoppingCart.js';
 // import { addToCart, totalPrice as price, tq } from "./shoppingCart.js";
@@ -8,7 +11,7 @@
 // console.log(totalPrice, totalQuantity );
 // console.log(price, tq );
 
-console.log('importing module ');
+// console.log('importing module ');
 //! exporting module
 //! importing module 
 
@@ -47,6 +50,7 @@ console.log('End fetching posts: ');
 // End fetching posts:        3
 
 //* EXECUTION 2
+/*
 const getLastPost = async function () {
   const res = await fetch('https://jsonplaceholder.typicode.com/posts');
   const data = await res.json();
@@ -65,7 +69,42 @@ const lastPost2 = await lastPost  // getLastPost()
 console.log(': ', lastPost2);
 // {title: 'at nam consequatur ea labore ea harum', text: 'cupiditate quo est a modi nesciunt soluta\nipsa vol…nam et distinctio eum\naccusamus ratione error aut'}
 
+*/
 
+// TODO: The Module Pattern
+//IIFE function is only created once and only called once
+const ShoppingCart2 = (function () {
+  const cart = [];
+  const shippingCost = 10;
 
+  const totalPrice = 347;
+  const totalQuantity = 34;
 
+  const addToCart = function (product, quantity) {
+    cart.push({product, quantity});
+  
+    console.log(`${quantity} ${product} added to cart `);
+  }
 
+  const orderStock = function (product, quantity) {
+    cart.push({product, quantity});
+  
+    console.log(`${quantity} ${product} ordered fro supplier`);
+  }
+
+  return {
+    addToCart,
+    cart,
+    totalPrice,
+    totalQuantity,
+  };
+})()
+
+ShoppingCart2.addToCart('apple', 4);
+ShoppingCart2.addToCart('pizza', 2);
+console.log('ShoppingCart2: ', ShoppingCart2 );
+console.log('ShoppingCart2: ', ShoppingCart2.shippingCost ); //! undefined
+
+//! closures
+
+// TODO: CommonJS Modules

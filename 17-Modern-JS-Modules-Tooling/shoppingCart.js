@@ -20,7 +20,9 @@ export {totalPrice, totalQuantity as tq}
 export const cart = [];
 
 //todo: blocking code example 3 - await
+/*
 console.log('start fetching comments');
 const comments = await fetch('https://jsonplaceholder.typicode.com/comments');
 console.log('end fetching comments');
 // see console log
+*/
