@@ -113,4 +113,5 @@ in your terminal from the root /code folder — it will even open a new browser 
 ### 17-MODERN-JS-MODULES-TOOLING
 
    - an overview of modern JavaScript development
+   - an overview of Modules in JavaScript
    - 
