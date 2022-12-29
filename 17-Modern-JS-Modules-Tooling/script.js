@@ -154,3 +154,5 @@ console.log('lodash stateDeepClone: ', stateDeepClone);
 
 // install all dependencies
 // npm install / npm i
+
+// TODO: Bundling With Parcel and NPM Scripts

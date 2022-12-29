@@ -121,4 +121,5 @@ in your terminal from the root /code folder — it will even open a new browser 
    - the Module pattern
    - a brief introduction to the Command Line
    - introduction to NPM
+   - bundling with Parcel and NPM scripts
    - 
