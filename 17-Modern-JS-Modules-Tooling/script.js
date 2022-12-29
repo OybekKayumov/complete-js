@@ -57,3 +57,15 @@ const getLastPost = async function () {
 
 const lastPost = getLastPost();
 console.log('lastPost: ', lastPost);  // Promise(pending) 
+
+// not very clean
+// lastPost.then(last => console.log(last))
+
+const lastPost2 = await lastPost  // getLastPost() 
+console.log(': ', lastPost2);
+// {title: 'at nam consequatur ea labore ea harum', text: 'cupiditate quo est a modi nesciunt soluta\nipsa vol…nam et distinctio eum\naccusamus ratione error aut'}
+
+
+
+
+

@@ -18,3 +18,9 @@ export {totalPrice, totalQuantity as tq}
 
 // TODO: imports are a life connection to exports
 export const cart = [];
+
+//todo: blocking code example 3 - await
+console.log('start fetching comments');
+const comments = await fetch('https://jsonplaceholder.typicode.com/comments');
+console.log('end fetching comments');
+// see console log
