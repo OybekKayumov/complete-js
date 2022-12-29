@@ -72,6 +72,7 @@ console.log(': ', lastPost2);
 */
 
 // TODO: The Module Pattern
+/*
 //IIFE function is only created once and only called once
 const ShoppingCart2 = (function () {
   const cart = [];
@@ -106,5 +107,15 @@ console.log('ShoppingCart2: ', ShoppingCart2 );
 console.log('ShoppingCart2: ', ShoppingCart2.shippingCost ); //! undefined
 
 //! closures
+*/
 
 // TODO: CommonJS Modules
+// export
+export.addToCart = function (product, quantity) {
+  cart.push({product, quantity});
+
+  console.log(`${quantity} ${product} added to cart `);
+}
+
+// import
+const { addToCart} = require('./shoppingCart.js');
