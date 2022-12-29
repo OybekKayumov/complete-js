@@ -115,4 +115,5 @@ in your terminal from the root /code folder — it will even open a new browser 
    - an overview of modern JavaScript development
    - an overview of Modules in JavaScript
    - exporting and importing in ES6 Modules
+   - top-level await (ES2022)
    - 

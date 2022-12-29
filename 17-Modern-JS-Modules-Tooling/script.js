@@ -28,3 +28,10 @@ console.log('ShoppingCart.cart: ', ShoppingCart.cart);
 //! IMPORTS ARE NOT COPIES OF EXPORT, 
 // they are instead like a live connection, 
 // and it means that they point the same place in the memory 
+
+// TODO: Top-Level await (ES2022)
+const res = await fetch('https://jsonplaceholder.typicode.com/posts');
+const data = await res.json();
+console.log('data: ', data);
+// data 100
+
