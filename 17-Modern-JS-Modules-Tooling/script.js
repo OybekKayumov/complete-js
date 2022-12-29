@@ -133,6 +133,25 @@ const state = {
     {product: 'pizza', quantity: 5},
   ],
   user: {loggedIn: true}
-}
+};
+
+// create a copy an object with Object.assign
+const stateClone = Object.assign({}, state); 
+
+const stateDeepClone = cloneDeep(state);  //! using lodash to copy object
+
+state.user.loggedIn = false;
+console.log('stateClone: ', stateClone ); 
+//! copy also false
+//* user: 
+//* loggedIn: false
+
+//todo: using lodash to copy object --> true
+// const stateDeepClone = cloneDeep(state); 
+console.log('lodash stateDeepClone: ', stateDeepClone);
+//! user: 
+//! loggedIn: true
+
+
 
 
