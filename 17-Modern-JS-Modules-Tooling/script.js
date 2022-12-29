@@ -152,6 +152,5 @@ console.log('lodash stateDeepClone: ', stateDeepClone);
 //! user: 
 //! loggedIn: true
 
-
-
-
+// install all dependencies
+// npm install / npm i
