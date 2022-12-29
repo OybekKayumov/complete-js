@@ -109,4 +109,8 @@ in your terminal from the root /code folder — it will even open a new browser 
    - returning values from async functions
    - running promises in parallel
    - other promise combinators: race, allSettled and any
+
+### 17-MODERN-JS-MODULES-TOOLING
+
+   - an overview of modern JavaScript development
    - 
