@@ -119,4 +119,6 @@ in your terminal from the root /code folder — it will even open a new browser 
    - exporting and importing in ES6 Modules
    - top-level await (ES2022)
    - the Module pattern
+   - a brief introduction to the Command Line
+   - introduction to NPM
    - 

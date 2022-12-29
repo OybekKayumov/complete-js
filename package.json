@@ -1,0 +1,23 @@
+{
+  "name": "complete-js-course",
+  "version": "1.0.0",
+  "description": "_This command will install live-server, a simple static server that has live reload built-in._",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/OybekKayumov/complete-js.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/OybekKayumov/complete-js/issues"
+  },
+  "homepage": "https://github.com/OybekKayumov/complete-js#readme",
+  "dependencies": {
+    "leaflet": "^1.9.3",
+    "lodash-es": "^4.17.21"
+  }
+}

@@ -110,6 +110,7 @@ console.log('ShoppingCart2: ', ShoppingCart2.shippingCost ); //! undefined
 */
 
 // TODO: CommonJS Modules
+/*
 // export
 export.addToCart = function (product, quantity) {
   cart.push({product, quantity});
@@ -119,3 +120,19 @@ export.addToCart = function (product, quantity) {
 
 // import
 const { addToCart} = require('./shoppingCart.js');
+*/
+
+// TODO: A Brief Introduction to the Command Line
+// TODO: Introduction to NPM
+import cloneDeep from '../node_modules/lodash-es/cloneDeep.js';
+
+//deeply nested object
+const state = {
+  cart: [
+    {product: 'bread', quantity: 5},
+    {product: 'pizza', quantity: 5},
+  ],
+  user: {loggedIn: true}
+}
+
+
