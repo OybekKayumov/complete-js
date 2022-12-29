@@ -3,12 +3,12 @@
 
 //todo: importing module
 // import './shoppingCart.js';
-import { addToCart } from "./shoppingCart.js";
-
+import { addToCart, totalPrice as price, totalQuantity } from "./shoppingCart.js";
 
 console.log('importing module ');
 
 //! exporting module
 //! importing module 
 
-addToCart('bread', 5)
+addToCart('bread', 5);
+console.log(totalPrice, totalQuantity );
