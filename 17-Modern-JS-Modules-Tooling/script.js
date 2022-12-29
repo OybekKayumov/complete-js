@@ -31,12 +31,13 @@ console.log('ShoppingCart.cart: ', ShoppingCart.cart);
 
 // TODO: Top-Level await (ES2022)
 //! THIS BLOCKS THE EXECUTION OF THE ENTIRE MODULE NOW
+/*
 console.log('Start fetching posts: ');
 const res = await fetch('https://jsonplaceholder.typicode.com/posts');
 const data = await res.json();
 console.log('data: ', data);          // data 100
 console.log('End fetching posts: ');
-
+*/
 //! before we would have to write async fn:
 //! async function x() {}
 
@@ -44,3 +45,15 @@ console.log('End fetching posts: ');
 // Start fetching posts:      1
 // data:  (100) [{…}, {…},    2
 // End fetching posts:        3
+
+//* EXECUTION 2
+const getLastPost = async function () {
+  const res = await fetch('https://jsonplaceholder.typicode.com/posts');
+  const data = await res.json();
+  console.log('data: ', data);
+
+  return { title: data.at(-1).title, text: data.at(-1).body}
+}
+
+const lastPost = getLastPost();
+console.log('lastPost: ', lastPost);  // Promise(pending) 
