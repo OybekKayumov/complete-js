@@ -30,8 +30,17 @@ console.log('ShoppingCart.cart: ', ShoppingCart.cart);
 // and it means that they point the same place in the memory 
 
 // TODO: Top-Level await (ES2022)
+//! THIS BLOCKS THE EXECUTION OF THE ENTIRE MODULE NOW
+console.log('Start fetching posts: ');
 const res = await fetch('https://jsonplaceholder.typicode.com/posts');
 const data = await res.json();
-console.log('data: ', data);
-// data 100
+console.log('data: ', data);          // data 100
+console.log('End fetching posts: ');
 
+//! before we would have to write async fn:
+//! async function x() {}
+
+//* EXECUTION
+// Start fetching posts:      1
+// data:  (100) [{…}, {…},    2
+// End fetching posts:        3
