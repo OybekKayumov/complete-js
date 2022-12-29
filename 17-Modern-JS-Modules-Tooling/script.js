@@ -1,8 +1,7 @@
 // parsing means to read code without executing it
 // this is the moment in which imports are hoisted
 
-import './app.js'
-
+// import './app.js'
 
 //todo: importing module
 // import './shoppingCart.js';
@@ -122,9 +121,16 @@ export.addToCart = function (product, quantity) {
 const { addToCart} = require('./shoppingCart.js');
 */
 
+import add, {cart} from './shoppingCart.js';
+add('pizza', 2)
+add('bread', 5)
+add('apples', 4)
+
 // TODO: A Brief Introduction to the Command Line
 // TODO: Introduction to NPM
-import cloneDeep from '../node_modules/lodash-es/cloneDeep.js';
+// import cloneDeep from '../node_modules/lodash-es/cloneDeep.js';
+import cloneDeep from 'lodash-es';
+// import cloneDeep from 'lodash';
 
 //deeply nested object
 const state = {
@@ -156,3 +162,6 @@ console.log('lodash stateDeepClone: ', stateDeepClone);
 // npm install / npm i
 
 // TODO: Bundling With Parcel and NPM Scripts
+if (module.hot) {
+  module.hot.accept();
+}
