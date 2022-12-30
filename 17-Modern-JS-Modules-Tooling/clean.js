@@ -65,21 +65,30 @@ const checkExpenses = (state, limits) =>
 const finalBudget = checkExpenses(newBudget3, spendingLimits);
 console.log('finalBudget', finalBudget);
 
-const logBigExpenses = function (bigLimit) {
-  let output = '';
-  for (const entry of budget) 
-    output += 
-      entry.value <= -bigLimit 
-        ? `${entry.description.slice(-2)} / `
-        : '';
-     // Emojis are 2 chars
+const logBigExpenses = function (state, bigLimit) {
+  // let output = '';
+  // for (const entry of budget) 
+  //   output += 
+  //     entry.value <= -bigLimit 
+  //       ? `${entry.description.slice(-2)} / `
+  //       : '';
+  //    // Emojis are 2 chars
   
-  output = output.slice(0, -2); // Remove last '/ '
-  console.log(output);
+  // output = output.slice(0, -2); // Remove last '/ '
+  // console.log(output);
+
+  //todo: functional version
+  const bigExpenses = state
+    .filter(entry => entry.value <= -bigLimit )
+    .map(entry => entry.description.slice(-2))
+    .join(' / ')
+    // .reduce((str, curr) => `${str} ${curr.description.slice(-2)}`, '')
+
+  console.log('bigExpenses: ', bigExpenses);
 };
 
-logBigExpenses(1000);
-console.log(budget);
+logBigExpenses(finalBudget, 1000);
+// console.log(budget);
 
 // TODO: Declarative and Functional JavaScript Principles
 // imperative -  HOW to do things
