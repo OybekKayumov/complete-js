@@ -11,29 +11,24 @@ const budget = Object.freeze([
   { value: -1800, description: 'New Laptop 💻', user: 'jonas' },
 ]);
 
-// budget[0].value = 10000;  // ok
-// budget[9] = 'jonas';      // not ok
-
 const spendingLimits = Object.freeze({
   jonas: 1500,
   matilda: 100,
 });
 
-// spendingLimits.jay = 200;          // no
-// console.log(': ', spendingLimits);
-
-const getLimit = user => {
-  const limit = spendingLimits?.[user] ?? 0;
-}
+const getLimit = user => spendingLimits?.[user] ?? 0;
 
 const addExpense = function (state, limits, value, description, user = 'jonas') {
   const cleanUser = user.toLowerCase();
 
   if (value <= getLimit(cleanUser)) {
-    budget.push({ value: -value, description, user: cleanUser });
+    return [...state, { value: -value, description, user: cleanUser }]
   }
 };
-addExpense(budget, spendingLimits, 10, 'Pizza 🍕');
+
+const newBudget1 = addExpense(budget, spendingLimits, 10, 'Pizza 🍕');
+console.log('newBudget1: ', newBudget1);
+
 addExpense(budget, spendingLimits, 100, 'Going to movies 🍿', 'Matilda');
 addExpense(budget, spendingLimits, 200, 'Stuff', 'Jay');
 // console.log(budget);
