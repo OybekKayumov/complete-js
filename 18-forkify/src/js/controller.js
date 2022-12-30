@@ -1,6 +1,9 @@
 // import icons from '../img/icons.svg' // Parcel 1
 import icons from 'url:../img/icons.svg' // Parcel 2
 // console.log(': ', icons);
+import 'core-js/stable';
+import 'regenerator-runtime/runtime';
+
 
 const { async } = require("regenerator-runtime");
 
@@ -37,7 +40,7 @@ const showRecipe = async function () {
   try {
     // 1 loading recipe
     renderSpinner(recipeContainer);
-    
+
     const res = await fetch(
       'https://forkify-api.herokuapp.com/api/v2/recipes/5ed6604591c37cdc054bc886'
     );
