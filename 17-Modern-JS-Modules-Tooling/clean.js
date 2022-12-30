@@ -14,6 +14,10 @@ const spendingLimits = {
   matilda: 100,
 };
 
+const getLimit = user => {
+  const limit = spendingLimits?.[user] ?? 0;
+}
+
 const addExpense = function (value, description, user = 'jonas') {
   // if (!user) user = 'jonas';
   
@@ -21,7 +25,8 @@ const addExpense = function (value, description, user = 'jonas') {
  
   // const limit = spendingLimits[user] ? spendingLimits[user] : 0;
   //todo: use optional chaining and use the knowledge coalescing operator (??)
-  const limit = spendingLimits?.[user] ?? 0;
+  // const limit = spendingLimits?.[user] ?? 0;
+  const limit = getLimit(user);
 
   if (value <= limit) {
     // budget.push({ value: -value, description: description, user: user });
@@ -34,16 +39,11 @@ addExpense(200, 'Stuff', 'Jay');
 console.log(budget);
 
 const checkExpenses = function () {
-  for (const entry of budget) {
-    // let lim;
-    // if (spendingLimits[entry.user]) {
-    //   lim = spendingLimits[entry.user];
-    // } else {
-    //   lim = 0;
-    // }
-    const limit = spendingLimits?.[entry.user] ?? 0;
+  for (const entry of budget) {    
+    // const limit = spendingLimits?.[entry.user] ?? 0;
+    // const limit = getLimit(entry.user)
 
-    if (entry.value < -limit) {
+    if (entry.value < -getLimit(entry.user)) {
       entry.flag = 'limit';
     }
   }
