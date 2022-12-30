@@ -16,13 +16,14 @@ const spendingLimits = Object.freeze({
   matilda: 100,
 });
 
-const getLimit = user => spendingLimits?.[user] ?? 0;
+// const getLimit = user => spendingLimits?.[user] ?? 0;
+const getLimit = (limits,user) => limits?.[user] ?? 0;
 
 //todo: PURE FUNCTION
 const addExpense = function (state, limits, value, description, user = 'jonas') {
   const cleanUser = user.toLowerCase();
 
-  return value <= getLimit(cleanUser) 
+  return value <= getLimit(limits, cleanUser) 
     ? [...state, { value: -value, description, user: cleanUser }]
     : state;
 };
@@ -39,17 +40,30 @@ const newBudget3 = addExpense(
   spendingLimits, 
   200, 'Stuff', 'Jay');
 
-console.log('newBudget1: ', newBudget1);
-console.log('newBudget2: ', newBudget2);
-console.log('newBudget3: ', newBudget3);
-
-const checkExpenses = function () {
-  for (const entry of budget)
-    if (entry.value < -getLimit(entry.user)) entry.flag = 'limit';
+// console.log('newBudget1: ', newBudget1);
+// console.log('newBudget2: ', newBudget2);
+// console.log('newBudget3: ', newBudget3);
+/*
+const checkExpenses = function (state, limits) {
+  // for (const entry of budget)
+  //   if (entry.value < -getLimit(limits, entry.user)) entry.flag = 'limit';
+  // create new array
+  return state.map(entry => {
+    return entry.value < -getLimit(limits, entry.user)
+          ? {...entry, flag : 'limit'}
+          : entry;
+  })
 };
-checkExpenses();
+*/
+const checkExpenses = (state, limits) => 
+  state.map(entry => 
+    entry.value < -getLimit(limits, entry.user)
+      ? {...entry, flag : 'limit'}
+      : entry
+  );
 
-console.log(budget);
+const finalBudget = checkExpenses(newBudget3, spendingLimits);
+console.log('finalBudget', finalBudget);
 
 const logBigExpenses = function (bigLimit) {
   let output = '';
