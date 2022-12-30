@@ -16,7 +16,6 @@ const spendingLimits = Object.freeze({
   matilda: 100,
 });
 
-// const getLimit = user => spendingLimits?.[user] ?? 0;
 const getLimit = (limits,user) => limits?.[user] ?? 0;
 
 //todo: PURE FUNCTION
@@ -40,21 +39,6 @@ const newBudget3 = addExpense(
   spendingLimits, 
   200, 'Stuff', 'Jay');
 
-// console.log('newBudget1: ', newBudget1);
-// console.log('newBudget2: ', newBudget2);
-// console.log('newBudget3: ', newBudget3);
-/*
-const checkExpenses = function (state, limits) {
-  // for (const entry of budget)
-  //   if (entry.value < -getLimit(limits, entry.user)) entry.flag = 'limit';
-  // create new array
-  return state.map(entry => {
-    return entry.value < -getLimit(limits, entry.user)
-          ? {...entry, flag : 'limit'}
-          : entry;
-  })
-};
-*/
 const checkExpenses = (state, limits) => 
   state.map(entry => 
     entry.value < -getLimit(limits, entry.user)
@@ -65,17 +49,8 @@ const checkExpenses = (state, limits) =>
 const finalBudget = checkExpenses(newBudget3, spendingLimits);
 console.log('finalBudget', finalBudget);
 
+// impure function
 const logBigExpenses = function (state, bigLimit) {
-  // let output = '';
-  // for (const entry of budget) 
-  //   output += 
-  //     entry.value <= -bigLimit 
-  //       ? `${entry.description.slice(-2)} / `
-  //       : '';
-  //    // Emojis are 2 chars
-  
-  // output = output.slice(0, -2); // Remove last '/ '
-  // console.log(output);
 
   //todo: functional version
   const bigExpenses = state
@@ -88,7 +63,6 @@ const logBigExpenses = function (state, bigLimit) {
 };
 
 logBigExpenses(finalBudget, 1000);
-// console.log(budget);
 
 // TODO: Declarative and Functional JavaScript Principles
 // imperative -  HOW to do things
