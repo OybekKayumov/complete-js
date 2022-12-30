@@ -123,4 +123,4 @@ in your terminal from the root /code folder — it will even open a new browser 
    - introduction to NPM
    - bundling with Parcel and NPM scripts
    - review: writing clean and modern JavaScript
-   - 
+   - declarative and functional JavaScript principles
