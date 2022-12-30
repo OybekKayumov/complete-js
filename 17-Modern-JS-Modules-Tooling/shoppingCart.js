@@ -1,4 +1,5 @@
 // exporting module
+/*
 console.log('exporting module');
 
 const shippingCost = 10;

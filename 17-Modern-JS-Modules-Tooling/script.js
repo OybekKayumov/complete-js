@@ -14,6 +14,7 @@
 //! exporting module
 //! importing module 
 
+/*
 import * as ShoppingCart from './shoppingCart.js';
 // look similar as Object
 ShoppingCart.addToCart('bread', 5)
@@ -121,10 +122,10 @@ export.addToCart = function (product, quantity) {
 const { addToCart} = require('./shoppingCart.js');
 */
 
-import add, {cart} from './shoppingCart.js';
-add('pizza', 2)
-add('bread', 5)
-add('apples', 4)
+// import add, {cart} from './shoppingCart.js';
+// add('pizza', 2)
+// add('bread', 5)
+// add('apples', 4)
 
 // TODO: A Brief Introduction to the Command Line
 // TODO: Introduction to NPM
@@ -165,3 +166,24 @@ console.log('lodash stateDeepClone: ', stateDeepClone);
 if (module.hot) {
   module.hot.accept();
 }
+
+// TODO: Configuring Babel and Polyfilling
+class Person {
+  greeting = 'Hey'
+  constructor(name) {
+    this.name = name;
+    console.log(`${this.greeting}, ${this.name}`);
+  }
+}
+
+const jonas = new Person('Jonas');
+
+console.log('Jonas' ?? null);
+
+import 'core-js/stable';
+
+// Polifilling async functions
+import 'regenerator-runtime/runtime';
+
+// TODO: Review: Writing Clean and Modern JavaScript
+// TODO: Let's Fix Some Bad Code: Part 1
