@@ -1,9 +1,12 @@
 import * as model from './model.js';
+import recipeView from './views/recipeView.js';
+
 // import icons from '../img/icons.svg' // Parcel 1
 import icons from 'url:../img/icons.svg' // Parcel 2
 // console.log(': ', icons);
 import 'core-js/stable';
 import 'regenerator-runtime/runtime';
+import recipeView from './views/recipeView.js';
 
 
 const { async } = require("regenerator-runtime");
@@ -49,32 +52,11 @@ const showRecipe = async function () {
     // async fn (loadRecipe) will return Promise, so we should use here await
     await model.loadRecipe(id);
     const {recipe} = model.state;
-    /*
-    // 'https://forkify-api.herokuapp.com/api/v2/recipes/5ed6604591c37cdc054bc886'
-    const res = await fetch(
-      `https://forkify-api.herokuapp.com/api/v2/recipes/${id}`
-    );
-
-    const data = await res.json();
-
-    if (!res.ok) throw new Error(`${data.message} (${res.status})`)
-
-    console.log('res, data: ', res, data);
-    let {recipe} = data.data;
-    recipe = {
-      id: recipe.id,
-      title: recipe.title,
-      publisher: recipe.publisher,
-      sourceUrl: recipe.source_url,
-      image: recipe.image_url,
-      servings: recipe.servings,
-      cooking_time: recipe.cooking_time,
-      ingredients: recipe.ingredients
-    }
-
-    console.log('recipe: ', recipe);
-    */
+    
     // 2 rendering recipe
+    recipeView.render(model.state.recipe);
+    // const recipeView = new recipeView(model.state.recipe);
+
     const markup = `
         <figure class="recipe__fig">
               <img src="${recipe.image}" alt="${recipe.title}" class="recipe__img" />
