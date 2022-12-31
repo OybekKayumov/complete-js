@@ -7,6 +7,7 @@ export const state = {
   search: {
     query: '',
     results: [],
+    resultsPerPage: 10
   }
 }
 
@@ -30,7 +31,7 @@ export const loadRecipe = async function (id) {
     console.log('state.recipe: ', state.recipe);
   } catch (err) {
     // temporary error handling
-    console.log('err: ',`${err} 💥💥💥💥`);
+    console.log(`${err} 💥💥💥💥`);
     throw err;
   }
 }
@@ -40,7 +41,7 @@ export const loadSearchResults = async function (query) {
     state.search.query = query;
 
     const data = await getJSON(`${API_URL}?search=${query}`);
-    console.log('data: ', data);
+    console.log(data);
 
     state.search.results = data.data.recipes.map(rec => {
       return {
@@ -50,11 +51,16 @@ export const loadSearchResults = async function (query) {
         image: rec.image_url,
       }
     })
-    // console.log('state.search.results: ', state.search.results);
   } catch (err) {
-    console.log('err: ',`${err} 💥💥💥💥`);
+    console.log(`${err} 💥💥💥💥`);
     throw err;
   }
 }
 
-// loadSearchResults('pizza')
+export const getSearchResultsPage = function (page) {
+  const start = (page -1) * 10    // 0
+  const end = page * 10      // 9
+
+
+  return state.search.results.slice(start, end)  // 10
+}
