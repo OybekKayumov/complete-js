@@ -1,3 +1,4 @@
+import * as model from './model.js';
 // import icons from '../img/icons.svg' // Parcel 1
 import icons from 'url:../img/icons.svg' // Parcel 2
 // console.log(': ', icons);
@@ -42,10 +43,12 @@ const showRecipe = async function () {
     console.log('id: ', id);
 
     if(!id) return;
-
-    // 1 loading recipe
     renderSpinner(recipeContainer);
 
+    // 1 loading recipe
+    // async fn (loadRecipe) will return Promise, so we should use here await
+    await model.loadRecipe(id);
+    /*
     // 'https://forkify-api.herokuapp.com/api/v2/recipes/5ed6604591c37cdc054bc886'
     const res = await fetch(
       `https://forkify-api.herokuapp.com/api/v2/recipes/${id}`
@@ -69,7 +72,7 @@ const showRecipe = async function () {
     }
 
     console.log('recipe: ', recipe);
-
+    */
     // 2 rendering recipe
     const markup = `
         <figure class="recipe__fig">
