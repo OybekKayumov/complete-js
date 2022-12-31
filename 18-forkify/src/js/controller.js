@@ -1,9 +1,6 @@
 import * as model from './model.js';
 import recipeView from './views/recipeView.js';
 
-// import icons from '../img/icons.svg' // Parcel 1
-import icons from 'url:../img/icons.svg' // Parcel 2
-// console.log(': ', icons);
 import 'core-js/stable';
 import 'regenerator-runtime/runtime';
 import recipeView from './views/recipeView.js';
@@ -26,27 +23,13 @@ const timeout = function (s) {
 ///////////////////////////////////////
 // console.log('Test: ', );
 
-const renderSpinner = function (parentEl) {
-  
-  const markup = `
-      <div class="spinner">
-        <svg>
-          <use href="${icons}#icon-loader"></use>
-        </svg>
-      </div>
-    `;
-
-    parentEl.innerHTML = '';
-    parentEl.insertAdjacentHTML('afterbegin', markup);
-};
-
 const controlRecipes = async function () {
   try {
     const id = window.location.hash.slice(1);
     console.log('id: ', id);
 
     if(!id) return;
-    renderSpinner(recipeContainer);
+    recipeView.renderSpinner();
 
     // 1 loading recipe
     // async fn (loadRecipe) will return Promise, so we should use here await
