@@ -48,6 +48,7 @@ const showRecipe = async function () {
     // 1 loading recipe
     // async fn (loadRecipe) will return Promise, so we should use here await
     await model.loadRecipe(id);
+    const {recipe} = model.state;
     /*
     // 'https://forkify-api.herokuapp.com/api/v2/recipes/5ed6604591c37cdc054bc886'
     const res = await fetch(
