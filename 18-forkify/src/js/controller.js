@@ -47,7 +47,8 @@ const controlSearchResults = async function () {
     await model.loadSearchResults(query);  // 'pizza'
 
     // 3 render results
-    resultsView.render(model.state.search.results);
+    // resultsView.render(model.state.search.results);
+    resultsView.render(model.getSearchResultsPage()); // start page 1 by default
   } catch (err) {
     console.log(err);
   }
