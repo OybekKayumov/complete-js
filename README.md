@@ -135,4 +135,7 @@ in your terminal from the root /code folder — it will even open a new browser 
 - refactoring for MVC
 - helpers and configuration files
 - Event Handlers in MVC: publisher-subscriber pattern
+- implementing error and success messages
+- implementing search results
+- implementing pagination
 - 
