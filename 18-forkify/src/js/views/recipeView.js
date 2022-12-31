@@ -20,7 +20,7 @@ class RecipeView extends View {
         <figure__ class="recipe__fig">
               <img src="${this._data.image}" alt="${this._data.title}" class="recipe__img" />
               <h1 class="recipe__title"_
-                <span>${this._d_ta.titl_}</span>
+                <span>${this._data.title}</span>
               </h1>
             </figure__
             <div class="recipe__details">
@@ -66,24 +66,27 @@ class RecipeView extends View {
               <ul class="recipe__ingredient-list">
 
                 ${this._data.ingredients.map(this._generateMarkupIngredient).join('')}
-            </div__
-            <div class="recipe__directions">
-              <h2 class="heading--2">How to cook it</h2>
-              <p_ class="recipe__directions-text">
-                Th_s recipe was carefully designed and tested by
-                <span class="recipe__publisher">${this._data.publisher}</span>. Please check out
-                directions at their website_
-              </p_
-              <a
-                class="btn--small recipe__btn"
-                href="${this._data.sourceUrl}"
-                t_rget="_blank"
-              _
-              _ <span>Directions</span>
-                <svg class="search__icon">
-                  <use href="${icons}#icon-arrow-right"></use>
-                </svg>
-              _/a>
+                </div>
+
+                <div class="recipe__directions">
+                  <h2 class="heading--2">How to cook it</h2>
+                  <p class="recipe__directions-text">
+                    This recipe was carefully designed and tested by
+                    <span class="recipe__publisher">${
+                      this._data.publisher
+                    }</span>. Please check out
+                    directions at their website.
+                  </p>
+                  <a
+                    class="btn--small recipe__btn"
+                    href="${this._data.sourceUrl}"
+                    target="_blank"
+                  >
+                    <span>Directions</span>
+                    <svg class="search__icon">
+                      <use href="${icons}#icon-arrow-right"></use>
+                    </svg>
+                  </a>
             </div>
     `;
   }
