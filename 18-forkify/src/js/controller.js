@@ -41,8 +41,7 @@ const controlRecipes = async function () {
 
     
   } catch (err) {
-    console.log('err: ', err);
-    recipeView.renderError(`${err} 💥💥💥💥`);
+    recipeView.renderError();
   }
 }
 
@@ -50,8 +49,3 @@ const init = function () {
   recipeView.addHandlerRender(controlRecipes);
 }
 init();
-
-// ['hashchange', 'load'].forEach(event => window.addEventListener(event, controlRecipes));
-// showRecipe();
-// window.addEventListener('hashchange', controlRecipes);
-// window.addEventListener('load', controlRecipes);
