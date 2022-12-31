@@ -50,11 +50,11 @@ export const loadSearchResults = async function (query) {
         image: rec.image_url,
       }
     })
-    console.log('state.search.results: ', state.search.results);
+    // console.log('state.search.results: ', state.search.results);
   } catch (err) {
     console.log('err: ',`${err} 💥💥💥💥`);
     throw err;
   }
 }
 
-loadSearchResults('pizza')
+// loadSearchResults('pizza')
