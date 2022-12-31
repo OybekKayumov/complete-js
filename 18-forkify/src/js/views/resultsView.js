@@ -3,9 +3,10 @@ import icons from 'url:../../img/icons.svg' // Parcel 2
 
 class ResultsView extends View {
   _parentElement = document.querySelector('.results');
+  _errorMessage = "No recipe found for your query!";
+  _message = "";
 
   _generateMarkup() {
-
     return this._data.map(_generateMarkupPreview).join('');    
   }
 
