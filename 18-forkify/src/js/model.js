@@ -9,8 +9,8 @@ export const state = {
     results: [],
     page: 1,
     resultsPerPage: RES_PER_PAGE,
-  }
-}
+  },
+};
 
 export const loadRecipe = async function (id) {
   try {    
@@ -61,17 +61,17 @@ export const loadSearchResults = async function (query) {
 export const getSearchResultsPage = function (page = state.search.page) {
   state.search.page = page;
 
-  const start = (page -1) * state.search.resultsPerPage;    // 0
-  const end = page * state.search.resultsPerPage;           // 9
+  const start = (page - 1) * state.search.resultsPerPage; // 0
+  const end = page * state.search.resultsPerPage; // 9
 
-  return state.search.results.slice(start, end);            // 10 per page
-}
+  return state.search.results.slice(start, end);       // 10 per page
+};
 
 export const updateServings = function (newServings) {
   state.recipe.ingredients.forEach(ing => {
-    ing.quantity =(ing.quantity * newServings) / state.recipe.servings;
-      // newQt = oldQt * newServings / oldServings   // 2 * 8 / 4 = 4
+    ing.quantity = (ing.quantity * newServings) / state.recipe.servings;
+      // newQt = oldQt * newServings / oldServings // 2 * 8 / 4 = 4
   });
 
   state.recipe.servings = newServings;
-}
+};

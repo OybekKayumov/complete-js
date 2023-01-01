@@ -1,59 +1,68 @@
 import View from './View.js';
 
 // import icons from '../img/icons.svg' // Parcel 1
-import icons from 'url:../../img/icons.svg' // Parcel 2
-// console.log(': ', icons);
-import {Fraction} from 'fractional';
+import icons from 'url:../../img/icons.svg'; // Parcel 2
+import { Fraction } from 'fractional';
 
 class RecipeView extends View {
   _parentElement = document.querySelector('.recipe');
-  _errorMessage = "We could't find that recipe. Please try another one!";
-  _message = "";
+  _errorMessage = 'We could not find that recipe. Please try another one!';
+  _message = '';
 
   addHandlerRender(handler) {
-    ['hashchange', 'load'].forEach(event => window.addEventListener(event, handler));
+    ['hashchange', 'load'].forEach(ev => window.addEventListener(ev, handler));
   }
 
   addHandlerUpdateServings(handler) {
     this._parentElement.addEventListener('click', function (e) {
-      const btn = e.target.closest('.btn--tiny');
+      const btn = e.target.closest('.btn--update-servings');
       if (!btn) return;
-      console.log('btn: ', btn );
-
-      handler();
-    })
+      const { updateTo } = btn.dataset;
+      if (+updateTo > 0) handler(+updateTo);
+    });
   }
 
   _generateMarkup() {
-    // const markup = `
     return `
-        <figure__ class="recipe__fig">
-              <img src="${this._data.image}" alt="${this._data.title}" class="recipe__img" />
-              <h1 class="recipe__title"_
+        <figure class="recipe__fig">
+              <img src="${this._data.image}" alt="${
+                this._data.title
+              }" class="recipe__img" />
+              <h1 class="recipe__title">
                 <span>${this._data.title}</span>
               </h1>
-            </figure__
+            </figure>
+
             <div class="recipe__details">
-              <div_ class="reci_e__info">
+              <div class="recipe__info">
                 <svg class="recipe__info-icon">
-                  <us_ href="${icons}#icon-clock"></us_>
+                  <use href="${icons}#icon-clock"></use>
                 </svg>
-                <span class="recipe__info-data recipe__info-data--minutes">${this._data.cooking_time}</span>
+                <span class="recipe__info-data recipe__info-data--minutes">${
+                  this._data.cookingTime
+                }</span>
                 <span class="recipe__info-text">minutes</span>
-              </div_
-              <div _lass="recipe__info">
+              </div>
+              <div class="recipe__info">
                 <svg class="recipe__info-icon">
                   <use href="${icons}#icon-users"></use>
                 </svg>
-                <sp_n class="recipe__info-data recipe__info-data--people">${this._data.servings}</sp_n>
-                <span class="recipe__info-text">servings</span>_
-                <div class="recipe__info-buttons"_
-                  <button class="btn--tiny btn--increase-servings">
-                    <svg_>
+                <span class="recipe__info-data recipe__info-data--people">${
+                  this._data.servings
+                }</span>
+                <span class="recipe__info-text">servings</span>
+
+                <div class="recipe__info-buttons">
+                  <button class="btn--tiny btn--update-servings" data-update-to="${
+                    this._data.servings - 1
+                  }">
+                    <svg>
                       <use href="${icons}#icon-minus-circle"></use>
-                    </svg_
+                    </svg>
                   </button>
-                  <button class="btn--tiny btn--increase-servings">
+                  <button class="btn--tiny btn--update-servings" data-update-to="${
+                    this._data.servings + 1
+                  }">
                     <svg>
                       <use href="${icons}#icon-plus-circle"></use>
                     </svg>
@@ -107,20 +116,15 @@ class RecipeView extends View {
         <svg class="recipe__icon">
           <use href="${icons}#icon-check"></use>
         </svg>
-        <div class="recipe__quantity">
-          ${ing.quantity // NaN, if no data -> ''
-            ? new Fraction(
-              ing.quantity 
-              ).toString()
-            : ''
-          }
-        </div>
+        <div class="recipe__quantity">${
+          ing.quantity ? new Fraction(ing.quantity).toString() : ''
+          }</div>
         <div class="recipe__description">
           <span class="recipe__unit">${ing.unit}</span>
           ${ing.description}
         </div>
       </li>
-    `
+    `;
   } 
 }
 

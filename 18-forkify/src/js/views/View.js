@@ -1,4 +1,4 @@
-import icons from 'url:../../img/icons.svg' // Parcel 2
+import icons from 'url:../../img/icons.svg'; // Parcel 2
 
 export default class View {
   _data;
@@ -24,11 +24,10 @@ export default class View {
             <use href="${icons}#icon-loader"></use>
           </svg>
         </div>
-      `;
-  
+      `;  
       this._clear();
       this._parentElement.insertAdjacentHTML('afterbegin', markup);
-  };
+  }
 
   renderError(message = this._errorMessage) {
     const markup = `
@@ -41,7 +40,6 @@ export default class View {
           <p>${message}</p>
         </div>
     `;
-
     this._clear();
     this._parentElement.insertAdjacentHTML('afterbegin', markup);
   }
@@ -57,7 +55,6 @@ export default class View {
           <p>${message}</p>
         </div>
     `;
-
     this._clear();
     this._parentElement.insertAdjacentHTML('afterbegin', markup);
   }
