@@ -14,6 +14,16 @@ class RecipeView extends View {
     ['hashchange', 'load'].forEach(event => window.addEventListener(event, handler));
   }
 
+  addHandlerUpdateServings(handler) {
+    this._parentElement.addEventListener('click', function (e) {
+      const btn = e.target.closest('.btn--tiny');
+      if (!btn) return;
+      console.log('btn: ', btn );
+
+      handler();
+    })
+  }
+
   _generateMarkup() {
     // const markup = `
     return `
