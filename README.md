@@ -138,4 +138,8 @@ in your terminal from the root /code folder — it will even open a new browser 
 - implementing error and success messages
 - implementing search results
 - implementing pagination
-- 
+- updating recipe servings
+- developing a DOM updating algorithm
+- implementing Bookmarks
+- storing bookmarks with localStorage
+- uploading a new recipe
