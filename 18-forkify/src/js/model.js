@@ -117,3 +117,11 @@ const clearBookmarks = function () {
   localStorage.clear('bookmarks');
 }
 // clearBookmarks();
+
+export const uploadRecipe = async function (newRecipe) {
+  const ingredients = Object.entries(newRecipe)
+  .filter(entry => entry[0].startsWith('ingredients') && entry[1] !== '')
+  .map(ing => {
+    ing.replaceAll(' ','').split(',')
+  })
+}
