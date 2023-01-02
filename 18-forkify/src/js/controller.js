@@ -101,10 +101,16 @@ const controlBookmarks = function () {
 }
 
 const controlAddRecipe = function (newRecipe) {
-  
+  try {
+    
+    // upload the new recipe data
+    model.uploadRecipe(newRecipe);
+    
+  } catch (err) {
+    console.error('💥: ', err);
+    addRecipeView.renderError(err.message)
+  }
 
-  // upload the new recipe data
-  model.uploadRecipe(newRecipe);
 }
 
 const init = function () {
