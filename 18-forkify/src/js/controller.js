@@ -1,11 +1,11 @@
 import * as model from './model.js';
+import { MODAL_CLOSE_SEC } from './config.js';
 import recipeView from './views/recipeView.js';
 import searchView from './views/searchView.js';
 import resultsView from './views/resultsView.js';
 import paginationView from './views/paginationView.js';
 import bookmarksView from './views/bookmarksView.js';
 import addRecipeView from './views/addRecipeView.js';
-import { MODAL_CLOSE_SEC } from './config.js';
 
 import 'core-js/stable';
 import 'regenerator-runtime/runtime';
@@ -26,17 +26,15 @@ const controlRecipes = async function () {
 
     // 0 update results view to mark selected search result
     resultsView.update(model.getSearchResultsPage());
-    bookmarksView.update(model.state.bookmarks)
-
+    
     // 1 loading recipe
-    // async fn (loadRecipe) will return Promise, so we should use here await
+    bookmarksView.update(model.state.bookmarks);
+
+    // 2 loading recipe
     await model.loadRecipe(id);
-    // const {recipe} = model.state;
     
-    // 2 rendering recipe
-    // const recipeView = new recipeView(model.state.recipe);
-    recipeView.render(model.state.recipe);
-    
+    // 3 rendering recipe
+    recipeView.render(model.state.recipe);    
   } catch (err) {
     recipeView.renderError();
     console.error(err);
@@ -52,12 +50,11 @@ const controlSearchResults = async function () {
     const query = searchView.getQuery();
     if (!query) return;
 
-    // 2 load search results
-    await model.loadSearchResults(query);  // 'pizza'
+    // 2 load search results    // 'pizza'
+    await model.loadSearchResults(query); 
 
-    // 3 render results
-    // resultsView.render(model.state.search.results);
-    resultsView.render(model.getSearchResultsPage()); // start page 1 by default
+    // 3 render results    // start page 1 by default
+    resultsView.render(model.getSearchResultsPage());
 
     // 4 render initial pagination buttons
     paginationView.render(model.state.search);
@@ -79,13 +76,12 @@ const controlServings = function (newServings) {
   model.updateServings(newServings);
 
   // update the recipe view
-  // recipeView.render(model.state.recipe);
   recipeView.update(model.state.recipe);
 }
 
 const controlAddBookmark = function () {
   // 1 add/remove bookmark
-  if(!model.state.recipe.bookmarked) model.addBookmark(model.state.recipe);
+  if (!model.state.recipe.bookmarked) model.addBookmark(model.state.recipe);
   else model.deleteBookmark(model.state.recipe.id);
 
   // update recipe view
@@ -99,7 +95,7 @@ const controlAddBookmark = function () {
 
 const controlBookmarks = function () {
   bookmarksView.render(model.state.bookmarks);
-}
+};
 
 const controlAddRecipe = async function (newRecipe) {
   try {
@@ -124,16 +120,15 @@ const controlAddRecipe = async function (newRecipe) {
     // window.history.back();
 
     // close form window
-    setTimeout(() => {
+    setTimeout(function () {
       addRecipeView.toggleWindow();
-    }, MODAL_CLOSE_SEC * 1000);     // 2.5    
+    }, MODAL_CLOSE_SEC * 1000);         // 2.5    
 
   } catch (err) {
-    console.error('💥: ', err);
-    addRecipeView.renderError(err.message)
+    console.error('💥', err);
+    addRecipeView.renderError(err.message);
   }
-
-}
+};
 
 const init = function () {
   bookmarksView.addHandlerRender(controlBookmarks);
