@@ -127,17 +127,20 @@ in your terminal from the root /code folder — it will even open a new browser 
 - declarative and functional JavaScript principles
 
 ### 18-FORKIFY
-   _project setup_
-   `$npm init`   
-   Add build and start scripts into package.json
-   `$npm i parcel`
+   - _project setup_
+   - `$npm init`   
+   - Add build and start scripts into package.json
+   - `$npm i parcel`
 
-   _project install & run_
-   `$npm install`
-   `$npm run start` || `@npm start`
+   - _project install & run_
+   - `$npm install`
+   - `$npm run start` || `@npm start`
+   - http://localhost:1234/
+   
+   - _project build_
+   - `$npm run build`
 
-   _project build_
-   `$npm run build`
+#### Content 18-forkify:
 
 - loading a Recipe from API
 - rendering the Recipe
