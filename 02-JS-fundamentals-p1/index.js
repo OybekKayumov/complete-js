@@ -10,7 +10,11 @@
 // JS - dynamic effects and web apps in the browser, Front-end
    // - web-app on web-servers                     , Back-end
 
+let js = 'amazing';
+if (js === 'amazing') {
+  // alert ('JS is Fun')
+  console.log('JS is Fun');
+} 
 
-
-
+console.log(40+8+23-10);  //61
 
