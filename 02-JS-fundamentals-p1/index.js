@@ -42,3 +42,17 @@ let myCurrentJob = 'Teacher';
 // let job2 = 'teacher';
 
 console.log(myFirstJob);
+
+// 12. Data Types
+// value 
+    // 1. object
+    // 2. or primitive 
+
+    // primitive data types are 7
+      // Number
+      // String
+      // Boolean
+      // undefined
+      // null
+      // Symbol
+      // BigInt
