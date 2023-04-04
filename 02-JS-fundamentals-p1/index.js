@@ -28,7 +28,17 @@ console.log(fName);
 // camelCase
 
 // let 3years = 3  //! syntax err
-// john&bob = 'JB' // ! err
+// john&bob = 'JB' 
 // let new = 45;
 // let function = 32;
+// let Person = 'Joe'
 
+let PI = 3.1415;
+
+let myFirstJob = 'Programmer';
+let myCurrentJob = 'Teacher';
+
+// let job1 = 'programmer';  // ? not recommended
+// let job2 = 'teacher';
+
+console.log(myFirstJob);
