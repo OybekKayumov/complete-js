@@ -24,3 +24,11 @@ console.log(34);
 
 let fName = "John";
 console.log(fName);
+
+// camelCase
+
+// let 3years = 3  //! syntax err
+// john&bob = 'JB' // ! err
+// let new = 45;
+// let function = 32;
+
