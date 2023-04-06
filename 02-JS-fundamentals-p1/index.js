@@ -16,5 +16,11 @@ if (js === 'amazing') {
   console.log('JS is Fun');
 } 
 
-console.log(40+8+23-10);  //61
+console.log(40 + 8 + 23 - 10);  //61
 
+// 10. Values and Variables
+console.log('JavaScript');
+console.log(34);
+
+let fName = "John";
+console.log(fName);
