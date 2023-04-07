@@ -56,3 +56,18 @@ console.log(myFirstJob);
       // null
       // Symbol
       // BigInt
+
+// Number - used for decimals and integers. Floating point numbers
+let age = 48.0;
+// String
+let lastName = 'Doe';
+// Boolean true or false
+// undefined
+  // not yet defined, empty value
+  let children;
+
+// null also means empty value
+
+// Symbol - value that is unique and cannot be changed
+// BigInt 
+
