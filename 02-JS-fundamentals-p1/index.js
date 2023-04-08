@@ -25,6 +25,7 @@ console.log(34);
 let fName = "John";
 console.log(fName);
 
+// variable name conventions
 // camelCase
 
 // let 3years = 3  //! syntax err
@@ -71,3 +72,10 @@ let lastName = 'Doe';
 // Symbol - value that is unique and cannot be changed
 // BigInt 
 
+// JS has dynamic typing
+  //! value has type, NOT variable
+
+let jsIsFun = true;
+console.log(jsIsFun);
+
+console.log(typeof true); // boolean
