@@ -78,4 +78,14 @@ let lastName = 'Doe';
 let jsIsFun = true;
 console.log(jsIsFun);
 
-console.log(typeof true); // boolean
+console.log(typeof true);  // boolean
+console.log(typeof 25);    // number
+console.log(typeof 'joe'); // string
+
+// dynamic typing example
+jsIsFun = 'Yes!';   // not use let
+// we changed value, from boolean to string
+
+// undefined
+
+
