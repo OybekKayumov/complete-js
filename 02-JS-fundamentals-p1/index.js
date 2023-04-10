@@ -87,5 +87,14 @@ jsIsFun = 'Yes!';   // not use let
 // we changed value, from boolean to string
 
 // undefined
+let year;
+console.log(year);         // undefined
+console.log(typeof year);  // undefined
+// both "value" and "type of the value" are undefined
 
+year = 2023;  // number
 
+// null
+console.log(typeof null);  // object  - bug in JavaScript
+
+// 13. let, const and var
