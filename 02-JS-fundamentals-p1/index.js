@@ -157,3 +157,7 @@ console.log(25 - 10 - 5);
 let x1, y1;
 x1 = y1 = 25 - 10 - 5;
 console.log(x1, y1);     // 10 10
+
+const averageAge = ageJohn + ageSarah / 2;
+const averageAge2 = (ageJohn + ageSarah )/ 2;
+console.log(ageJohn, ageSarah, averageAge, averageAge2);
