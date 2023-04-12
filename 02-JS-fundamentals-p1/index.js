@@ -126,3 +126,15 @@ const ageJoe = now - 2011;
 
 console.log(ageJohn * 2, ageJohn / 10, 2**3); 
 // 2 ** 3 => 2*2*2, 2 to the power of 3
+
+const firstName = 'John';
+const lName = 'Doe';
+
+console.log(firstName + ' ' + lName);
+
+let x = 10 + 5   // assignment operator =
+x += 10;         // x = x + 10
+x *= 4;          // x = x * 4
+x++;             // x = x + 1
+x--;             // x = x - 1
+console.log(x);
