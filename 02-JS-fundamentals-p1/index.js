@@ -138,3 +138,11 @@ x *= 4;          // x = x * 4
 x++;             // x = x + 1
 x--;             // x = x - 1
 console.log(x);
+
+// comparison operators
+ageJoe > ageSarah  // true;
+// <, >, >=, <=
+
+console.log(ageSarah >= 18 );   // false
+
+const  isFullAge = ageSarah >= 18;
