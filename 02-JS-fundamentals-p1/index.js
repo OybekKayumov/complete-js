@@ -102,7 +102,7 @@ let newAge = 30;
 newAge = 31;  // mutated variable
 
 const birthYear = 1991;
-birthYear = 1992; //! typeError
+// birthYear = 1992; //! typeError
 
 // const job;  //! syntax error
 
@@ -146,6 +146,7 @@ ageJoe > ageSarah  // true;
 console.log(ageSarah >= 18 );   // false
 
 const  isFullAge = ageSarah >= 18;
+// 27.309968138370508 24.194608809993426 true
 
 
 // 15. Operator Precedence
@@ -161,3 +162,16 @@ console.log(x1, y1);     // 10 10
 const averageAge = ageJohn + ageSarah / 2;
 const averageAge2 = (ageJohn + ageSarah )/ 2;
 console.log(ageJohn, ageSarah, averageAge, averageAge2);
+
+// 16. Coding Challenge #1
+const massMark = 78;
+const massJohn = 92;
+const heightMark = 1.69;
+const heightJohn = 1.95;
+
+const bmiMark = massMark / (heightMark * heightMark);
+const bmiJohn = massJohn / (heightJohn * heightJohn);
+
+const markHigherBMI = bmiMark > bmiJohn;
+
+console.log(bmiMark, bmiJohn, markHigherBMI);
