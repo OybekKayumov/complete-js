@@ -98,3 +98,10 @@ year = 2023;  // number
 console.log(typeof null);  // object  - bug in JavaScript
 
 // 13. let, const and var
+let newAge = 30;
+newAge = 31;  // mutated variable
+
+const birthYear = 1991;
+birthYear = 1992; //! typeError
+
+// const job;  //! syntax error
