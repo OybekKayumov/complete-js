@@ -105,3 +105,13 @@ const birthYear = 1991;
 birthYear = 1992; //! typeError
 
 // const job;  //! syntax error
+
+var job = 'programmer';
+job = 'teacher';
+
+// var is function scope
+// let is block scope
+
+lastName = 'Doe';
+console.log(lastName);
+// create property on the global object
