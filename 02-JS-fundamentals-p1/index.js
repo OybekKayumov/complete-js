@@ -115,3 +115,14 @@ job = 'teacher';
 lastName = 'Doe';
 console.log(lastName);
 // create property on the global object
+
+// 14. Basic Operators
+const ageJohn = 2023 - 1991;
+const ageSarah = 2023 - 2018;
+console.log(ageJohn, ageSarah);
+
+const now = 2023;
+const ageJoe = now - 2011;
+
+console.log(ageJohn * 2, ageJohn / 10, 2**3); 
+// 2 ** 3 => 2*2*2, 2 to the power of 3
