@@ -146,7 +146,6 @@ ageJoe > ageSarah  // true;
 console.log(ageSarah >= 18 );   // false
 
 const  isFullAge = ageSarah >= 18;
-// 27.309968138370508 24.194608809993426 true
 
 
 // 15. Operator Precedence
@@ -169,9 +168,26 @@ const massJohn = 92;
 const heightMark = 1.69;
 const heightJohn = 1.95;
 
-const bmiMark = massMark / (heightMark * heightMark);
+// const bmiMark = massMark / (heightMark * heightMark);
+const bmiMark = massMark / heightMark ** 2;
 const bmiJohn = massJohn / (heightJohn * heightJohn);
 
 const markHigherBMI = bmiMark > bmiJohn;
 
 console.log(bmiMark, bmiJohn, markHigherBMI);
+// 27.309968138370508 24.194608809993426 true
+
+// test 2
+const massMark2 = 95;
+const massJohn2 = 85;
+const heightMark2 = 1.88;
+const heightJohn2 = 1.76;
+
+// const bmiMark = massMark / (heightMark * heightMark);
+const bmiMark2 = massMark2 / heightMark2 ** 2;
+const bmiJohn2 = massJohn2 / (heightJohn2 * heightJohn2);
+
+const markHigherBMI2 = bmiMark2 > bmiJohn2;
+
+console.log(bmiMark2, bmiJohn2, markHigherBMI2);
+// 26.87867813490267 27.44059917355372 false
