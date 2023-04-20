@@ -202,3 +202,6 @@ const john = "I'm " + nameFirst + ", a " + (curr - yearBirth) + " years old " + 
 
 console.log(john);
 // I'm John, a 32 years old teacher!
+
+const johnNew = `I'm ${nameFirst}, a ${curr-yearBirth} years old ${work}!`;
+console.log(johnNew);
