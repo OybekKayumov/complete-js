@@ -191,3 +191,14 @@ const markHigherBMI2 = bmiMark2 > bmiJohn2;
 
 console.log(bmiMark2, bmiJohn2, markHigherBMI2);
 // 26.87867813490267 27.44059917355372 false
+
+// 17. Strings and Template Literals
+const nameFirst = 'John';
+const work = 'teacher';
+const yearBirth = 1991;
+const curr = 2023;
+
+const john = "I'm " + nameFirst + ", a " + (curr - yearBirth) + " years old " + work + "!";
+
+console.log(john);
+// I'm John, a 32 years old teacher!
