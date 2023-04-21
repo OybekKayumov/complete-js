@@ -205,3 +205,16 @@ console.log(john);
 
 const johnNew = `I'm ${nameFirst}, a ${curr-yearBirth} years old ${work}!`;
 console.log(johnNew);
+
+console.log(`Just a regular string...`);
+
+console.log('String with \n\
+  multiple \n\
+  lines ');
+// String with
+// multiple
+// lines
+
+console.log(`String with 
+  multiple
+  lines `);
