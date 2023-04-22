@@ -218,3 +218,14 @@ console.log('String with \n\
 console.log(`String with 
   multiple
   lines `);
+
+
+// 18. Taking Decisions: if / else Statements
+const ageNew = 19;
+const isOldEnough = ageNew >= 18;
+
+if (isOldEnough) {
+  console.log('Sarah can start driving license 🚙🚗');
+} else {
+  
+}
