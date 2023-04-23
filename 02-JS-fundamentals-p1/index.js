@@ -221,11 +221,13 @@ console.log(`String with
 
 
 // 18. Taking Decisions: if / else Statements
-const ageNew = 19;
+const ageNew = 15;
 const isOldEnough = ageNew >= 18;
 
 if (isOldEnough) {
-  console.log('Sarah can start driving license 🚙🚗');
+  console.log('Sarah can start driving license 🚗');
 } else {
-  
+  const yearsLeft = 18 - ageNew;
+  console.log(`Sarah is too young. Wait another ${yearsLeft} years 😊`);  
 }
+
