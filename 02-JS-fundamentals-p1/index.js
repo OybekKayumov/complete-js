@@ -231,7 +231,7 @@ if (isOldEnough) {
   console.log(`Sarah is too young. Wait another ${yearsLeft} years 😊`);  
 }
 
-//
+// example
 const bYear = 1991;
 let century;
 
@@ -242,3 +242,5 @@ if (bYear <= 2000) {
 }
 
 console.log('century: ', century );
+
+// 19. Coding Challenge #2
