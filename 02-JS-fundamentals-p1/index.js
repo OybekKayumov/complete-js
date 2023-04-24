@@ -231,3 +231,14 @@ if (isOldEnough) {
   console.log(`Sarah is too young. Wait another ${yearsLeft} years 😊`);  
 }
 
+//
+const bYear = 1991;
+let century;
+
+if (bYear <= 2000) {
+  century = 20;
+} else {
+  century = 21
+}
+
+console.log('century: ', century );
